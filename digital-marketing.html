@@ -564,7 +564,7 @@ button{font-family:inherit;}
 .ca-wrap{
   position:relative;z-index:2;
   max-width:1500px;margin:0 auto;padding:0 40px;
-  display:grid;grid-template-columns:.66fr 1.34fr;gap:44px;
+  display:grid;grid-template-columns:1fr 1fr;gap:44px;
   align-items:start;
 }
 
@@ -607,7 +607,7 @@ button{font-family:inherit;}
 @keyframes caPulseGlow{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
 
 .ca-photo-frame{
-  position:absolute;inset:0 8% 0 0;z-index:2;
+  position:absolute;inset:0 4% 6% 30%;z-index:2;
   display:flex;align-items:flex-end;justify-content:flex-start;
   will-change:transform;
 }
@@ -670,7 +670,7 @@ button{font-family:inherit;}
 @keyframes caRing{0%,100%{opacity:.3;transform:scale(.94);}50%{opacity:.85;transform:scale(1.05);}}
 .ca-card-icon svg{width:22px;height:22px;stroke:var(--red-light);position:relative;z-index:1;}
 
-.ca-card-body{flex:1 1 auto;min-width:0;padding-right:36px;}
+.ca-card-body{flex:1 1 auto;min-width:0;padding-right:54px;}
 .ca-card-body p{margin:0;font-size:16.5px;line-height:1.55;color:var(--white);}
 .ca-card-bar{display:block;margin-top:15px;width:100%;max-width:220px;height:2px;border-radius:2px;background:var(--line);position:relative;overflow:hidden;}
 .ca-card-bar::after{
@@ -681,9 +681,9 @@ button{font-family:inherit;}
 .ca-card.in-view .ca-card-bar::after{width:42%;}
 
 .ca-card-num{
-  position:absolute;right:24px;top:16px;
-  font-family:var(--display);font-weight:800;font-size:26px;
-  color:rgba(255,255,255,.07);letter-spacing:0;
+  position:absolute;right:28px;top:50%;transform:translateY(-50%);
+  font-family:var(--display);font-weight:800;font-size:46px;
+  color:rgba(255,255,255,.08);letter-spacing:0;line-height:1;
 }
 
 .ca-stats{
@@ -1460,17 +1460,6 @@ button{font-family:inherit;}
   window.addEventListener('resize', () => requestAnimationFrame(build));
 })();
 
-/* Competitive Advantages: GSAP heading blur-to-clear + stagger */
-(() => {
-  if (!window.gsap) return;
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.from('#caHeading .ca-line span', {
-    y: 90, opacity: 0, filter: 'blur(10px)',
-    duration: 1.1, ease: 'power4.out', stagger: .12,
-    scrollTrigger: { trigger: '#caHeading', start: 'top 85%' }
-  });
-})();
 </script>
 </body>
 </html>
