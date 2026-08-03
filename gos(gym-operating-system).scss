@@ -1,0 +1,594 @@
+// ================================================================
+// GYMSHIM GOS — LAUNCH PAGE (SCSS SOURCE)
+//
+// This is the editable Sass source. It compiles to
+// /css/gos-launch.css — that compiled file is what the HTML
+// actually loads in the browser (no build step wired up in this
+// project, so it can't compile itself automatically).
+//
+// If you have Sass installed:
+//   sass scss/gos-launch.scss css/gos-launch.css --style=compressed
+//
+// If you don't, just keep editing /css/gos-launch.css by hand —
+// the two files are structurally identical, this one just expresses
+// it with variables / nesting / mixins instead of being flat.
+// ================================================================
+
+// ---------------------------------------------------------------
+// Variables
+// ---------------------------------------------------------------
+$black: #000000;
+$bg-1: #050506;
+
+$glow-blue: #4f8bff;
+$glow-blue-soft: #6ea8ff;
+$glow-purple: #a855f7;
+$glow-cyan: #38e0d8;
+
+$text-primary: #f5f6f8;
+$text-muted: #9a9ba3;
+
+$glass-bg: rgba(255, 255, 255, 0.045);
+$glass-bg-strong: rgba(255, 255, 255, 0.08);
+$glass-border: rgba(255, 255, 255, 0.1);
+
+$radius-lg: 28px;
+$radius-md: 18px;
+$radius-sm: 10px;
+
+$font-main: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-mono: 'JetBrains Mono', monospace;
+
+$ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+
+// ---------------------------------------------------------------
+// Mixins
+// ---------------------------------------------------------------
+@mixin glass-surface($blur: 20px) {
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+@mixin gradient-text {
+  background: linear-gradient(90deg, $glow-blue-soft, $glow-purple, $glow-cyan, $glow-blue-soft);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin no-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// ---------------------------------------------------------------
+// Reset
+// ---------------------------------------------------------------
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: $black;
+  color: $text-primary;
+  font-family: $font-main;
+  overflow-x: hidden;
+}
+
+img, video { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+::selection { background: $glow-purple; color: #fff; }
+
+// ---------------------------------------------------------------
+// Cursor glow
+// ---------------------------------------------------------------
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  margin: -240px 0 0 -240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba($glow-blue, 0.16) 0%, rgba($glow-purple, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform;
+  transform: translate3d(-9999px, -9999px, 0);
+
+  @media (hover: none) { display: none; }
+}
+
+// ---------------------------------------------------------------
+// Aurora background
+// ---------------------------------------------------------------
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  &-blob {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    max-width: 900px;
+    max-height: 900px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    will-change: transform;
+
+    &-blue   { background: $glow-blue; top: -20%; left: -10%; animation: aurora-drift-a 22s ease-in-out infinite; }
+    &-purple { background: $glow-purple; bottom: -25%; right: -10%; animation: aurora-drift-b 26s ease-in-out infinite; }
+    &-cyan   { background: $glow-cyan; top: 30%; right: 20%; opacity: 0.18; animation: aurora-drift-c 30s ease-in-out infinite; }
+  }
+}
+
+@keyframes aurora-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
+  50%      { transform: translate3d(6vw, 8vh, 0) scale3d(1.15, 1.15, 1); }
+}
+@keyframes aurora-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
+  50%      { transform: translate3d(-8vw, -6vh, 0) scale3d(1.2, 1.2, 1); }
+}
+@keyframes aurora-drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
+  50%      { transform: translate3d(-5vw, 6vh, 0) scale3d(0.9, 0.9, 1); }
+}
+
+.particle-field {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+// ---------------------------------------------------------------
+// Shared — glass + magnetic buttons
+// ---------------------------------------------------------------
+.glass { @include glass-surface; }
+
+.btn-magnetic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 34px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  isolation: isolate;
+  will-change: transform;
+  transition: box-shadow 0.4s $ease-premium;
+
+  span { position: relative; z-index: 1; display: inline-flex; }
+
+  &-primary {
+    color: #05060a;
+    background: linear-gradient(135deg, $glow-blue-soft, $glow-purple);
+    box-shadow: 0 8px 30px -8px rgba($glow-blue, 0.55);
+    &:hover { box-shadow: 0 12px 40px -6px rgba($glow-purple, 0.65); }
+  }
+
+  &-ghost {
+    color: $text-primary;
+    @include glass-surface(14px);
+    &:hover { background: $glass-bg-strong; }
+  }
+
+  &-sm { padding: 11px 22px; font-size: 13.5px; }
+}
+
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale3d(0, 0, 1);
+  pointer-events: none;
+  z-index: 0;
+  animation: ripple-out 0.7s $ease-premium forwards;
+}
+@keyframes ripple-out {
+  to { transform: scale3d(2.6, 2.6, 1); opacity: 0; }
+}
+
+.js-reveal { opacity: 0; will-change: transform, opacity; }
+
+.js-float { animation: float-y 5s ease-in-out infinite; }
+@keyframes float-y {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -10px, 0); }
+}
+
+// ---------------------------------------------------------------
+// Hero
+// ---------------------------------------------------------------
+.launch-hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 34px clamp(20px, 5vw, 64px) 0;
+}
+
+.launch-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.launch-logo {
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  &-accent { color: $glow-blue-soft; margin-left: 4px; }
+}
+
+.launch-hero-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.launch-eyebrow {
+  display: inline-block;
+  margin: 0 auto 22px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $glow-blue-soft;
+  background: rgba($glow-blue, 0.1);
+  border: 1px solid rgba($glow-blue, 0.3);
+}
+
+.launch-title {
+  margin: 0 0 22px;
+  font-weight: 800;
+  line-height: 1.06;
+  font-size: clamp(38px, 6.4vw, 78px);
+  letter-spacing: -0.02em;
+}
+.launch-line {
+  display: block;
+  &-gradient {
+    @include gradient-text;
+    animation: gradient-flow 8s linear infinite;
+  }
+}
+@keyframes gradient-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+.launch-sub {
+  max-width: 560px;
+  margin: 0 auto 36px;
+  color: $text-muted;
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.6;
+}
+
+.launch-cta-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.scroll-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding-bottom: 34px;
+
+  &-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, $glow-blue-soft, transparent);
+    animation: scroll-cue-pulse 2s ease-in-out infinite;
+  }
+  &-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $text-muted;
+  }
+}
+@keyframes scroll-cue-pulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.7); transform-origin: top; }
+  50%      { opacity: 1;   transform: scaleY(1);   transform-origin: top; }
+}
+
+// ---------------------------------------------------------------
+// Device showcase (pinned)
+// ---------------------------------------------------------------
+.launch-showcase {
+  position: relative;
+  z-index: 2;
+  height: 340vh;
+}
+.showcase-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1600px;
+}
+.showcase-glow {
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%, rgba($glow-blue, 0.22), rgba($glow-purple, 0.12) 45%, transparent 70%);
+  filter: blur(60px);
+  will-change: transform, opacity;
+}
+.showcase-badge {
+  position: absolute;
+  z-index: 5;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: $font-mono;
+  font-size: 12px;
+  color: $text-primary;
+  @include glass-surface(14px);
+  background: $glass-bg-strong;
+
+  &-a { top: 14%; left: 8%; }
+  &-b { bottom: 16%; right: 9%; animation-delay: -2.5s; }
+}
+
+.device {
+  position: absolute;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+// -- Laptop --
+.device-laptop {
+  width: min(62vw, 760px);
+  z-index: 3;
+
+  &-lid {
+    position: relative;
+    border-radius: 18px 18px 6px 6px;
+    background: linear-gradient(155deg, #1c1d22, #08090b 60%);
+    padding: 14px 14px 20px;
+    box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  }
+  &-cam {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2a2b30;
+  }
+  &-bezel {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    aspect-ratio: 16 / 10;
+  }
+  &-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #0c0d14, #06070a 70%);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.05) 48%, rgba(255, 255, 255, 0.09) 50%, rgba(255, 255, 255, 0.05) 52%, transparent 70%);
+      background-size: 250% 250%;
+      animation: screen-sheen 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+  }
+  &-hinge {
+    height: 8px;
+    margin: 0 6%;
+    background: linear-gradient(90deg, #0a0a0c, #232429, #0a0a0c);
+    border-radius: 0 0 4px 4px;
+  }
+  &-base {
+    height: 14px;
+    margin: 0 -2%;
+    background: linear-gradient(180deg, #1a1b1f, #08090b);
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 24px 40px -16px rgba(0, 0, 0, 0.7);
+  }
+}
+@keyframes screen-sheen {
+  0%, 100% { background-position: 120% -20%; }
+  50%      { background-position: -20% 120%; }
+}
+
+// -- Fake dashboard --
+.dash {
+  position: absolute;
+  inset: 0;
+  padding: 4.5% 5%;
+  display: flex;
+  flex-direction: column;
+
+  &-topbar { display: flex; align-items: center; gap: 8px; margin-bottom: 4%; }
+  &-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    &-r { background: #ff5f57; }
+    &-y { background: #febc2e; }
+    &-g { background: #28c840; }
+  }
+  &-title { margin-left: 8px; font-family: $font-mono; font-size: clamp(9px, 1.1vw, 12px); color: $text-muted; }
+  &-body { flex: 1; display: flex; flex-direction: column; gap: 5%; }
+  &-stats { display: flex; gap: 6%; }
+  &-stat {
+    display: flex;
+    flex-direction: column;
+    &-num { font-family: $font-mono; font-weight: 700; font-size: clamp(14px, 2.4vw, 26px); color: $text-primary; line-height: 1; }
+    &-label { font-size: clamp(7px, 0.9vw, 10px); color: $text-muted; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  }
+  &-chart { width: 100%; flex: 1; overflow: visible;
+    &-path { fill: none; stroke: $glow-blue-soft; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  }
+  &-toast {
+    position: absolute;
+    right: 4%;
+    bottom: 6%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    font-size: clamp(8px, 1vw, 11px);
+    transform: translate3d(0, 14px, 0);
+    opacity: 0;
+
+    &-icon { font-size: 12px; }
+  }
+}
+
+// -- Phone --
+.device-phone {
+  width: min(17vw, 210px);
+  z-index: 4;
+
+  &-frame {
+    position: relative;
+    aspect-ratio: 9 / 19;
+    border-radius: 34px;
+    background: linear-gradient(160deg, #202126, #08090b);
+    padding: 10px;
+    box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  }
+  &-notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34%;
+    height: 18px;
+    border-radius: 10px;
+    background: #08090b;
+    z-index: 2;
+  }
+  &-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(170deg, #0c0d14, #06070a 70%);
+  }
+  &-shadow {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: -6%;
+    height: 24px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55), transparent 70%);
+    filter: blur(6px);
+    z-index: -1;
+  }
+}
+
+.phone-dash {
+  position: absolute;
+  inset: 0;
+  padding: 30px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.phone-status { font-family: $font-mono; font-size: 10px; color: $text-muted; text-align: center; margin-bottom: 4px; }
+.phone-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(10px);
+  transform: translate3d(120%, 0, 0);
+  opacity: 0;
+  will-change: transform, opacity;
+
+  &-icon { font-size: 15px; line-height: 1; }
+  &-copy {
+    strong { display: block; font-size: 10.5px; color: $text-primary; }
+    p { margin: 2px 0 0; font-size: 9px; color: $text-muted; }
+  }
+}
+
+// ---------------------------------------------------------------
+// Closing strip
+// ---------------------------------------------------------------
+.launch-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 140px clamp(20px, 5vw, 64px) 120px;
+  text-align: center;
+
+  p { color: $text-muted; font-size: 15px; margin: 0; }
+}
+
+// ---------------------------------------------------------------
+// Responsive
+// ---------------------------------------------------------------
+@media (max-width: 900px) {
+  .launch-showcase { height: 260vh; }
+  .device-laptop { width: 86vw; }
+  .device-phone { width: 30vw; position: static; margin-top: 24px; }
+  .showcase-pin { flex-direction: column; }
+}
+@media (max-width: 560px) {
+  .launch-hero { padding-top: 24px; }
+  .launch-cta-row { flex-direction: column; align-items: stretch; }
+  .showcase-badge { display: none; }
+}
+
+// ---------------------------------------------------------------
+// Reduced motion
+// ---------------------------------------------------------------
+@include no-motion {
+  .aurora-blob, .js-float, .launch-line-gradient, .scroll-cue-line,
+  .device-laptop-screen::after {
+    animation: none !important;
+  }
+  .js-reveal { opacity: 1 !important; transform: none !important; }
+  .phone-card { opacity: 1 !important; transform: none !important; }
+}

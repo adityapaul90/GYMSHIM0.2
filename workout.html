@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout+ | Gymshim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="workout.css">
+    <link rel="stylesheet" href="booking.css">
+    
+</head>
+<body>
+    <header class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+         <img src="assets/image/gymshim-logo-navbar.png" alt="Gymshim" class="logo-img">
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#plans">Business Booster</a>
+      <!-- <a href="workout.html">Workout+</a>
+          <a href="sales-kiosk.html">Sales Kiosk</a> -->
+          <div class="nav-dropdown" id="servicesDropdown">
+  <button type="button" class="nav-dropdown-toggle" id="servicesToggle" aria-haspopup="true" aria-expanded="false">
+   Products & Services <span class="nav-dropdown-caret">&#9662;</span>
+  </button>
+ <div class="services-overlay" id="servicesOverlay" aria-hidden="true">
+  <div class="services-overlay-backdrop" id="servicesOverlayBackdrop"></div>
+
+  <div class="services-mega-panel" role="dialog" aria-modal="true" aria-labelledby="servicesOverlayTitle">
+    <button type="button" class="services-overlay-close" id="servicesOverlayClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="services-mega-top">
+      <div class="services-mega-head">
+        <span class="services-mega-eyebrow" id="servicesOverlayTitle">Our Products</span>
+        <h2 class="services-mega-title">Powerful solutions for every part of <span class="services-mega-accent">your gym.</span></h2>
+        <p class="services-mega-sub">One ecosystem. Four powerful products.</p>
+      </div>
+      <div class="services-mega-trust">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="currentColor"/></svg>
+        Trusted by <strong>5000+</strong> gyms across India
+      </div>
+    </div>
+
+    <div class="services-mega-grid">
+
+      <a href="workout.html" class="services-mega-card" data-glow="pink">
+        <span class="services-mega-num">01</span>
+        <span class="services-mega-icon-wrap">
+          <span class="services-mega-icon-floor"></span>
+          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+            <defs>
+              <linearGradient id="gradWorkout" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ff8fa3"/><stop offset="100%" stop-color="#d8234a"/>
+              </linearGradient>
+            </defs>
+            <circle cx="12" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/>
+            <circle cx="52" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/>
+            <rect x="18" y="28" width="28" height="8" rx="4" fill="url(#gradWorkout)"/>
+            <rect x="8" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/>
+            <rect x="50" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/>
+          </svg>
+        </span>
+        <div class="services-mega-card-headrow">
+          <h3>Workout+</h3>
+          <span class="services-mega-badge">AI Powered</span>
+        </div>
+        <p class="services-mega-desc">AI-guided workout experience for every member.</p>
+        <ul class="services-mega-features">
+          <li>Personalized Workouts</li>
+          <li>Exercise Library</li>
+          <li>Progress Tracking</li>
+          <li>Smart Analytics</li>
+        </ul>
+        <span class="services-mega-explore">Explore Workout+
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a href="gos.html" class="services-mega-card" data-glow="cyan">
+        <span class="services-mega-num">02</span>
+        <span class="services-mega-icon-wrap">
+          <span class="services-mega-icon-floor"></span>
+          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+            <defs>
+              <linearGradient id="gradGosTop" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#7ee8f2"/><stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+              <linearGradient id="gradGosSide" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0e9aad"/><stop offset="100%" stop-color="#0b7e8e"/>
+              </linearGradient>
+            </defs>
+            <polygon points="32,6 54,18 32,30 10,18" fill="url(#gradGosTop)"/>
+            <polygon points="10,18 32,30 32,54 10,42" fill="url(#gradGosSide)"/>
+            <polygon points="54,18 32,30 32,54 54,42" fill="#0a6d7a"/>
+          </svg>
+        </span>
+        <div class="services-mega-card-headrow">
+          <h3>GOS (Gym Operating System)</h3>
+          <span class="services-mega-badge">All-in-One</span>
+        </div>
+        <p class="services-mega-desc">Complete gym management system for seamless operations.</p>
+        <ul class="services-mega-features">
+          <li>Member Management</li>
+          <li>Attendance Tracking</li>
+          <li>Payments &amp; Billing</li>
+          <li>Reports &amp; Analytics</li>
+        </ul>
+        <span class="services-mega-explore">Explore GOS
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a href="sales-kiosk.html" class="services-mega-card" data-glow="purple">
+        <span class="services-mega-num">03</span>
+        <span class="services-mega-icon-wrap">
+          <span class="services-mega-icon-floor"></span>
+          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+            <defs>
+              <linearGradient id="gradKiosk" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#c9a8ff"/><stop offset="100%" stop-color="#9b5cff"/>
+              </linearGradient>
+            </defs>
+            <rect x="14" y="8" width="36" height="26" rx="4" fill="none" stroke="url(#gradKiosk)" stroke-width="3.5"/>
+            <rect x="19" y="13" width="26" height="16" rx="2" fill="url(#gradKiosk)" opacity="0.25"/>
+            <rect x="28" y="38" width="8" height="10" fill="url(#gradKiosk)"/>
+            <rect x="20" y="48" width="24" height="5" rx="2.5" fill="url(#gradKiosk)" opacity="0.6"/>
+          </svg>
+        </span>
+        <div class="services-mega-card-headrow">
+          <h3>Sales Kiosk</h3>
+          <span class="services-mega-badge">Self-Service</span>
+        </div>
+        <p class="services-mega-desc">Self-service touchscreen that closes memberships on the spot.</p>
+        <ul class="services-mega-features">
+          <li>Instant Signups</li>
+          <li>Digital Payments</li>
+          <li>Receipt Printing</li>
+          <li>Offers &amp; Upsells</li>
+        </ul>
+        <span class="services-mega-explore">Explore Sales Kiosk
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a href="digital-marketing.html" class="services-mega-card" data-glow="orange">
+        <span class="services-mega-num">04</span>
+        <span class="services-mega-icon-wrap">
+          <span class="services-mega-icon-floor"></span>
+          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+            <defs>
+              <linearGradient id="gradAd" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffc38a"/><stop offset="100%" stop-color="#ff8a3d"/>
+              </linearGradient>
+            </defs>
+            <rect x="10" y="26" width="14" height="12" rx="2" fill="url(#gradAd)"/>
+            <path d="M24 24 L42 14 V50 L24 40 Z" fill="url(#gradAd)"/>
+            <rect x="15" y="38" width="5" height="12" rx="1.5" fill="url(#gradAd)" opacity="0.7"/>
+            <path d="M46 22a10 10 0 010 20" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M50 16a17 17 0 010 32" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+          </svg>
+        </span>
+        <div class="services-mega-card-headrow">
+          <h3>Advertisement</h3>
+          <span class="services-mega-badge">Grow Faster</span>
+        </div>
+        <p class="services-mega-desc">Digital marketing solutions to bring more members to your gym.</p>
+        <ul class="services-mega-features">
+          <li>Social Media Ads</li>
+          <li>WhatsApp Campaigns</li>
+          <li>Performance Boost</li>
+          <li>Lead Generation</li>
+        </ul>
+        <span class="services-mega-explore">Explore Advertisement
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+    </div>
+
+    <div class="services-mega-divider"></div>
+
+    <div class="services-mega-footer">
+      <div class="services-mega-foot-item">
+        <span class="services-mega-foot-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>
+        </span>
+        <span class="services-mega-foot-text"><strong>Secure &amp; Reliable</strong>Enterprise-grade security</span>
+      </div>
+      <div class="services-mega-foot-item">
+        <span class="services-mega-foot-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 18a4 4 0 01-1-7.9A5.5 5.5 0 0117 9a4.5 4.5 0 011 8.9"/></svg>
+        </span>
+        <span class="services-mega-foot-text"><strong>Always Updated</strong>Latest features &amp; updates</span>
+      </div>
+      <div class="services-mega-foot-item">
+        <span class="services-mega-foot-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15v-3a8 8 0 0116 0v3"/><path d="M4 15a2 2 0 002 2h1v-5H6a2 2 0 00-2 2zM20 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2z"/></svg>
+        </span>
+        <span class="services-mega-foot-text"><strong>24/7 Support</strong>We're here for you</span>
+      </div>
+      <div class="services-mega-foot-item">
+        <span class="services-mega-foot-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L6 22l6-3 6 3-2.5-9.5"/></svg>
+        </span>
+        <span class="services-mega-foot-text"><strong>Made in India</strong>For gyms, by gym experts</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+      <a href="index.html#about">About Us</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+   <a href="booking.html" class="btn-primary">Book a Demo</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<!-- HERO -->
+<section class="workout-hero">
+
+  <div class="wpk-triptych">
+    <video class="wpk-triptych-video" autoplay muted loop playsinline poster="assets/images/reel-1-poster.jpg">
+      <source src="assets/video/reel-1.mp4" type="video/mp4">
+    </video>
+    <video class="wpk-triptych-video" autoplay muted loop playsinline poster="assets/images/reel-2-poster.jpg">
+      <source src="assets/video/reel-2.mp4" type="video/mp4">
+    </video>
+    <video class="wpk-triptych-video" autoplay muted loop playsinline poster="assets/images/reel-3-poster.jpg">
+      <source src="assets/video/reel-3.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="wpk-hero-overlay"></div>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <span class="hero-tag">Workout+</span>
+  <h1>Digital Interactive Gym Trainer</h1>
+  <p>WorkoutPlus Kiosk (WPK) is an innovative digital, AI-powered interactive fitness training solution with gamification features — self-serviced, touchscreen-driven, and built for commercial, residential, and corporate fitness centres.</p>
+  <a href="booking.html" class="btn-primary">Book a Demo</a>
+</section>
+
+<!-- FEATURE GRID 1 -->
+<section class="workout-features" id="wpk-features">
+  <div class="section-header reveal-up" id="featuresHeader">  
+    <span class="hero-tag">Why WPK</span>
+    <h2>Built for gyms that want more</h2>
+  </div>
+
+  <div class="workout-features-grid">
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">📊</div>
+      <h3>Personalized Dashboard</h3>
+      <p>Every member gets a tailored view of their workouts, progress, and goals.</p>
+    </div>
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">🛠️</div>
+      <h3>Reliable Support &amp; Assistance</h3>
+      <p>Dedicated support to keep the kiosk running smoothly, always.</p>
+    </div>
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">💵</div>
+      <h3>Bonus Ad Revenue for Gyms</h3>
+      <p>Turn idle screen time into an extra income stream for your gym.</p>
+    </div>
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">📦</div>
+      <h3>Tailor-made Packages</h3>
+      <p>Packages built around your gym's size, footfall, and budget.</p>
+    </div>
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">📈</div>
+      <h3>Better RoI</h3>
+      <p>A smarter member experience that pays for itself over time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT SHOWCASE -->
+<section class="workout-showcase">
+
+
+  <div class="showcase-grid">
+    <div class="showcase-media reveal-up">
+      <div class="showcase-image-box" id="showcaseImageBox">
+        
+  <video id="showcaseVideo" class="showcase-video" autoplay muted loop playsinline>
+    <source src="assets/video/kiosk.mp4" type="video/mp4">
+  </video>
+        <!-- <span class="showcase-placeholder-icon">🖥️</span>
+        <span class="showcase-placeholder-label" id="showcaseLabel">Side View</span>
+        <span class="showcase-placeholder-hint">Drop image in — replace this box with &lt;img&gt;</span> -->
+      </div>
+      <!-- <div class="showcase-thumbs">
+        <button class="showcase-thumb active" data-view="Side View">Side View</button>
+        <button class="showcase-thumb" data-view="Top View">Top View</button>
+      </div> -->
+    </div>
+
+    <div class="showcase-copy reveal-up">
+      <span class="hero-tag">The kiosk</span>
+      <h2>A touchscreen your members will actually use</h2>
+      <p>Compact, self-serviced, and installed right on your gym floor — WPK combines interactive workouts with a display members engage with every visit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE GRID 2 — AD REVENUE -->
+<section class="workout-features workout-ad-section">
+  <div class="section-header reveal-up">
+    <span class="hero-tag">Ad Revenue for Gyms</span>
+    <h2>Screens that pay for themselves</h2>
+  </div>
+
+  <div class="workout-features-grid workout-ad-grid">
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">💰</div>
+      <h3>Cost-effective</h3>
+      <p>No extra hardware spend — the kiosk you already have does double duty.</p>
+    </div>
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">🎬</div>
+      <h3>True Multimedia</h3>
+      <p>Video, images, and interactive content, all on one screen.</p>
+    </div>
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">📉</div>
+      <h3>Metrics &amp; Attribution</h3>
+      <p>See exactly how ads perform, backed by real usage data.</p>
+    </div>
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">🎯</div>
+      <h3>Highly Targeted, Non-intrusive</h3>
+      <p>Reaches an engaged, fitness-focused audience without disrupting workouts.</p>
+    </div>
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">🔄</div>
+      <h3>Flexibility &amp; Consistency</h3>
+      <p>Update campaigns anytime, with reliable delivery across every kiosk.</p>
+    </div>
+    <div class="glass-card feature-card reveal-up">
+      <div class="plan-icon">✨</div>
+      <h3>Captures Interest &amp; Stands Out</h3>
+      <p>An interactive screen draws attention traditional posters can't.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="workout-cta">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="reveal-up">
+    <h2>Bring WPK to your gym floor</h2>
+    <p>See the kiosk in action and find out what it could mean for your members and your bottom line.</p>
+    <a href="booking.html" class="btn-primary">Book a Demo</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+
+   <div class="footer-brand">
+  <a href="#" class="logo">GYMSHIM</a>
+  <p>Smart solutions to grow your gym business — more walk-ins, easier conversions, better retention.</p>
+ 
+<div class="footer-socials">
+  <a href="https://www.linkedin.com/company/gymshim/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+  <a href="https://www.facebook.com/GymshimSolutions" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+  <a href="https://www.instagram.com/gymshim?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+</div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Company</h4>
+      <a href="index.html#about">About Us</a>
+      <a href="workout.html">Workout+</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Services</h4>
+    <a href="gos-ecosystem.html">GOS Ecosystem</a>
+      <a href="#">Gym Operating System</a>
+      <a href="#">Digital Marketing</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="tel:+919022282340">+91 9022282340</a>
+      <a href="tel:+917276160009">+91 7276160009</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Fitlyberty Pvt Ltd. All rights reserved.</p>
+  </div>
+</footer>
+<!-- .............................. -->
+
+
+<div class="booking-modal-overlay" id="bookingModalOverlay" aria-hidden="true">
+  <div class="booking-modal-box" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+    <button class="booking-modal-close" id="bookingModalClose" aria-label="Close">&times;</button>
+
+    <div class="booking-modal-head">
+      <h2 id="bookingModalTitle">Book a Demo</h2>
+      <p id="bookingModalSubtitle">Pick a date and time that works for you.</p>
+    </div>
+
+    <div class="booking-step-indicator">
+      <span class="step-dot active" id="stepDot1">1</span>
+      <span class="step-label active" id="stepLabel1">Date &amp; Time</span>
+      <span class="step-line" id="stepLine"></span>
+      <span class="step-dot" id="stepDot2">2</span>
+      <span class="step-label" id="stepLabel2">Your Details</span>
+    </div>
+
+    <div class="booking-step-panel" data-step-panel="1">
+      <div class="booking-modal-grid">
+        <div class="calendar-panel">
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" id="prevMonthBtn" type="button" aria-label="Previous month">&#8249;</button>
+            <span class="calendar-month-label" id="calendarMonthLabel"></span>
+            <button class="calendar-nav-btn" id="nextMonthBtn" type="button" aria-label="Next month">&#8250;</button>
+          </div>
+          <div class="calendar-weekdays">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+        <div class="details-panel">
+          <h3>Selected</h3>
+          <p class="selected-date-label placeholder" id="selectedDateLabel">Choose a date to see open times</p>
+          <div class="time-slot-grid" id="timeSlotGrid"></div>
+        </div>
+      </div>
+      <div class="booking-step-actions">
+        <button class="btn-primary next-btn single-action" id="toStep2Btn" type="button" disabled>Continue</button>
+      </div>
+    </div>
+
+    <div class="booking-step-panel" data-step-panel="2" hidden>
+      <div class="booking-modal-grid">
+        <div class="form-panel">
+          <form class="login-form" id="bookingForm" novalidate>
+            <label>Name * <input type="text" name="name" id="bookingName" required autocomplete="name"></label>
+            <label>Email * <input type="email" name="email" id="bookingEmail" required autocomplete="email"></label>
+            <label>Phone Number *
+              <div class="phone-input">
+                <span class="phone-code">+91</span>
+                <input type="tel" name="phone" id="bookingPhone" required autocomplete="tel" placeholder="98765 43210">
+              </div>
+            </label>
+            <label>Gym Name <input type="text" name="gymName" id="bookingGymName" autocomplete="organization"></label>
+          </form>
+        </div>
+        <div class="booking-details-panel">
+          <h3>Booking Details</h3>
+          <p class="booking-summary-title">Online Demo</p>
+          <p class="selected-date-label" id="bookingSummaryDateTime"></p>
+          <span class="detail-pill">Available Online</span>
+          <div class="booking-summary-meta">
+            <p>Online Meetup (Google Meet)</p>
+            <p>Gymshim</p>
+            <p>1 hr</p>
+          </div>
+          <button class="details-toggle" id="detailsToggleBtn" type="button">
+            <span id="detailsToggleText">More details</span> <span class="chevron">&#9662;</span>
+          </button>
+          <div class="details-expand" id="detailsExpand">
+            <p>Duration: 30 minutes</p>
+            <p>Format: In-person at your gym, or video call</p>
+            <p>Free — no card required</p>
+          </div>
+          <p class="booking-agreement">By completing your booking, you agree to receive related phone notifications.</p>
+          <button class="btn-primary next-btn" id="submitBookingBtn" type="button">Book Now</button>
+        </div>
+      </div>
+      <div class="booking-step-actions">
+        <button class="btn-secondary single-action" id="backToStep1Btn" type="button">Back</button>
+      </div>
+    </div>
+
+    <div class="booking-success" id="bookingSuccess">
+      <div class="booking-success-icon">&#10003;</div>
+      <h3>You're booked!</h3>
+      <p id="bookingSuccessDetail">We'll see you then. A confirmation has been sent to your email.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="workout.js"></script>
+<script src="booking.js"></script>
+</body>
+</html>

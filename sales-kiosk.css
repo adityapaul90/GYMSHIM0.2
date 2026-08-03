@@ -1,0 +1,551 @@
+/* =============================================================
+   Sales Kiosk — page-scoped tokens
+   New accent pair for this rebuild: electric violet + amber,
+   falls back to the shared site variables if present.
+   ============================================================= */
+:root {
+  --skx-accent: #8B5CF6;         /* violet — primary accent for this page */
+  --skx-accent-2: #FDBA3B;       /* amber — secondary accent */
+  --skx-accent-3: #35e58a;       /* mint — used for confirmations */
+  --skx-bg-panel: var(--bg-panel, #12101a);
+  --skx-text: var(--text-primary, #F5F5F5);
+  --skx-text-muted: var(--text-muted, #9CA3AF);
+  --skx-radius-lg: var(--radius-lg, 20px);
+  --skx-radius-sm: var(--radius-sm, 10px);
+  --skx-font: var(--font-main, 'Poppins', sans-serif);
+  --skx-display: 'Sora', var(--skx-font);
+  --skx-mono: 'JetBrains Mono', 'SFMono-Regular', monospace;
+  --skx-accent-4: #38BDF8;   /* cyan */
+--skx-accent-5: #F472B6;   /* pink */
+}
+
+/* =============================================================
+   Shared scroll-reveal
+   ============================================================= */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal-up.in-view { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up, .skx-textway-track, .skx-terminal, .blob,
+  .skx-row-media, .skx-row-content {
+    animation: none !important;
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+  .reveal-up, .skx-row-media, .skx-row-content { opacity: 1; transform: none; }
+}
+
+/* =============================================================
+   HERO
+   ============================================================= */
+.skx-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 160px var(--space-md, 24px) 100px;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+}
+.skx-hero .blob-1 { top: -140px; left: -120px; }
+.skx-hero .blob-2 { bottom: -160px; right: -120px; }
+
+.skx-hero-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(139,92,246,0.16), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(253,186,59,0.10), transparent 50%);
+  animation: skx-glow-drift 12s ease-in-out infinite alternate;
+}
+@keyframes skx-glow-drift {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(-2%, 3%) scale(1.05); }
+}
+
+.skx-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .skx-hero-inner { grid-template-columns: 1.05fr 0.95fr; }
+}
+
+.skx-hero-copy h1 {
+  font-family: var(--skx-display);
+  font-weight: 700;
+  font-size: clamp(36px, 5.4vw, 62px);
+  line-height: 1.08;
+  margin: 14px 0 18px;
+  color: var(--skx-text);
+}
+.skx-hero-copy p {
+  color: var(--skx-text-muted);
+  max-width: 480px;
+  margin: 0 0 28px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.skx-hero-copy .btn-primary {
+  display: inline-block;
+  background: var(--skx-accent);
+  border-color: var(--skx-accent);
+}
+
+/* --- Terminal signature element --- */
+.skx-terminal {
+  background: #0b0910;
+  border: 1px solid rgba(139,92,246,0.22);
+  border-radius: var(--skx-radius-lg);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.02);
+  overflow: hidden;
+  font-family: var(--skx-mono);
+  max-width: 480px;
+  margin: 0 auto;
+}
+.skx-terminal-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.skx-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.skx-dot-r { background: #ff5f57; }
+.skx-dot-y { background: #febc2e; }
+.skx-dot-g { background: #28c840; }
+.skx-terminal-title { margin-left: 8px; font-size: 12px; color: var(--skx-text-muted); }
+.skx-terminal-body {
+  padding: 20px 18px;
+  min-height: 190px;
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--skx-accent-3);
+}
+.skx-terminal-body .skx-line { display: block; opacity: 0; animation: skx-line-in 0.4s ease forwards; }
+.skx-terminal-body .skx-muted { color: #6b6079; }
+.skx-terminal-body .skx-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: var(--skx-accent-3);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: skx-blink 1s steps(1) infinite;
+}
+@keyframes skx-line-in { to { opacity: 1; } }
+@keyframes skx-blink { 50% { opacity: 0; } }
+
+.skx-terminal-stat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 16px 18px 20px;
+  border-top: 1px dashed rgba(255,255,255,0.08);
+}
+.skx-stat-label { font-size: 12px; color: var(--skx-text-muted); font-family: var(--skx-font); }
+.skx-stat-value { font-size: 30px; font-weight: 700; color: var(--skx-accent-2); font-family: var(--skx-mono); }
+
+/* =============================================================
+   TEXTWAY — scrolling marquee dividers (left / right)
+   ============================================================= */
+.skx-textway {
+  overflow: hidden;
+  padding: 22px 0;
+  background: var(--skx-bg-panel);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.skx-textway-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  white-space: nowrap;
+  font-family: var(--skx-display);
+  font-weight: 700;
+  font-size: clamp(20px, 3.2vw, 36px);
+  letter-spacing: 0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.22);
+  text-stroke: 1px rgba(255,255,255,0.22);
+}
+.skx-textway-track span:nth-child(4n+1),
+.skx-textway-track span:nth-child(4n+2) {
+  color: var(--skx-accent);
+  -webkit-text-stroke: 0;
+  text-stroke: 0;
+  opacity: 0.85;
+}
+.skx-textway-right { animation: skx-scroll-right 14s linear infinite; }
+.skx-textway-left  { animation: skx-scroll-left 14s linear infinite; }
+@keyframes skx-scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes skx-scroll-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* =============================================================
+   SCROLL — normal single page, sections animate in as you reach them
+   ============================================================= */
+html { scroll-behavior: smooth; }
+
+/* =============================================================
+   BENEFITS — 7 alternating media/content rows
+   ============================================================= */
+.skx-benefits {
+  position: relative;
+}
+
+.skx-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 480px;
+}
+
+@media (min-width: 900px) {
+  .skx-row { grid-template-columns: 1fr 1fr; }
+  .skx-row[data-side="right"] .skx-row-media { order: 2; }
+  .skx-row[data-side="right"] .skx-row-content { order: 1; }
+}
+/* Media panel — full-bleed visual block */
+.skx-row-media {
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  order: 1;
+  opacity: 0;
+  transition: opacity 1.4s ease, transform 1.6s cubic-bezier(.16, 1, .3, 1);
+}
+.skx-row[data-side="left"]  .skx-row-media { transform: translateX(-160px); }
+.skx-row[data-side="right"] .skx-row-media { transform: translateX(160px); }
+.skx-row.in-view .skx-row-media { opacity: 1; transform: translateX(0); }
+
+.skx-row:nth-of-type(7n+1) .skx-row-media { background: radial-gradient(circle at 30% 30%, rgba(139,92,246,0.35), rgba(18,16,26,0.95) 70%); }
+.skx-row:nth-of-type(7n+2) .skx-row-media { background: radial-gradient(circle at 70% 30%, rgba(253,186,59,0.32), rgba(18,16,26,0.95) 70%); }
+.skx-row:nth-of-type(7n+3) .skx-row-media { background: radial-gradient(circle at 30% 70%, rgba(53,229,138,0.28), rgba(18,16,26,0.95) 70%); }
+.skx-row:nth-of-type(7n+4) .skx-row-media { background: radial-gradient(circle at 70% 70%, rgba(139,92,246,0.35), rgba(18,16,26,0.95) 70%); }
+.skx-row:nth-of-type(7n+5) .skx-row-media { background: radial-gradient(circle at 40% 40%, rgba(253,186,59,0.32), rgba(18,16,26,0.95) 70%); }
+.skx-row:nth-of-type(7n+6) .skx-row-media { background: radial-gradient(circle at 60% 60%, rgba(53,229,138,0.28), rgba(18,16,26,0.95) 70%); }
+.skx-row:nth-of-type(7n+7) .skx-row-media { background: radial-gradient(circle at 50% 40%, rgba(139,92,246,0.38), rgba(18,16,26,0.95) 70%); }
+
+.skx-row-icon {
+  font-size: clamp(56px, 8vw, 96px);
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4));
+}
+.skx-row-watermark {
+  position: absolute;
+  bottom: -6%;
+  right: -2%;
+  font-family: var(--skx-mono);
+  font-weight: 700;
+  font-size: clamp(70px, 18vw, 220px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.08);
+  text-stroke: 1.5px rgba(255,255,255,0.08);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Inner wrapper — JS drives a continuous parallax translateY on this,
+   independent of the outer panel's one-time slide-in, so the visual
+   keeps drifting gently as the page scrolls (matches the reference clip). */
+.skx-row-media-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+/* Content panel */
+.skx-row-content {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px var(--space-md, 24px);
+  max-width: 560px;
+  opacity: 0;
+  transition: opacity 1.4s ease, transform 1.6s cubic-bezier(.16, 1, .3, 1);
+  transition-delay: 0.25s;
+}
+.skx-row[data-side="left"]  .skx-row-content { transform: translateX(160px); }
+.skx-row[data-side="right"] .skx-row-content { transform: translateX(-160px); }
+.skx-row.in-view .skx-row-content { opacity: 1; transform: translateX(0); }
+
+.skx-row-tag {
+  display: inline-block;
+  width: fit-content;
+  font-family: var(--skx-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--skx-accent);
+  border: 1px solid rgba(139,92,246,0.4);
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin-bottom: 18px;
+}
+.skx-row-content h2 {
+  font-family: var(--skx-display);
+  font-weight: 700;
+  font-size: clamp(24px, 2.6vw, 32px);
+  color: var(--skx-text);
+  margin: 0 0 14px;
+}
+.skx-row-content > p {
+  color: var(--skx-text-muted);
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+.skx-row-footnote {
+  color: var(--skx-text);
+  font-size: 14.5px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.skx-tag-links {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.skx-tag-links li {
+  font-family: var(--skx-font);
+  font-size: 14.5px;
+  color: var(--skx-accent-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(253,186,59,0.5);
+}
+
+/* =============================================================
+   CTA
+   ============================================================= */
+.skx-cta {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 100px var(--space-md, 24px);
+  background: var(--skx-bg-panel);
+}
+.skx-cta .blob-1 { top: -100px; left: -80px; }
+.skx-cta .blob-2 { bottom: -100px; right: -80px; }
+.skx-cta > div { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; }
+.skx-cta h2 { margin: 0 0 12px; color: var(--skx-text); font-family: var(--skx-display); }
+.skx-cta p { margin: 0 auto 28px; color: var(--skx-text-muted); }
+.skx-cta .btn-primary {
+  display: inline-block;
+  background: var(--skx-accent);
+  border-color: var(--skx-accent);
+}
+
+/* Active nav link accent */
+.nav-links a.active-link { color: var(--skx-accent); }
+
+
+
+
+/* ============================================================
+   FUTURISTIC HERO LAYERS
+   ============================================================ */
+.skx-hero-inner { position: relative; z-index: 2; }
+
+/* Animated color mesh */
+.skx-mesh {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(139,92,246,0.18), transparent 50%),
+    radial-gradient(circle at 80% 75%, rgba(139,92,246,0.10), transparent 55%),
+    #0b0910;
+  filter: blur(50px);
+  animation: skx-mesh-move 20s ease-in-out infinite alternate;
+}
+@keyframes skx-mesh-move {
+  0%   { background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0 0; }
+  100% { background-position: 20% 10%, 80% 20%, 80% 90%, 15% 85%, 0 0; }
+}
+
+/* Tech grid overlay */
+.skx-grid-overlay {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.15;
+  background-image:
+    linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 40%, transparent 80%);
+}
+
+/* Floating particles */
+.skx-particles { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.skx-particle {
+  position: absolute; bottom: -10px;
+  width: 4px; height: 4px; border-radius: 50%;
+  opacity: 0;
+  animation-name: skx-particle-float;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes skx-particle-float {
+  0%   { transform: translateY(0) scale(0.6); opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-640px) scale(1); opacity: 0; }
+}
+
+/* Cursor spotlight */
+.skx-spotlight {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(circle 280px at var(--sx, 50%) var(--sy, 30%), rgba(255,255,255,0.07), transparent 70%);
+}
+
+/* Headline word-by-word reveal */
+.skx-hero-title { font-family: var(--skx-display); font-weight: 700; font-size: clamp(36px, 5.4vw, 62px); line-height: 1.08; margin: 14px 0 18px; color: var(--skx-text); }
+.skx-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px) rotateX(-40deg);
+  animation: skx-word-in 0.7s cubic-bezier(.16,1,.3,1) forwards;
+  animation-delay: calc(var(--d) * 0.08s + 0.2s);
+}
+@keyframes skx-word-in { to { opacity: 1; transform: none; } }
+.skx-word-accent {
+  background: linear-gradient(90deg, var(--skx-accent), var(--skx-accent-4), var(--skx-accent-2));
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: skx-word-in 0.7s cubic-bezier(.16,1,.3,1) forwards, skx-gradient-shift 4s linear infinite;
+}
+@keyframes skx-gradient-shift { to { background-position: 200% center; } }
+
+/* Terminal glow + float */
+.skx-terminal {
+  box-shadow: 0 0 0 1px rgba(139,92,246,.25), 0 30px 80px -20px rgba(139,92,246,.45), 0 0 60px -10px rgba(253,186,59,.25);
+  animation: skx-terminal-float 5s ease-in-out infinite;
+}
+@keyframes skx-terminal-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* Pulsing glow CTA button */
+.skx-glow-btn { position: relative; }
+.skx-glow-btn::after {
+  content: ''; position: absolute; inset: -4px; border-radius: inherit;
+  background: inherit; filter: blur(14px); opacity: 0.55; z-index: -1;
+  animation: skx-btn-pulse 2.4s ease-in-out infinite;
+}
+@keyframes skx-btn-pulse { 0%,100% { opacity: .4; transform: scale(1); } 50% { opacity: .75; transform: scale(1.08); } }
+
+
+/* Floating glass-card objects */
+.skx-objects { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.skx-object {
+  position: absolute;
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+  opacity: 0;
+  animation-name: skx-object-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes skx-object-drift {
+  0%   { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+  10%  { opacity: 0.9; }
+  50%  { transform: translate(var(--dx, 40px), var(--dy, -60px)) rotate(8deg); }
+  90%  { opacity: 0.9; }
+  100% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+}
+
+
+
+/* ============================================================
+   PREMIUM LAYER — grain, cursor ring, magnetic button, divider
+   ============================================================ */
+
+/* Film grain texture (subtle, luxury-agency signature) */
+.skx-grain {
+  position: fixed; inset: 0; z-index: 999; pointer-events: none;
+  opacity: 0.035; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Custom cursor ring, lags slightly behind the real cursor */
+.skx-cursor-ring {
+  position: fixed; top: 0; left: 0; z-index: 998; pointer-events: none;
+  width: 34px; height: 34px; margin: -17px 0 0 -17px;
+  border: 1px solid var(--skx-accent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
+  will-change: transform;
+}
+.skx-cursor-ring.visible { opacity: 0.7; }
+.skx-cursor-ring.hover {
+  width: 60px; height: 60px; margin: -30px 0 0 -30px;
+  background: rgba(139,92,246,0.12);
+}
+@media (hover: none) { .skx-cursor-ring { display: none; } }
+
+/* Gold accent divider under the hero tag */
+.skx-divider {
+  display: block;
+  width: 0;
+  height: 2px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, transparent, var(--skx-accent-2), transparent);
+  animation: skx-divider-draw 1s ease forwards;
+  animation-delay: 0.8s;
+}
+@keyframes skx-divider-draw { to { width: 120px; } }
+
+/* Magnetic button base (JS adds the transform) */
+.skx-magnetic {
+  transition: transform 0.2s cubic-bezier(.2,1,.3,1);
+  will-change: transform;
+}
+
+/* Restyled marquee — bordered chip look instead of plain outlined text */
+.skx-textway { background: transparent; border-top: none; border-bottom: none; padding: 32px 0; }
+.skx-textway-track { gap: 40px; }
+.skx-textway-dot { color: var(--skx-accent); opacity: 0.6; font-size: 12px; -webkit-text-stroke: 0; text-stroke: 0; }
+.skx-textway-track span:not(.skx-textway-dot) {
+  padding: 10px 22px; 
+  border: 1px solid rgba(139,92,246,0.25);
+  border-radius: 999px;
+  background: rgba(139,92,246,0.04);
+  -webkit-text-stroke: 0; text-stroke: 0;
+  color: var(--skx-text-muted);
+  font-size: clamp(14px, 1.6vw, 18px);
+}
+
+/* Row reveal upgrade — GSAP will animate opacity/scale/blur via JS,
+   this just sets the resting (pre-animation) state */
+.skx-row-media, .skx-row-content { filter: blur(0px); }

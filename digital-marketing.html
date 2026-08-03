@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Marketing | Gymshim</title>
+<meta name="description" content="Gymshim helps gyms reach the right local audience, at the right time, with the right message — through paid social, content and brand positioning.">
+<meta name="theme-color" content="#0F1115">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="booking.css">
+<link rel="stylesheet" href="digital-marketing.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="assets/image/gymshim-logo-navbar.png" alt="Gymshim" class="logo-img">
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#plans">Business Booster</a>
+      <!-- <a href="workout.html">Workout+</a>
+      <a href="sales-kiosk.html">Sales Kiosk</a> -->
+      <div class="nav-dropdown" id="servicesDropdown">
+        <button type="button" class="nav-dropdown-toggle" id="servicesToggle" aria-haspopup="true" aria-expanded="false">
+         Products & Services <span class="nav-dropdown-caret">&#9662;</span>
+        </button>
+      </div>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="booking.html" class="btn-primary">Book a Demo</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+</header>
+
+<div class="services-overlay" id="servicesOverlay" aria-hidden="true" data-lenis-prevent>
+  <div class="services-overlay-backdrop" id="servicesOverlayBackdrop"></div>
+
+  <div class="services-mega-panel" role="dialog" aria-modal="true" aria-labelledby="servicesOverlayTitle">
+    <button type="button" class="services-overlay-close" id="servicesOverlayClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="services-mega-top">
+      <div class="services-mega-head">
+        <span class="services-mega-eyebrow" id="servicesOverlayTitle">Our Products</span>
+        <h2 class="services-mega-title">Powerful solutions for every part of <span class="services-mega-accent">your gym.</span></h2>
+        <p class="services-mega-sub">One ecosystem. Four powerful products.</p>
+      </div>
+      <div class="services-mega-trust">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="currentColor"/></svg>
+        Trusted by <strong>5000+</strong> gyms across India
+      </div>
+    </div>
+
+    <div class="services-mega-grid">
+
+      <a href="workout.html" class="services-mega-card" data-glow="pink">
+        <span class="services-mega-num">01</span>
+        <span class="services-mega-icon-wrap">
+          <span class="services-mega-icon-floor"></span>
+          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+            <defs>
+              <linearGradient id="gradWorkout" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ff8fa3"/><stop offset="100%" stop-color="#d8234a"/>
+              </linearGradient>
+            </defs>
+            <circle cx="12" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/>
+            <circle cx="52" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/>
+            <rect x="18" y="28" width="28" height="8" rx="4" fill="url(#gradWorkout)"/>
+            <rect x="8" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/>
+            <rect x="50" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/>
+          </svg>
+        </span>
+        <div class="services-mega-card-headrow">
+          <h3>Workout+</h3>
+          <span class="services-mega-badge">AI Powered</span>
+        </div>
+        <p class="services-mega-desc">AI-guided workout experience for every member.</p>
+        <ul class="services-mega-features">
+          <li>Personalized Workouts</li>
+          <li>Exercise Library</li>
+          <li>Progress Tracking</li>
+          <li>Smart Analytics</li>
+        </ul>
+        <span class="services-mega-explore">Explore Workout+
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a href="gos.html" class="services-mega-card" data-glow="cyan">
+        <span class="services-mega-num">02</span>
+        <span class="services-mega-icon-wrap">
+          <span class="services-mega-icon-floor"></span>
+          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+            <defs>
+              <linearGradient id="gradGosTop" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#7ee8f2"/><stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+              <linearGradient id="gradGosSide" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0e9aad"/><stop offset="100%" stop-color="#0b7e8e"/>
+              </linearGradient>
+            </defs>
+            <polygon points="32,6 54,18 32,30 10,18" fill="url(#gradGosTop)"/>
+            <polygon points="10,18 32,30 32,54 10,42" fill="url(#gradGosSide)"/>
+            <polygon points="54,18 32,30 32,54 54,42" fill="#0a6d7a"/>
+          </svg>
+        </span>
+        <div class="services-mega-card-headrow">
+          <h3>GOS (Gym Operating System)</h3>
+          <span class="services-mega-badge">All-in-One</span>
+        </div>
+        <p class="services-mega-desc">Complete gym management system for seamless operations.</p>
+        <ul class="services-mega-features">
+          <li>Member Management</li>
+          <li>Attendance Tracking</li>
+          <li>Payments &amp; Billing</li>
+          <li>Reports &amp; Analytics</li>
+        </ul>
+        <span class="services-mega-explore">Explore GOS
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a href="sales-kiosk.html" class="services-mega-card" data-glow="purple">
+        <span class="services-mega-num">03</span>
+        <span class="services-mega-icon-wrap">
+          <span class="services-mega-icon-floor"></span>
+          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+            <defs>
+              <linearGradient id="gradKiosk" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#c9a8ff"/><stop offset="100%" stop-color="#9b5cff"/>
+              </linearGradient>
+            </defs>
+            <rect x="14" y="8" width="36" height="26" rx="4" fill="none" stroke="url(#gradKiosk)" stroke-width="3.5"/>
+            <rect x="19" y="13" width="26" height="16" rx="2" fill="url(#gradKiosk)" opacity="0.25"/>
+            <rect x="28" y="38" width="8" height="10" fill="url(#gradKiosk)"/>
+            <rect x="20" y="48" width="24" height="5" rx="2.5" fill="url(#gradKiosk)" opacity="0.6"/>
+          </svg>
+        </span>
+        <div class="services-mega-card-headrow">
+          <h3>Sales Kiosk</h3>
+          <span class="services-mega-badge">Self-Service</span>
+        </div>
+        <p class="services-mega-desc">Self-service touchscreen that closes memberships on the spot.</p>
+        <ul class="services-mega-features">
+          <li>Instant Signups</li>
+          <li>Digital Payments</li>
+          <li>Receipt Printing</li>
+          <li>Offers &amp; Upsells</li>
+        </ul>
+        <span class="services-mega-explore">Explore Sales Kiosk
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a href="digital-marketing.html" class="services-mega-card" data-glow="orange">
+        <span class="services-mega-num">04</span>
+        <span class="services-mega-icon-wrap">
+          <span class="services-mega-icon-floor"></span>
+          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+            <defs>
+              <linearGradient id="gradAd" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffc38a"/><stop offset="100%" stop-color="#ff8a3d"/>
+              </linearGradient>
+            </defs>
+            <rect x="10" y="26" width="14" height="12" rx="2" fill="url(#gradAd)"/>
+            <path d="M24 24 L42 14 V50 L24 40 Z" fill="url(#gradAd)"/>
+            <rect x="15" y="38" width="5" height="12" rx="1.5" fill="url(#gradAd)" opacity="0.7"/>
+            <path d="M46 22a10 10 0 010 20" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M50 16a17 17 0 010 32" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+          </svg>
+        </span>
+        <div class="services-mega-card-headrow">
+          <h3>Advertisement</h3>
+          <span class="services-mega-badge">Grow Faster</span>
+        </div>
+        <p class="services-mega-desc">Digital marketing solutions to bring more members to your gym.</p>
+        <ul class="services-mega-features">
+          <li>Social Media Ads</li>
+          <li>WhatsApp Campaigns</li>
+          <li>Performance Boost</li>
+          <li>Lead Generation</li>
+        </ul>
+        <span class="services-mega-explore">Explore Advertisement
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+    </div>
+
+    <div class="services-mega-divider"></div>
+
+    <div class="services-mega-footer">
+      <div class="services-mega-foot-item">
+        <span class="services-mega-foot-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>
+        </span>
+        <span class="services-mega-foot-text"><strong>Secure &amp; Reliable</strong>Enterprise-grade security</span>
+      </div>
+      <div class="services-mega-foot-item">
+        <span class="services-mega-foot-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 18a4 4 0 01-1-7.9A5.5 5.5 0 0117 9a4.5 4.5 0 011 8.9"/></svg>
+        </span>
+        <span class="services-mega-foot-text"><strong>Always Updated</strong>Latest features &amp; updates</span>
+      </div>
+      <div class="services-mega-foot-item">
+        <span class="services-mega-foot-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15v-3a8 8 0 0116 0v3"/><path d="M4 15a2 2 0 002 2h1v-5H6a2 2 0 00-2 2zM20 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2z"/></svg>
+        </span>
+        <span class="services-mega-foot-text"><strong>24/7 Support</strong>We're here for you</span>
+      </div>
+      <div class="services-mega-foot-item">
+        <span class="services-mega-foot-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L6 22l6-3 6 3-2.5-9.5"/></svg>
+        </span>
+        <span class="services-mega-foot-text"><strong>Made in India</strong>For gyms, by gym experts</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- ============================================================
+     HERO — signature visual: "Mindshare Radar". A phone showing a
+     boosted gym post sits at the centre of the 2km mindshare zone
+     from Gymshim's own positioning copy; leads ping in around it
+     and a live counter ticks up, in the site's red/white gradient.
+     ============================================================ -->
+<section class="dm-hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="dm-hero-grid">
+    <div class="dm-hero-copy reveal-up">
+      <span class="hero-tag">Gymshim Digital Marketing</span>
+      <h1>Reach your target audience</h1>
+      <div class="dm-swap" aria-hidden="true">
+        <span>at the right time</span>
+        <span>with the right message</span>
+        <span>before they pick someone else</span>
+      </div>
+      <p class="dm-hero-p">Members don't choose a gym on price alone anymore — they choose the brand that shows up in the right feed, at the right moment, with something worth stopping for. That's the gap we close, post by post.</p>
+      <div class="dm-hero-ctas">
+        <a href="booking.html" class="btn-primary dm-magnetic">Book a Demo</a>
+        <a href="#dm-why" class="btn-secondary dm-magnetic">See how it works
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="dm-radar reveal-up" id="dmRadar" style="--reveal-delay:.15s">
+      <div class="dm-radar-grid" aria-hidden="true"></div>
+
+      <div class="dm-ring r1"></div>
+      <div class="dm-ring r2"></div>
+      <div class="dm-ring r3"><span class="dm-ring-label">2km mindshare zone</span></div>
+
+      <div class="dm-leads-badge" id="dmLeadsBadge">
+        <span class="dm-leads-dot"></span>
+        <span><strong id="dmLeadsCount">0</strong> leads today</span>
+      </div>
+
+      <div class="dm-phone" id="dmPhone">
+        <div class="dm-phone-notch"></div>
+        <div class="dm-phone-screen">
+          <div class="dm-post-head">
+            <span class="dm-post-avatar">GS</span>
+            <div>
+              <p class="dm-post-name">gymshim_gos</p>
+              <p class="dm-post-sponsor">Sponsored</p>
+            </div>
+          </div>
+          <div class="dm-post-media">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h2l2-6 3 12 2-9 2 5h5"/></svg>
+          </div>
+          <div class="dm-post-actions">
+            <span>&#9825;</span><span>&#9998;</span><span>&#8635;</span>
+          </div>
+          <p class="dm-post-caption"><strong>gymshim_gos</strong> First 20 sign-ups this month get a free PT session &rarr;</p>
+        </div>
+      </div>
+
+      <div class="dm-pin" id="dmPin1" style="--px: 14%; --py: 24%;"><span class="dm-pin-tag">+1 lead</span></div>
+      <div class="dm-pin" id="dmPin2" style="--px: 78%; --py: 18%;"><span class="dm-pin-tag">+1 lead</span></div>
+      <div class="dm-pin" id="dmPin3" style="--px: 82%; --py: 70%;"><span class="dm-pin-tag">+1 lead</span></div>
+      <div class="dm-pin" id="dmPin4" style="--px: 10%; --py: 74%;"><span class="dm-pin-tag">+1 lead</span></div>
+      <div class="dm-pin" id="dmPin5" style="--px: 50%; --py: 6%;"><span class="dm-pin-tag">+1 lead</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DIGITAL MARKETING -->
+<section class="dm-why" id="dm-why">
+  <div class="dm-why-grid">
+    <div class="dm-why-head reveal-up">
+      <span class="hero-tag">Why it matters</span>
+      <h2>Why digital<br>marketing?</h2>
+    </div>
+    <div class="dm-why-copy">
+      <p class="reveal-up">The internet let brands reach people everywhere — and it gave those same people far more choices than before. A gym membership decision now runs on more than location and price; people watch what a brand says, shows and stands for before they ever walk in. That's exactly the space we work in.</p>
+      <p class="reveal-up" style="--reveal-delay:.1s">Done well, digital reach costs a fraction of a hoarding or a pamphlet drop, and every rupee of it is measurable. You find your real audience, let them get to know your gym before they visit, and turn that familiarity into the kind of loyalty that keeps a membership renewing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE GRID -->
+<section class="dm-features">
+  <div class="section-header reveal-up">
+    <span class="hero-tag">What you get</span>
+    <h2>Four ways we get you seen</h2>
+  </div>
+
+  <div class="dm-features-grid">
+    <div class="glass-card dm-feature-card reveal-up">
+      <div class="plan-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11v2a1 1 0 001 1h3l5 4V6l-5 4H4a1 1 0 00-1 1z"/><path d="M16 8a5 5 0 010 8M19 5a9 9 0 010 14"/></svg>
+      </div>
+      <h3>Paid boosting</h3>
+      <p>We put your gym's posts in front of people who don't follow you yet — filtered to match what your brand actually stands for, so reach isn't wasted on the wrong crowd.</p>
+    </div>
+    <div class="glass-card dm-feature-card reveal-up">
+      <div class="plan-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
+      </div>
+      <h3>Captivating design</h3>
+      <p>Our designers, copywriters and content creators build posts made to stop a scroll — leaving a clear, likeable impression of your gym in a stranger's mind.</p>
+    </div>
+    <div class="glass-card dm-feature-card reveal-up">
+      <div class="plan-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+      </div>
+      <h3>Brand positioning</h3>
+      <p>Ads placed with the right audience in mind do more work per rupee. Sharp positioning keeps your gym relevant and ahead of the one down the road.</p>
+    </div>
+    <div class="glass-card dm-feature-card reveal-up">
+      <div class="plan-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2a5 5 0 00-5 5c0 3 2 4 2 7a3 3 0 006 0c0-3 2-4 2-7a5 5 0 00-5-5z"/><path d="M9 21h6"/></svg>
+      </div>
+      <h3>Mindshare</h3>
+      <p>We build awareness of your brand within a 2km radius of your gym — mindshare, so yours is the name that comes to mind first when someone decides to join.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAY AHEAD -->
+<section class="dm-ahead">
+  <div class="dm-ahead-head">
+    <h2 class="reveal-up">Stay connected.<br>Stay ahead.</h2>
+    <p class="reveal-up" style="--reveal-delay:.1s">This isn't about chasing more traffic — it's proven ways to bring in highly targeted traffic that actually delivers members.</p>
+  </div>
+  <div class="dm-ahead-grid">
+    <div class="glass-card dm-ahead-item reveal-up">
+      <span class="dm-ahead-num">01</span>
+      <h4>Cost effective</h4>
+      <p>Small gym businesses run on tight budgets. Digital marketing delivers results for a fraction of what conventional advertising costs.</p>
+    </div>
+    <div class="glass-card dm-ahead-item reveal-up">
+      <span class="dm-ahead-num">02</span>
+      <h4>Brand positioning</h4>
+      <p>Relevant content, in front of relevant people, keeps your gym visible right up until the moment someone decides where to sign up.</p>
+    </div>
+    <div class="glass-card dm-ahead-item reveal-up">
+      <span class="dm-ahead-num">03</span>
+      <h4>Choice of Gen Z</h4>
+      <p>Gen Z — born after 1995 — sources information, education and entertainment online, mostly through social media. That's where they'll find you, or won't.</p>
+    </div>
+    <div class="glass-card dm-ahead-item reveal-up">
+      <span class="dm-ahead-num">04</span>
+      <h4>Reach them directly</h4>
+      <p>Your target members are typically 18–35. Around 90% of them are active on social media, spending 45+ minutes a day there on their phones.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAT -->
+<section class="dm-stat">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <p class="dm-stat-lead reveal-up">Get ready for the social media era</p>
+  <div class="dm-stat-big reveal-up">
+    <span id="dmStatNum">0</span><span class="dm-stat-unit">M+</span>
+  </div>
+  <p class="dm-stat-cap reveal-up">Facebook users in India, projected</p>
+</section>
+
+<!-- GALLERY -->
+<section class="dm-gallery">
+  <div class="section-header reveal-up">
+    <span class="hero-tag">Our work</span>
+    <h2>A glimpse of our work</h2>
+  </div>
+  <div class="dm-gallery-grid" id="dmGalleryGrid">
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_8f6cc94d57fd4b8c969058c47841f61d~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_8f6cc94d57fd4b8c969058c47841f61d~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_8f6cc94d57fd4b8c969058c47841f61d~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_9eefffb14f7f4aed96d913a13c8adc5e~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_9eefffb14f7f4aed96d913a13c8adc5e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_9eefffb14f7f4aed96d913a13c8adc5e~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_e2c6fa38e96d4235bf78e6ff3e7332be~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_e2c6fa38e96d4235bf78e6ff3e7332be~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_e2c6fa38e96d4235bf78e6ff3e7332be~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_af1f924b826f4e59b545be836aca9841~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_af1f924b826f4e59b545be836aca9841~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_af1f924b826f4e59b545be836aca9841~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_a56fc49dafe0442cb7bec2c42802be12~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_a56fc49dafe0442cb7bec2c42802be12~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_a56fc49dafe0442cb7bec2c42802be12~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="dm-lightbox" id="dmLightbox" aria-hidden="true">
+  <button class="dm-lightbox-close" id="dmLightboxClose" aria-label="Close">&times;</button>
+  <img src="" alt="" id="dmLightboxImg">
+</div>
+
+<!-- CTA -->
+<section class="dm-cta">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="reveal-up">
+    <h2>Ready to fill<br>your gym floor?</h2>
+    <p>Book a short demo and we'll show you what your gym's mindshare zone could look like in 30 days.</p>
+    <a href="booking.html" class="btn-primary dm-magnetic">Book a Demo</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <a href="index.html" class="logo">GYMSHIM</a>
+      <p>Smart solutions to grow your gym business — more walk-ins, easier conversions, better retention.</p>
+
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/gymshim/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+        <a href="https://www.facebook.com/GymshimSolutions" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+        <a href="https://www.instagram.com/gymshim?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Company</h4>
+      <a href="about.html">About Us</a>
+      <a href="workout.html">Workout+</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Services</h4>
+      <a href="gos-ecosystem.html">GOS Ecosystem</a>
+      <a href="gos(gym-operating-system).html">Gym Operating System</a>
+      <a href="digital-marketing.html">Digital Marketing</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="tel:+919022282340">+91 9022282340</a>
+      <a href="tel:+917276160009">+91 7276160009</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Fitlyberty Pvt Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- BOOKING MODAL — shared across every page -->
+<div class="booking-modal-overlay" id="bookingModalOverlay" aria-hidden="true">
+  <div class="booking-modal-box" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+    <button class="booking-modal-close" id="bookingModalClose" aria-label="Close">&times;</button>
+
+    <div class="booking-modal-head">
+      <h2 id="bookingModalTitle">Book a Demo</h2>
+      <p id="bookingModalSubtitle">Pick a date and time that works for you.</p>
+    </div>
+
+    <div class="booking-step-indicator">
+      <span class="step-dot active" id="stepDot1">1</span>
+      <span class="step-label active" id="stepLabel1">Date &amp; Time</span>
+      <span class="step-line" id="stepLine"></span>
+      <span class="step-dot" id="stepDot2">2</span>
+      <span class="step-label" id="stepLabel2">Your Details</span>
+    </div>
+
+    <div class="booking-step-panel" data-step-panel="1">
+      <div class="booking-modal-grid">
+        <div class="calendar-panel">
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" id="prevMonthBtn" type="button" aria-label="Previous month">&#8249;</button>
+            <span class="calendar-month-label" id="calendarMonthLabel"></span>
+            <button class="calendar-nav-btn" id="nextMonthBtn" type="button" aria-label="Next month">&#8250;</button>
+          </div>
+          <div class="calendar-weekdays">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+        <div class="details-panel">
+          <h3>Selected</h3>
+          <p class="selected-date-label placeholder" id="selectedDateLabel">Choose a date to see open times</p>
+          <div class="time-slot-grid" id="timeSlotGrid"></div>
+        </div>
+      </div>
+      <div class="booking-step-actions">
+        <button class="btn-primary next-btn single-action" id="toStep2Btn" type="button" disabled>Continue</button>
+      </div>
+    </div>
+
+    <div class="booking-step-panel" data-step-panel="2" hidden>
+      <div class="booking-modal-grid">
+        <div class="form-panel">
+          <form class="login-form" id="bookingForm" novalidate>
+            <label>Name * <input type="text" name="name" id="bookingName" required autocomplete="name"></label>
+            <label>Email * <input type="email" name="email" id="bookingEmail" required autocomplete="email"></label>
+            <label>Phone Number *
+              <div class="phone-input">
+                <span class="phone-code">+91</span>
+                <input type="tel" name="phone" id="bookingPhone" required autocomplete="tel" placeholder="98765 43210">
+              </div>
+            </label>
+            <label>Gym Name <input type="text" name="gymName" id="bookingGymName" autocomplete="organization"></label>
+          </form>
+        </div>
+        <div class="booking-details-panel">
+          <h3>Booking Details</h3>
+          <p class="booking-summary-title">Online Demo</p>
+          <p class="selected-date-label" id="bookingSummaryDateTime"></p>
+          <span class="detail-pill">Available Online</span>
+          <div class="booking-summary-meta">
+            <p>Online Meetup (Google Meet)</p>
+            <p>Gymshim</p>
+            <p>1 hr</p>
+          </div>
+          <button class="details-toggle" id="detailsToggleBtn" type="button">
+            <span id="detailsToggleText">More details</span> <span class="chevron">&#9662;</span>
+          </button>
+          <div class="details-expand" id="detailsExpand">
+            <p>Duration: 30 minutes</p>
+            <p>Format: In-person at your gym, or video call</p>
+            <p>Free — no card required</p>
+          </div>
+          <p class="booking-agreement">By completing your booking, you agree to receive related phone notifications.</p>
+          <button class="btn-primary next-btn" id="submitBookingBtn" type="button">Book Now</button>
+        </div>
+      </div>
+      <div class="booking-step-actions">
+        <button class="btn-secondary single-action" id="backToStep1Btn" type="button">Back</button>
+      </div>
+    </div>
+
+    <div class="booking-success" id="bookingSuccess">
+      <div class="booking-success-icon">&#10003;</div>
+      <h3>You're booked!</h3>
+      <p id="bookingSuccessDetail">We'll see you then. A confirmation has been sent to your email.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="digital-marketing.js" defer></script>
+<script src="booking.js"></script>
+</body>
+</html>

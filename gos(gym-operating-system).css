@@ -1,0 +1,922 @@
+/* ================================================================
+   GYMSHIM GOS — LAUNCH PAGE
+   Compiled CSS. Source lives in /scss/gos-launch.scss — if you have
+   a Sass compiler available, edit the .scss and rebuild; otherwise
+   edit this file directly, it is fully valid standalone CSS.
+   ================================================================ */
+
+/* :root {
+  --black: #0F1115;
+  --bg-1: #0F1115;
+  --glow-blue: #d82323;
+  --glow-blue-soft: #ff6b6b;
+  --glow-purple: #d82323;
+  --glow-cyan: #ffffff;
+  --text-primary: #F5F6F8;
+  --text-muted: #D8D3D0;
+  --glass-bg: rgba(255, 255, 255, 0.045);
+  --glass-bg-strong: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 10px;
+  --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+} */
+ :root {
+  --black: #000000;
+  --bg-1: #050506;
+  --glow-blue: #4f8bff;
+  --glow-blue-soft: #6ea8ff;
+  --glow-purple: #a855f7;
+  --glow-cyan: #38e0d8;
+  --text-primary: #f5f6f8;
+  --text-muted: #9a9ba3;
+  --glass-bg: rgba(255, 255, 255, 0.045);
+  --glass-bg-strong: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 10px;
+  --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--black);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  /* Lenis takes over scroll — this just prevents native scroll jank
+     while the smooth-scroll library is initializing. */
+  scroll-behavior: auto;
+}
+
+img, video { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+::selection { background: var(--glow-purple); color: #fff; }
+
+/* ================================================================
+   CURSOR GLOW
+   A soft radial gradient that follows the pointer with a slight lag
+   (lerped in JS). Hidden entirely on touch devices.
+   ================================================================ */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  margin-left: -240px;
+  margin-top: -240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 139, 255, 0.16) 0%, rgba(168, 85, 247, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform;
+  transform: translate3d(-9999px, -9999px, 0);
+}
+@media (hover: none) { .cursor-glow { display: none; } }
+
+/* ================================================================
+   AURORA BACKGROUND
+   Three blurred gradient blobs, animated with CSS keyframes so they
+   drift and breathe independently of scroll/JS.
+   ================================================================ */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-blob {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  max-width: 900px;
+  max-height: 900px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  will-change: transform;
+}
+.aurora-blob-blue {
+  background: var(--glow-blue);
+  top: -22%;
+  left: -18%;
+  animation: aurora-drift-a 22s ease-in-out infinite;
+}
+.aurora-blob-purple {
+  background: var(--glow-cyan);
+  bottom: -25%;
+  right: -18%;
+  animation: aurora-drift-b 26s ease-in-out infinite;
+}
+.aurora-blob-cyan {
+  background: var(--glow-purple);
+  top: -20%;
+  right: -15%;
+  opacity: 0.22;
+  animation: aurora-drift-c 30s ease-in-out infinite;
+}
+
+/* Grid texture — same technique as gos-ecosystem.css: a fine white
+   grid, faded via radial mask so it's strongest near the top and
+   fades out toward the edges rather than tiling uniformly forever. */
+.launch-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 15%, black 25%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 15%, black 25%, transparent 70%);
+}
+@keyframes aurora-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
+  50%      { transform: translate3d(6vw, 8vh, 0) scale3d(1.15, 1.15, 1); }
+}
+@keyframes aurora-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
+  50%      { transform: translate3d(-8vw, -6vh, 0) scale3d(1.2, 1.2, 1); }
+}
+@keyframes aurora-drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
+  50%      { transform: translate3d(-5vw, 6vh, 0) scale3d(0.9, 0.9, 1); }
+}
+
+.particle-field {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ================================================================
+   SHARED — glass surface + magnetic buttons
+   ================================================================ */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.btn-magnetic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 34px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  isolation: isolate;
+  will-change: transform;
+  transition: box-shadow 0.4s var(--ease-premium);
+}
+.btn-magnetic span { position: relative; z-index: 1; display: inline-flex; }
+.btn-magnetic-primary {
+  color: #05060a;
+  background: linear-gradient(135deg, var(--glow-blue-soft), var(--glow-purple));
+  box-shadow: 0 8px 30px -8px rgba(79, 139, 255, 0.55);
+}
+.btn-magnetic-primary:hover { box-shadow: 0 12px 40px -6px rgba(168, 85, 247, 0.65); }
+.btn-magnetic-ghost {
+  color: var(--text-primary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.btn-magnetic-ghost:hover { background: var(--glass-bg-strong); }
+.btn-magnetic-sm { padding: 11px 22px; font-size: 13.5px; }
+
+/* Ripple element injected on click by JS */
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale3d(0, 0, 1);
+  pointer-events: none;
+  z-index: 0;
+  animation: ripple-out 0.7s var(--ease-premium) forwards;
+}
+@keyframes ripple-out {
+  to { transform: scale3d(2.6, 2.6, 1); opacity: 0; }
+}
+
+/* Generic scroll-reveal target — JS/GSAP animates opacity + translate3d */
+.js-reveal { opacity: 0; will-change: transform, opacity; }
+
+/* Gentle floating badges */
+.js-float { animation: float-y 5s ease-in-out infinite; }
+@keyframes float-y {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -10px, 0); }
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.launch-hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 150px clamp(20px, 5vw, 64px) 0;
+}
+
+.launch-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.launch-logo {
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+}
+.launch-logo-accent {
+  color: var(--glow-blue-soft);
+  margin-left: 4px;
+}
+
+.launch-hero-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.launch-eyebrow {
+  display: inline-block;
+  margin: 0 auto 22px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--glow-blue-soft);
+  background: rgba(79, 139, 255, 0.1);
+  border: 1px solid rgba(79, 139, 255, 0.3);
+}
+
+.launch-title {
+  margin: 0 0 22px;
+  font-weight: 800;
+  line-height: 1.06;
+  font-size: clamp(38px, 6.4vw, 78px);
+  letter-spacing: -0.02em;
+}
+.launch-line { display: block; }
+
+/* Animated gradient text — background-position animates via CSS,
+   background-clip renders the gradient through the glyph shapes. */
+.launch-line-gradient {
+  background: linear-gradient(90deg, var(--glow-blue-soft), var(--glow-purple), var(--glow-cyan), var(--glow-blue-soft));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-flow 8s linear infinite;
+}
+@keyframes gradient-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+.launch-sub {
+  max-width: 560px;
+  margin: 0 auto 36px;
+  color: var(--text-muted);
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.6;
+}
+
+.launch-cta-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.scroll-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding-bottom: 34px;
+}
+.scroll-cue-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--glow-blue-soft), transparent);
+  animation: scroll-cue-pulse 2s ease-in-out infinite;
+}
+@keyframes scroll-cue-pulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.7); transform-origin: top; }
+  50%      { opacity: 1;   transform: scaleY(1);   transform-origin: top; }
+}
+.scroll-cue-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ================================================================
+   DEVICE SHOWCASE (pinned)
+   ================================================================ */
+.launch-showcase {
+  position: relative;
+  z-index: 2;
+  height: 340vh; /* scroll distance that drives the pinned timeline */
+}
+.showcase-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1600px;
+}
+
+.showcase-glow {
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(79, 139, 255, 0.22), rgba(168, 85, 247, 0.12) 45%, transparent 70%);
+  filter: blur(60px);
+  will-change: transform, opacity;
+}
+
+.showcase-badge {
+  position: absolute;
+  z-index: 5;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-primary);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.showcase-badge-a { top: 14%; left: 8%; }
+.showcase-badge-b { bottom: 16%; right: 9%; animation-delay: -2.5s; }
+
+/* -- Devices: base wrapper -- */
+.device {
+  position: absolute;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* -- Laptop -- */
+.device-laptop {
+  width: min(62vw, 760px);
+  z-index: 3;
+}
+.device-laptop-lid {
+  position: relative;
+  border-radius: 18px 18px 6px 6px;
+  background: linear-gradient(155deg, #1c1d22, #08090b 60%);
+  padding: 14px 14px 20px;
+  box-shadow:
+    0 40px 90px -30px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+.device-laptop-cam {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2a2b30;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.03);
+}
+.device-laptop-bezel {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+.device-laptop-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #0c0d14, #06070a 70%);
+}
+/* Screen sheen — a soft diagonal highlight that slowly sweeps across
+   the glass, giving the "floating reflection" effect requested. */
+.device-laptop-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.05) 48%, rgba(255, 255, 255, 0.09) 50%, rgba(255, 255, 255, 0.05) 52%, transparent 70%);
+  background-size: 250% 250%;
+  animation: screen-sheen 7s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes screen-sheen {
+  0%, 100% { background-position: 120% -20%; }
+  50%      { background-position: -20% 120%; }
+}
+.device-laptop-hinge {
+  height: 8px;
+  margin: 0 6%;
+  background: linear-gradient(90deg, #0a0a0c, #232429, #0a0a0c);
+  border-radius: 0 0 4px 4px;
+}
+.device-laptop-base {
+  height: 14px;
+  margin: 0 -2%;
+  background: linear-gradient(180deg, #1a1b1f, #08090b);
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 24px 40px -16px rgba(0, 0, 0, 0.7);
+}
+
+/* -- Real product screenshot rendered inside the laptop screen -- */
+.dash-screenshot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #000;
+  display: block;
+}
+
+/* -- Phone -- */
+.device-phone {
+  width: min(17vw, 210px);
+  z-index: 4;
+}
+.device-phone-frame {
+  position: relative;
+  aspect-ratio: 9 / 19;
+  border-radius: 34px;
+  background: linear-gradient(160deg, #202126, #08090b);
+  padding: 10px;
+  box-shadow:
+    0 30px 70px -20px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+.device-phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 18px;
+  border-radius: 10px;
+  background: #08090b;
+  z-index: 2;
+}
+.device-phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(170deg, #0c0d14, #06070a 70%);
+}
+.device-phone-shadow {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -6%;
+  height: 24px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55), transparent 70%);
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.phone-dash { position: absolute; inset: 0; padding: 30px 10px 10px; display: flex; flex-direction: column; gap: 10px; }
+.phone-status { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-align: center; margin-bottom: 4px; }
+.phone-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(10px);
+  transform: translate3d(120%, 0, 0);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.phone-card-icon { font-size: 15px; line-height: 1; }
+.phone-card-copy strong { display: block; font-size: 10.5px; color: var(--text-primary); }
+.phone-card-copy p { margin: 2px 0 0; font-size: 9px; color: var(--text-muted); }
+
+/* ================================================================
+   CLOSING STRIP
+   ================================================================ */
+.launch-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 140px clamp(20px, 5vw, 64px) 120px;
+  text-align: center;
+}
+.launch-footer p { color: var(--text-muted); font-size: 15px; margin: 0; }
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 900px) {
+  .launch-showcase { height: 260vh; }
+  .device-laptop { width: 86vw; }
+  .device-phone { width: 30vw; position: static; margin-top: 24px; }
+  .showcase-pin { flex-direction: column; }
+}
+@media (max-width: 560px) {
+  .launch-hero { padding-top: 24px; }
+  .launch-cta-row { flex-direction: column; align-items: stretch; }
+  .showcase-badge { display: none; }
+}
+
+/* ================================================================
+   SECTION 3 — CHALLENGES GYM OWNERS FACE
+   Vertical storytelling timeline: alternating left/right cards
+   around a central SVG spine that draws in as the section scrolls.
+   Background tint drifts red -> white across the section (JS sets
+   --challenges-bg-mix on #challengesBg as scroll progress updates).
+   ================================================================ */
+.challenges {
+  position: relative;
+  padding: clamp(100px, 14vw, 200px) 24px;
+  overflow: hidden;
+}
+.challenges-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  --challenges-bg-mix: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(216,35,35, calc(0.16 - 0.10 * var(--challenges-bg-mix))) 0%, transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(255,255,255, calc(0.05 + 0.09 * var(--challenges-bg-mix))) 0%, transparent 55%);
+  transition: background 0.2s linear;
+}
+
+.challenges-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.challenges-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto clamp(60px, 10vw, 110px);
+}
+.challenges-title {
+  font-size: clamp(30px, 4.4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 14px 0 16px;
+  color: var(--text-primary);
+}
+.challenges-sub {
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.challenges-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 8vw, 70px);
+}
+.challenges-spine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  overflow: visible;
+}
+.challenges-spine-bg {
+  fill: none;
+  stroke: var(--glass-border);
+  stroke-width: 2;
+}
+.challenges-spine-fill {
+  fill: none;
+  stroke: var(--glow-blue);
+  stroke-width: 2;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  filter: drop-shadow(0 0 6px rgba(216,35,35,0.6));
+}
+
+.challenge-card {
+  position: relative;
+  width: calc(50% - 40px);
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.challenge-card-left  { align-self: flex-start; transform: translateX(-40px); }
+.challenge-card-right { align-self: flex-end;   transform: translateX(40px); }
+
+.challenge-card-inner {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: clamp(22px, 3vw, 30px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: border-color 0.3s ease, transform 0.35s var(--ease-premium), box-shadow 0.35s ease;
+}
+.challenge-card-inner:hover {
+  border-color: rgba(216,35,35,0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px -20px rgba(216,35,35,0.35);
+}
+.challenge-card-inner:hover .challenge-icon { transform: scale(1.15) rotate(-6deg); }
+
+.challenge-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--glow-blue);
+  margin-bottom: 10px;
+}
+.challenge-icon {
+  display: inline-block;
+  font-size: 30px;
+  margin-bottom: 12px;
+  transition: transform 0.35s var(--ease-premium);
+}
+.challenge-card-inner h3 {
+  font-size: clamp(18px, 2vw, 21px);
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+.challenge-card-inner p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Connector dot on the spine at each card's vertical center */
+.challenge-card-inner::after {
+  content: '';
+  position: absolute;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-1);
+  border: 2px solid var(--glow-blue);
+  box-shadow: 0 0 0 5px rgba(216,35,35,0.12);
+}
+.challenge-card-left  .challenge-card-inner::after { right: -46px; }
+.challenge-card-right .challenge-card-inner::after { left: -46px; }
+
+@media (max-width: 760px) {
+  .challenges-spine { left: 20px; transform: none; }
+  .challenge-card,
+  .challenge-card-left,
+  .challenge-card-right {
+    width: 100%;
+    align-self: stretch;
+    padding-left: 48px;
+    transform: translateX(0) translateY(24px);
+  }
+  .challenge-card-left  .challenge-card-inner::after,
+  .challenge-card-right .challenge-card-inner::after {
+    left: -32px;
+    right: auto;
+  }
+}
+
+/* ================================================================
+   SECTION 4 — THE SOLUTION
+   ================================================================ */
+.solution {
+  position: relative;
+  z-index: 2;
+  padding: 140px clamp(20px, 5vw, 64px);
+}
+.solution-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+@media (min-width: 900px) {
+  .solution-inner { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+}
+.solution-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 10px 0 22px;
+}
+.solution-copy p {
+  color: var(--text-muted);
+  font-size: 15.5px;
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+.solution-card {
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.solution-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.solution-num {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--glow-blue-soft);
+  color: var(--glow-blue-soft);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.solution-item p { margin: 0; color: var(--text-muted); font-size: 14.5px; line-height: 1.5; padding-top: 4px; }
+.solution-item strong { color: var(--text-primary); }
+
+/* ================================================================
+   SECTION 5 — FEATURE RICH MANAGEMENT
+   ================================================================ */
+.features {
+  position: relative;
+  z-index: 2;
+  padding: 100px clamp(20px, 5vw, 64px) 140px;
+}
+.features-inner { max-width: 1200px; margin: 0 auto; }
+.features-header { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+.features-header h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 800; margin: 10px 0 0; }
+
+.features-highlight-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+@media (min-width: 760px) { .features-highlight-row { grid-template-columns: 1fr 1fr; } }
+.features-highlight {
+  border-radius: var(--radius-md);
+  padding: 30px;
+  text-align: center;
+}
+.features-highlight-icon { font-size: 34px; display: block; margin-bottom: 12px; }
+.features-highlight h3 { font-size: 19px; margin: 0 0 10px; }
+.features-highlight p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin: 0; }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 700px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
+.feature-tile {
+  padding: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.feature-tile:hover { border-color: var(--glow-blue-soft); transform: translateY(-4px); }
+.feature-tile-icon { font-size: 24px; display: block; margin-bottom: 10px; }
+.feature-tile h4 { font-size: 15px; margin: 0 0 8px; }
+.feature-tile p { color: var(--text-muted); font-size: 13px; line-height: 1.55; margin: 0; }
+
+/* ================================================================
+   SECTION 6 — TWO APPS, ONE SYSTEM
+   ================================================================ */
+.apps {
+  position: relative;
+  z-index: 2;
+  padding: 100px clamp(20px, 5vw, 64px) 140px;
+  text-align: center;
+}
+.apps-inner { max-width: 900px; margin: 0 auto; }
+.apps-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin: 10px 0 14px; }
+.apps-sub { color: var(--text-muted); font-size: 15.5px; margin: 0 0 44px; }
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  text-align: left;
+}
+@media (min-width: 700px) { .apps-grid { grid-template-columns: 1fr 1fr; } }
+.apps-card { border-radius: var(--radius-md); padding: 28px; }
+.apps-card-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--glow-blue-soft);
+  background: rgba(79, 139, 255, 0.1);
+  border: 1px solid rgba(79, 139, 255, 0.3);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+.apps-feature-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.apps-feature-list li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+.apps-feature-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--glow-blue-soft);
+}
+.apps-hashtag {
+  margin-top: 44px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--glow-blue-soft);
+}
+
+/* ================================================================
+   REDUCED MOTION — every animated element gets frozen; content
+   remains fully visible and readable without motion.
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob, .js-float, .launch-line-gradient, .scroll-cue-line,
+  .device-laptop-screen::after {
+    animation: none !important;
+  }
+  .js-reveal { opacity: 1 !important; transform: none !important; }
+  .phone-card { opacity: 1 !important; transform: none !important; }
+  .challenge-card { opacity: 1 !important; transform: none !important; }
+  .challenges-spine-fill { stroke-dashoffset: 0 !important; }
+}
+
+
+.phone-screenshot{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}

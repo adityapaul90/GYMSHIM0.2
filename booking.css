@@ -1,0 +1,542 @@
+/* ============================================================
+   BOOKING MODAL — shared across every page
+   Link this AFTER styles.css in every page's <head>:
+     <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="booking-modal.css">
+   Pair with booking-modal.js (shared JS) and the booking modal
+   HTML snippet, pasted once near the end of <body> on every page.
+   ============================================================ */
+
+/* ------------------------------------------------------------ */
+/* Overlay + box */
+.booking-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+   -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.booking-modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Locked while the modal is open (set on <body> by the JS) */
+body.booking-modal-locked {
+  overflow: hidden;
+}
+.booking-modal-box {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  max-width: 440px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: var(--space-md);
+  transform: scale(0.95) translateY(12px);
+  transition: transform 0.3s ease;
+}
+@media (min-width: 760px) {
+  .booking-modal-box { max-width: 640px; }
+}
+
+
+.booking-modal-overlay.open .booking-modal-box {
+  transform: scale(1) translateY(0);
+}
+
+.booking-modal-close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 26px;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 2;
+}
+.booking-modal-close:hover { color: var(--text-primary); }
+
+.booking-modal-head h2 {
+  color: var(--text-primary);
+  margin: 0 0 4px;
+  font-size: clamp(22px, 3vw, 28px);
+}
+.booking-modal-head p { margin: 0 0 var(--space-md); font-size: 14px; }
+
+/* ------------------------------------------------------------ */
+/* Step indicator (Date & Time  ——  Your Details) */
+.booking-step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 var(--space-lg);
+}
+.step-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.step-dot.active,
+.step-dot.done {
+  background: var(--gradient);
+  border-color: transparent;
+  color: #0F1115;
+}
+.step-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+.step-label.active { color: var(--text-primary); }
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.step-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.step-line.filled::after { transform: scaleX(1); }
+
+/* ------------------------------------------------------------ */
+/* Layout grid for step 1 (calendar | details) */
+.booking-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+@media (min-width: 760px) {
+  .booking-modal-grid { grid-template-columns: 1.4fr 1fr; }
+}
+
+.booking-modal-box .calendar-panel,
+.booking-modal-box .form-panel,
+.booking-modal-box .details-panel {
+  padding: 0;
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+}
+
+/* ------------------------------------------------------------ */
+/* Calendar — real month navigation, driven by JS Date */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+.calendar-nav-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-primary);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease;
+}
+.calendar-nav-btn:hover:not(:disabled) { border-color: var(--accent-2); }
+.calendar-nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+
+#calendarMonthLabel,
+.calendar-month-label {
+  color: var(--text-primary);
+  font-size: 14px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.calendar-weekdays span {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.calendar-grid button {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+.calendar-grid button:hover:not(:disabled) {
+  border-color: var(--accent-2);
+  transform: translateY(-1px);
+}
+.calendar-grid button:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+.calendar-grid button.other-month { color: var(--text-muted); opacity: 0.3; }
+.calendar-grid button.today { box-shadow: inset 0 0 0 1px var(--accent-2); }
+.calendar-grid button.selected {
+  background: var(--gradient);
+  color: #0F1115;
+  font-weight: 700;
+  border-color: transparent;
+  transform: none;
+}
+.calendar-grid button:disabled { cursor: not-allowed; }
+.calendar-grid button:disabled:hover { border-color: transparent; transform: none; }
+.calendar-grid button:disabled.past { opacity: 0.25; }
+
+/* ------------------------------------------------------------ */
+/* Details panel — selected date summary + time slots */
+.details-panel h3 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-xs);
+}
+.selected-date-label {
+  color: var(--text-primary);
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 var(--space-sm);
+}
+.selected-date-label.placeholder {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.time-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 0 0 var(--space-sm);
+}
+@media (max-width: 480px) {
+  .time-slot-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.time-slot-grid button {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 4px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.time-slot-grid button:hover:not(:disabled) { border-color: var(--accent-2); }
+.time-slot-grid button:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+.time-slot-grid button.selected {
+  background: var(--gradient);
+  color: #0F1115;
+  border-color: transparent;
+  font-weight: 700;
+}
+.time-slot-grid button:disabled { opacity: 0.25; cursor: not-allowed; }
+
+.time-slot-empty {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: var(--space-xs) 0;
+}
+
+/* Real month navigation arrows */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  font-weight: 600;
+}
+
+/* Step transition */
+.booking-step-panel { animation: stepFadeIn 0.35s ease; }
+@keyframes stepFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.booking-step-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.booking-step-actions .single-action { margin-left: auto; }
+
+/* .btn-primary / .btn-secondary in styles.css were written for <a> —
+   restate them explicitly for real <button> elements so browser button
+   chrome (background, appearance) doesn't leak through. */
+button.btn-primary,
+button.btn-secondary {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  font-family: var(--font-main);
+  cursor: pointer;
+}
+button.btn-primary { background: var(--gradient); border: none; }
+button.btn-secondary { background: none; }
+button.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------ */
+/* Step 2 form — base .login-form styling (also used by contact.html) */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.login-form input,
+.login-form select {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 400;
+}
+.login-form input::placeholder { color: var(--text-muted); }
+.login-form input:focus,
+.login-form select:focus,
+.login-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-2);
+}
+
+
+/* Step 2 — booking details summary panel */
+.booking-details-panel {
+  padding-left: var(--space-lg);
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+@media (max-width: 759px) {
+  .booking-details-panel {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: var(--space-md);
+    margin-top: var(--space-md);
+  }
+}
+.booking-details-panel h3 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-sm);
+}
+.booking-summary-title {
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+.booking-details-panel .selected-date-label {
+  margin: 0 0 var(--space-xs);
+}
+.detail-pill {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: var(--space-sm);
+}
+.booking-summary-meta {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+.booking-summary-meta p {
+  font-size: 13px;
+  color: var(--accent-2);
+  margin: 0 0 4px;
+}
+.booking-agreement {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: var(--space-sm) 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: var(--space-sm);
+}
+.booking-details-panel .btn-primary {
+  width: 100%;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+}
+
+
+
+/* Phone input with country code */
+.phone-input {
+  display: flex;
+  gap: 8px;
+}
+.phone-code {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.phone-input input { flex: 1; }
+
+/* More details / Less details toggle */
+.details-toggle {
+  background: none;
+  border: none;
+  color: var(--accent-2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  font-family: var(--font-main);
+  margin-top: var(--space-xs);
+}
+.chevron { display: inline-block; transition: transform 0.25s ease; font-size: 12px; }
+.details-toggle.expanded .chevron { transform: rotate(180deg); }
+
+.details-expand {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.details-expand.expanded { max-height: 200px; margin-top: var(--space-xs); }
+.details-expand p { margin: 2px 0; font-size: 13px; }
+
+/* ------------------------------------------------------------ */
+/* Booking success state (replaces the form after submit) */
+.booking-success {
+  display: none;
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+.booking-success.visible { display: block; }
+.booking-success-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #0F1115;
+  font-size: 26px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-sm);
+}
+.booking-success h3 { color: var(--text-primary); margin: 0 0 6px; }
+.booking-success p { font-size: 14px; max-width: 340px; margin: 0 auto; }
+
+/* ------------------------------------------------------------ */
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .booking-modal-overlay,
+  .booking-modal-box,
+  .booking-step-panel,
+  .step-line::after,
+  .step-dot,
+  .calendar-grid button,
+  .time-slot-grid button,
+  .details-expand {
+    transition: none;
+    animation: none;
+  }
+}

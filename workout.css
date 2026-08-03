@@ -1,0 +1,222 @@
+/* ------------------------------------------------------------ */
+/* Shared scroll-reveal (also usable back on index.html later) */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------------ */
+/* Hero */
+.workout-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;        /* 👈 add this — makes the section fill the screen */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  /* centers your text vertically within the full height */
+  text-align: center;
+  padding: 140px var(--space-md) var(--space-xl);
+}
+.workout-hero .blob-1 { top: -120px; left: -100px; }
+.workout-hero .blob-2 { bottom: -140px; right: -100px; }
+@media (max-height: 500px) and (orientation: landscape) {
+  .workout-hero {
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+}
+.workout-hero .hero-tag,
+.workout-hero h1,
+.workout-hero p,
+.workout-hero .btn-primary {
+  position: relative;
+  z-index: 1;
+}
+.workout-hero h1 {
+  margin: var(--space-sm) auto 12px;
+  max-width: 680px;
+}
+.workout-hero p {
+  max-width: 600px;
+  margin: 0 auto var(--space-md);
+}
+.workout-hero .btn-primary { display: inline-block; }
+
+/* ------------------------------------------------------------ */
+/* Feature grids */
+.workout-features {
+  padding: var(--space-xl) var(--space-md);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.workout-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+.feature-card { text-align: left; }
+.feature-card h3 { color: var(--text-primary); font-size: 17px; margin: 0 0 6px; }
+.feature-card p { font-size: 14px; margin: 0; }
+
+@media (min-width: 768px) {
+  .workout-features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .workout-features-grid { grid-template-columns: repeat(3, 1fr); }
+  .workout-ad-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.workout-ad-section {
+  background: var(--bg-panel);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  max-width: none;
+}
+.workout-ad-section .workout-features-grid,
+.workout-ad-section .section-header {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ------------------------------------------------------------ */
+/* Product showcase */
+.workout-showcase {
+  padding: var(--space-xl) var(--space-md);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .showcase-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.showcase-image-box {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.04);
+  border: 1px dashed rgba(255,255,255,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: var(--space-md);
+}
+.showcase-placeholder-icon { font-size: 48px; opacity: 0.5; }
+.showcase-placeholder-label { color: var(--text-primary); font-weight: 600; font-size: 16px; }
+.showcase-placeholder-hint { color: var(--text-muted); font-size: 12px; max-width: 240px; }
+
+.showcase-thumbs {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+.showcase-thumb {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-muted);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 13px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.showcase-thumb:hover { border-color: var(--accent-2); color: var(--text-primary); }
+.showcase-thumb.active { border-color: var(--accent-1); color: var(--text-primary); background: rgba(255,107,53,0.08); }
+
+.showcase-copy h2 { margin: var(--space-xs) 0; }
+
+
+.showcase-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+.showcase-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: var(--space-md);
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+/* ------------------------------------------------------------ */
+/* CTA */
+.workout-cta {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  background: var(--bg-panel);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.workout-cta .blob-1 { top: -100px; left: -80px; }
+.workout-cta .blob-2 { bottom: -100px; right: -80px; }
+.workout-cta > div { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; }
+.workout-cta h2 { margin: 0 0 var(--space-xs); }
+.workout-cta p { margin: 0 auto var(--space-md); }
+.workout-cta .btn-primary { display: inline-block; }
+
+
+
+
+.wpk-triptych {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.wpk-triptych-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.1) contrast(1.05) brightness(0.6);
+}
+
+.wpk-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    to center,
+    rgba(15,17,21,0.15) 0%,
+    rgba(15,17,21,0.30) 100%
+  );
+}
+
+@media (max-width: 767px) {
+  .wpk-triptych { grid-template-columns: 1fr; }
+  .wpk-triptych-video:nth-child(2),
+  .wpk-triptych-video:nth-child(3) { display: none; }
+}
+
+
+

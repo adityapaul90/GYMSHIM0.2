@@ -1,0 +1,135 @@
+<!-- ============================================================
+     BOOKING MODAL — paste this once, right before </body>, on
+     EVERY page (index.html, about.html, workout.html, contact.html).
+
+     Also add to each page's <head>, after styles.css:
+       <link rel="stylesheet" href="booking-modal.css">
+
+     And right before </body>, after this snippet, after the page's
+     own script tag:
+       <script src="booking-modal.js"></script>
+
+     booking-modal.js automatically finds every
+     <a href="booking.html">Book a Demo</a> already on the page and
+     turns it into a button that opens this modal — no need to touch
+     your existing nav / hero / CTA markup.
+     ============================================================ -->
+<div class="booking-modal-overlay" id="bookingModalOverlay" aria-hidden="true">
+  <div class="booking-modal-box" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+    <button class="booking-modal-close" id="bookingModalClose" aria-label="Close">&times;</button>
+
+    <div class="booking-modal-head">
+      <h2 id="bookingModalTitle">Book a Demo</h2>
+      <p id="bookingModalSubtitle">Pick a date and time that works for you.</p>
+    </div>
+
+    <div class="booking-step-indicator">
+      <span class="step-dot active" id="stepDot1">1</span>
+      <span class="step-label active" id="stepLabel1">Date &amp; Time</span>
+      <span class="step-line" id="stepLine"></span>
+      <span class="step-dot" id="stepDot2">2</span>
+      <span class="step-label" id="stepLabel2">Your Details</span>
+    </div>
+
+    <!-- STEP 1 — calendar + time -->
+    <div class="booking-step-panel" data-step-panel="1">
+      <div class="booking-modal-grid">
+
+        <div class="calendar-panel">
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" id="prevMonthBtn" type="button" aria-label="Previous month">&#8249;</button>
+            <span class="calendar-month-label" id="calendarMonthLabel"></span>
+            <button class="calendar-nav-btn" id="nextMonthBtn" type="button" aria-label="Next month">&#8250;</button>
+          </div>
+          <div class="calendar-weekdays">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        
+
+        <div class="details-panel">
+          <h3>Selected</h3>
+          <p class="selected-date-label placeholder" id="selectedDateLabel">Choose a date to see open times</p>
+          <div class="time-slot-grid" id="timeSlotGrid"></div>
+
+          
+        </div>
+
+      </div>
+
+      <div class="booking-step-actions">
+        <button class="btn-primary next-btn single-action" id="toStep2Btn" type="button" disabled>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 — contact form -->
+    <!-- STEP 2 — contact form + booking summary -->
+    <div class="booking-step-panel" data-step-panel="2" hidden>
+      <div class="booking-modal-grid">
+
+        <div class="form-panel">
+          <form class="login-form" id="bookingForm" novalidate>
+            <label>Name *
+              <input type="text" name="name" id="bookingName" required autocomplete="name">
+            </label>
+            <label>Email *
+              <input type="email" name="email" id="bookingEmail" required autocomplete="email">
+            </label>
+            <label>Phone Number *
+              <div class="phone-input">
+                <span class="phone-code">+91</span>
+                <input type="tel" name="phone" id="bookingPhone" required autocomplete="tel" placeholder="98765 43210">
+              </div>
+            </label>
+            <label>Gym Name
+              <input type="text" name="gymName" id="bookingGymName" autocomplete="organization">
+            </label>
+          </form>
+        </div>
+
+        <div class="booking-details-panel">
+          <h3>Booking Details</h3>
+
+          <p class="booking-summary-title">Online Demo</p>
+          <p class="selected-date-label" id="bookingSummaryDateTime"></p>
+          <span class="detail-pill">Available Online</span>
+
+          <div class="booking-summary-meta">
+            <p>Online Meetup (Google Meet)</p>
+            <p>Gymshim</p>
+            <p>1 hr</p>
+          </div>
+
+          <button class="details-toggle" id="detailsToggleBtn" type="button">
+            <span id="detailsToggleText">More details</span> <span class="chevron">&#9662;</span>
+          </button>
+          <div class="details-expand" id="detailsExpand">
+            <p>Duration: 30 minutes</p>
+            <p>Format: In-person at your gym, or video call</p>
+            <p>Free — no card required</p>
+          </div>
+
+          <p class="booking-agreement">By completing your booking, you agree to receive related phone notifications.</p>
+
+          <button class="btn-primary next-btn" id="submitBookingBtn" type="button">Book Now</button>
+        </div>
+
+      </div>
+
+      <div class="booking-step-actions">
+        <button class="btn-secondary single-action" id="backToStep1Btn" type="button">Back</button>
+      </div>
+    </div>
+
+    
+    <!-- SUCCESS STATE -->
+    <div class="booking-success" id="bookingSuccess">
+      <div class="booking-success-icon">&#10003;</div>
+      <h3>You're booked!</h3>
+      <p id="bookingSuccessDetail">We'll see you then. A confirmation has been sent to your email.</p>
+    </div>
+
+  </div>
+</div>

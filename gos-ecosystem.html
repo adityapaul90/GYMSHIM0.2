@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOS Ecosystem | Gymshim</title>
+    <meta name="description" content="The GOS Ecosystem — leads, members, attendance, renewals, payments, and reporting, unified into one operating system for your gym.">
+    <meta name="theme-color" content="#0F1115">
+    <link rel="icon" href="assets/image/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="booking.css">
+    <link rel="stylesheet" href="gos-ecosystem.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <header class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="assets/image/gymshim-logo-navbar.png" alt="Gymshim" class="logo-img">
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#plans">Business Booster</a>
+      <a href="workout.html">Workout+</a>
+      <a href="sales-kiosk.html">Sales Kiosk</a>
+      <div class="nav-dropdown" id="servicesDropdown">
+        <button type="button" class="nav-dropdown-toggle" id="servicesToggle" aria-haspopup="true" aria-expanded="false">
+          Services <span class="nav-dropdown-caret">&#9662;</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="gos-ecosystem.html" class="active-link">GOS Ecosystem</a>
+          <a href="gos(gym-operating-system).html">GOS (Gym Operating System)</a>
+          <a href="digital-marketing.html">Digital Marketing</a>
+        </div>
+      </div>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="booking.html" class="btn-primary">Book a Demo</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO — live system map -->
+<section class="gos-hero">
+  <canvas class="gos-hero-canvas" id="gosHeroCanvas" aria-hidden="true"></canvas>
+  <div class="gos-hero-grid" aria-hidden="true"></div>
+  <div class="gos-hero-glow gos-hero-glow-a" aria-hidden="true"></div>
+  <div class="gos-hero-glow gos-hero-glow-b" aria-hidden="true"></div>
+
+  <div class="gos-hero-inner">
+    <img src="assets/image/gymshim-logo-navbar.png" alt="" class="gos-floating-logo" aria-hidden="true">
+    <div class="gos-hero-copy reveal-up">
+      <span class="gos-eyebrow">GOS · System Overview</span>
+      <h1>One system.<br>Every part of your gym, <span class="gos-accent-text">connected.</span></h1>
+      <p>Leads, members, attendance, renewals, payments, and reports — the GOS Ecosystem runs them as one operating system instead of six disconnected tools, so nothing falls through the cracks between a walk-in and a renewal.</p>
+      <a href="booking.html" class="btn-primary">Book a Demo</a>
+    </div>
+
+    <div class="gos-map-wrap reveal-up" style="--reveal-delay:0.15s">
+      <div class="gos-map" id="gosMap">
+        <div class="gos-orbit-ring gos-orbit-ring-1"></div>
+        <div class="gos-orbit-ring gos-orbit-ring-2"></div>
+
+        <div class="gos-core">
+          <span class="gos-core-label">GOS</span>
+          <span class="gos-core-sub">core</span>
+        </div>
+
+        <div class="gos-node" style="--angle:0deg;" data-mod="MOD-01" data-desc="Leads land straight into the front-desk pipeline.">
+          <span class="gos-node-icon">📥</span><span class="gos-node-label">Leads</span>
+        </div>
+        <div class="gos-node" style="--angle:60deg;" data-mod="MOD-02" data-desc="One profile per member — history, attendance, all of it.">
+          <span class="gos-node-icon">🪪</span><span class="gos-node-label">Members</span>
+        </div>
+        <div class="gos-node" style="--angle:120deg;" data-mod="MOD-03" data-desc="QR check-in and access control, tracked automatically.">
+          <span class="gos-node-icon">🔐</span><span class="gos-node-label">Access</span>
+        </div>
+        <div class="gos-node" style="--angle:180deg;" data-mod="MOD-04" data-desc="Renewal and balance alerts before a member walks out the door.">
+          <span class="gos-node-icon">🔁</span><span class="gos-node-label">Renewals</span>
+        </div>
+        <div class="gos-node" style="--angle:240deg;" data-mod="MOD-05" data-desc="Payroll and membership payments in the same system.">
+          <span class="gos-node-icon">💳</span><span class="gos-node-label">Payments</span>
+        </div>
+        <div class="gos-node" style="--angle:300deg;" data-mod="MOD-06" data-desc="Live dashboards — check the gym's numbers from anywhere.">
+          <span class="gos-node-icon">📊</span><span class="gos-node-label">Reports</span>
+        </div>
+
+        <div class="gos-node-tooltip" id="gosNodeTooltip"></div>
+
+        <svg class="gos-pulse-svg" viewBox="0 0 400 400" aria-hidden="true">
+          <circle class="gos-pulse-dot" r="4" cx="200" cy="60"><animateMotion dur="3.2s" repeatCount="indefinite" path="M200,60 L200,200" /></circle>
+          <circle class="gos-pulse-dot gos-pulse-dot-b" r="4" cx="340" cy="130"><animateMotion dur="3.2s" begin="0.5s" repeatCount="indefinite" path="M340,130 L200,200" /></circle>
+          <circle class="gos-pulse-dot gos-pulse-dot-c" r="4" cx="340" cy="270"><animateMotion dur="3.2s" begin="1s" repeatCount="indefinite" path="M340,270 L200,200" /></circle>
+          <circle class="gos-pulse-dot gos-pulse-dot-d" r="4" cx="200" cy="340"><animateMotion dur="3.2s" begin="1.5s" repeatCount="indefinite" path="M200,340 L200,200" /></circle>
+          <circle class="gos-pulse-dot gos-pulse-dot-e" r="4" cx="60" cy="270"><animateMotion dur="3.2s" begin="2s" repeatCount="indefinite" path="M60,270 L200,200" /></circle>
+          <circle class="gos-pulse-dot gos-pulse-dot-f" r="4" cx="60" cy="130"><animateMotion dur="3.2s" begin="2.5s" repeatCount="indefinite" path="M60,130 L200,200" /></circle>
+        </svg>
+      </div>
+
+      <div class="gos-readout">
+        <div class="gos-readout-head">
+          <span class="gos-readout-dot"></span> LIVE SYSTEM EVENTS
+        </div>
+        <div class="gos-readout-body" id="gosReadout"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="gos-modules" id="gosModulesSection">
+  <div class="gos-modules-photo" aria-hidden="true"></div>
+  <canvas class="gos-modules-canvas" id="gosModulesCanvas" aria-hidden="true"></canvas>
+  <div class="gos-modules-spotlight" id="gosModulesSpotlight" aria-hidden="true"></div>
+  <div class="gos-modules-inner">
+  <div class="section-header reveal-up">
+    <span class="hero-tag">What runs inside GOS</span>
+    <h2>Six modules. One record per member.</h2>
+    <p>Every module writes to the same member record, so a lead captured on Monday is the same profile that gets a renewal reminder in October — no re-entry, no separate spreadsheets.</p>
+  </div>
+
+  <div class="gos-module-grid">
+
+    <div class="glass-card gos-module-card reveal-up">
+      <span class="gos-module-id">MOD-01</span>
+      <div class="gos-video-frame">
+        <video class="gos-video-real" autoplay muted loop playsinline>
+          <source src="assets/video/gos-lead-capture-demo.mp4" type="video/mp4">
+        </video>
+      </div>
+      <h3>Lead Capture</h3>
+      <p>Enquiries come in from WhatsApp, social media, and SMS through one shareable link, landing straight into the same pipeline your front desk works from.</p>
+    </div>
+
+    <div class="glass-card gos-module-card reveal-up">
+      <span class="gos-module-id">MOD-02</span>
+      <div class="gos-video-frame">
+        <span class="gos-video-badge"><span class="gos-video-dot"></span>LIVE</span>
+        <span class="gos-video-time" data-gos-timer>00:00</span>
+        <div class="gos-anim gos-anim-members" aria-hidden="true">
+          <div class="gos-anim-idcard">
+            <span class="gos-anim-idcard-face gos-anim-idcard-front">🪪</span>
+            <span class="gos-anim-idcard-face gos-anim-idcard-back">✓</span>
+          </div>
+        </div>
+      </div>
+      <h3>Member Management</h3>
+      <p>Attendance, appointments, and history live on one profile per member, so any staff member can pick up where the last conversation left off.</p>
+    </div>
+
+    <div class="glass-card gos-module-card reveal-up">
+      <span class="gos-module-id">MOD-03</span>
+      <div class="gos-video-frame">
+        <span class="gos-video-badge"><span class="gos-video-dot"></span>LIVE</span>
+        <span class="gos-video-time" data-gos-timer>00:00</span>
+        <div class="gos-anim gos-anim-access" aria-hidden="true">
+          <div class="gos-anim-qr">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <div class="gos-anim-scanline"></div>
+          </div>
+          <div class="gos-anim-lock">
+            <span class="gos-anim-lock-shackle"></span>
+            <span class="gos-anim-lock-body"></span>
+          </div>
+        </div>
+      </div>
+      <h3>Attendance &amp; Access Control</h3>
+      <p>QR-based check-in and access-controlled entry keep cash flow protected — no membership, no entry, tracked automatically.</p>
+    </div>
+
+    <div class="glass-card gos-module-card reveal-up">
+      <span class="gos-module-id">MOD-04</span>
+      <div class="gos-video-frame">
+        <span class="gos-video-badge"><span class="gos-video-dot"></span>LIVE</span>
+        <span class="gos-video-time" data-gos-timer>00:00</span>
+        <div class="gos-anim gos-anim-renewals" aria-hidden="true">
+          <span class="gos-anim-bell">🔔</span>
+          <span class="gos-anim-ping"></span>
+          <span class="gos-anim-ping gos-anim-ping-2"></span>
+        </div>
+      </div>
+      <h3>Renewals &amp; Alerts</h3>
+      <p>Real-time notifications flag upcoming renewals, balances due, and daily sales — so nobody finds out a membership lapsed after the member's already gone.</p>
+    </div>
+
+    <div class="glass-card gos-module-card reveal-up">
+      <span class="gos-module-id">MOD-05</span>
+      <div class="gos-video-frame">
+        <span class="gos-video-badge"><span class="gos-video-dot"></span>LIVE</span>
+        <span class="gos-video-time" data-gos-timer>00:00</span>
+        <div class="gos-anim gos-anim-payments" aria-hidden="true">
+          <span class="gos-anim-card">💳</span>
+          <span class="gos-anim-terminal">▮</span>
+          <span class="gos-anim-check">✓</span>
+        </div>
+      </div>
+      <h3>Payroll &amp; Payments</h3>
+      <p>Personal-training payroll and membership payments are handled inside the same system that tracks the sessions and sales behind them.</p>
+    </div>
+
+    <div class="glass-card gos-module-card reveal-up">
+      <span class="gos-module-id">MOD-06</span>
+      <div class="gos-video-frame">
+        <span class="gos-video-badge"><span class="gos-video-dot"></span>LIVE</span>
+        <span class="gos-video-time" data-gos-timer>00:00</span>
+        <div class="gos-anim gos-anim-reports" aria-hidden="true">
+          <span class="gos-anim-bar gos-anim-bar-1"></span>
+          <span class="gos-anim-bar gos-anim-bar-2"></span>
+          <span class="gos-anim-bar gos-anim-bar-3"></span>
+          <span class="gos-anim-bar gos-anim-bar-4"></span>
+          <svg class="gos-anim-trend" viewBox="0 0 60 40" preserveAspectRatio="none">
+            <polyline points="2,34 16,22 30,26 44,10 58,4" />
+          </svg>
+        </div>
+      </div>
+      <h3>Reports &amp; Insights</h3>
+      <p>Daily sales reports and live dashboards from anywhere — check how the gym's doing without waiting for a front-desk end-of-day call.</p>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<!-- FEATURE CLOUD — the granular features living inside the 6 modules,
+     so the page doesn't feel thin between the module cards and the demo. -->
+<section class="gos-features">
+  <div class="section-header reveal-up">
+    <span class="hero-tag">Inside every module</span>
+    <h2>Every feature your front desk actually uses</h2>
+  </div>
+  <div class="gos-chip-marquee reveal-up" style="--reveal-delay:0.1s">
+    <div class="gos-chip-row gos-chip-row-a">
+      <span class="gos-chip">Pool Membership</span>
+      <span class="gos-chip">QR Code Check-in</span>
+      <span class="gos-chip">Direct Member Feedback</span>
+      <span class="gos-chip">Trainer Scheduling</span>
+      <span class="gos-chip">Attendance Tracking</span>
+      <span class="gos-chip">Workout Charts</span>
+      <span class="gos-chip">New Sale Capture</span>
+      <span class="gos-chip">Pool Membership</span>
+      <span class="gos-chip">QR Code Check-in</span>
+      <span class="gos-chip">Direct Member Feedback</span>
+      <span class="gos-chip">Trainer Scheduling</span>
+      <span class="gos-chip">Attendance Tracking</span>
+      <span class="gos-chip">Workout Charts</span>
+      <span class="gos-chip">New Sale Capture</span>
+    </div>
+    <div class="gos-chip-row gos-chip-row-b">
+      <span class="gos-chip">Membership Renewals</span>
+      <span class="gos-chip">Balance Due Alerts</span>
+      <span class="gos-chip">Daily Sales Reports</span>
+      <span class="gos-chip">Employee Attendance</span>
+      <span class="gos-chip">WhatsApp Enquiries</span>
+      <span class="gos-chip">Social Media Leads</span>
+      <span class="gos-chip">Push Notifications</span>
+      <span class="gos-chip">Membership Renewals</span>
+      <span class="gos-chip">Balance Due Alerts</span>
+      <span class="gos-chip">Daily Sales Reports</span>
+      <span class="gos-chip">Employee Attendance</span>
+      <span class="gos-chip">WhatsApp Enquiries</span>
+      <span class="gos-chip">Social Media Leads</span>
+      <span class="gos-chip">Push Notifications</span>
+    </div>
+  </div>
+</section>
+
+<!-- DATA USABLE -->
+<section class="gos-data">
+  <div class="gos-data-inner">
+    <div class="section-header reveal-up">
+      <span class="hero-tag">Powerful alone. Better together.</span>
+      <h2>GOS keeps everything your gym needs in one place</h2>
+      <p>Six different kinds of information, one system holding all of it — nothing lives in a notebook, a separate spreadsheet, or a staff member's memory.</p>
+    </div>
+    <div class="gos-data-grid">
+      <div class="gos-data-item reveal-up">
+        <div class="gos-data-icon">🗂️</div>
+        <h4>Data</h4>
+      </div>
+      <div class="gos-data-item reveal-up">
+        <div class="gos-data-icon">📝</div>
+        <h4>Notes</h4>
+      </div>
+      <div class="gos-data-item reveal-up">
+        <div class="gos-data-icon">📈</div>
+        <h4>Metrics</h4>
+      </div>
+      <div class="gos-data-item reveal-up">
+        <div class="gos-data-icon">📄</div>
+        <h4>Documents</h4>
+      </div>
+      <div class="gos-data-item reveal-up">
+        <div class="gos-data-icon">📇</div>
+        <h4>Contact Info</h4>
+      </div>
+      <div class="gos-data-item reveal-up">
+        <div class="gos-data-icon">🗃️</div>
+        <h4>Records</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="gos-benefits">
+  <div class="section-header reveal-up">
+    <span class="hero-tag">The lifeline of your gym business</span>
+    <h2>What owners actually feel, week to week</h2>
+  </div>
+  <div class="gos-benefits-grid">
+    <div class="glass-card gos-benefit-card reveal-up">
+      <div class="gos-benefit-icon">📊</div>
+      <h3>Polished, trustworthy reporting</h3>
+      <p>Numbers you can hand to a partner or investor without cleaning them up first.</p>
+    </div>
+    <div class="glass-card gos-benefit-card reveal-up">
+      <div class="gos-benefit-icon">🖥️</div>
+      <h3>Dashboards that show, not just store</h3>
+      <p>Data laid out visually, so trends are obvious at a glance instead of buried in rows.</p>
+    </div>
+    <div class="glass-card gos-benefit-card reveal-up">
+      <div class="gos-benefit-icon">🔔</div>
+      <h3>Messaging that reaches members</h3>
+      <p>Push notifications land where members already are, instead of unread SMS.</p>
+    </div>
+    <div class="glass-card gos-benefit-card reveal-up">
+      <div class="gos-benefit-icon">⚡</div>
+      <h3>Proactive, not reactive, service</h3>
+      <p>Renewal and balance alerts fire before a member walks out the door for good.</p>
+    </div>
+    <div class="glass-card gos-benefit-card reveal-up">
+      <div class="gos-benefit-icon">🤖</div>
+      <h3>Automation that buys back time</h3>
+      <p>The repetitive front-desk work runs itself, so staff time goes to members instead.</p>
+    </div>
+    <div class="glass-card gos-benefit-card reveal-up">
+      <div class="gos-benefit-icon">🤝</div>
+      <h3>Collaboration without confusion</h3>
+      <p>Every team member works off the same record — nothing lost in handoffs.</p>
+    </div>
+    <div class="glass-card gos-benefit-card reveal-up">
+      <div class="gos-benefit-icon">🔗</div>
+      <h3>One pipeline, fully integrated</h3>
+      <p>Leads, sales, and support connect end-to-end instead of living in separate tools.</p>
+    </div>
+    <div class="glass-card gos-benefit-card reveal-up">
+      <div class="gos-benefit-icon">💬</div>
+      <h3>Relationships that actually last</h3>
+      <p>Consistent, well-timed engagement is what turns a signup into a five-year member.</p>
+    </div>
+    <div class="glass-card gos-benefit-card reveal-up">
+      <div class="gos-benefit-icon">📈</div>
+      <h3>Revenue growth you can trace</h3>
+      <p>See exactly which module — leads, renewals, upsells — is moving the number.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON — before / after slider -->
+<section class="gos-compare">
+  <div class="section-header reveal-up">
+    <span class="hero-tag">The difference, side by side</span>
+    <h2>Gym operations, with and without GOS</h2>
+  </div>
+
+  <div class="gos-compare-slider reveal-up" id="gosCompareSlider">
+    <div class="gos-compare-track" id="gosCompareTrack">
+
+      <div class="gos-compare-slide">
+        <span class="gos-compare-tag without"><span class="gos-glyph gos-glyph-without" aria-hidden="true"><span></span><span></span><span></span></span>WITHOUT GYMSHIM</span>
+        <h3>Leads scattered across notebooks and phone screens</h3>
+        <p>Enquiries come in from five different channels and land in five different places — half of them never get a follow-up call.</p>
+        <span class="gos-compare-tag with"><span class="gos-glyph gos-glyph-with" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="4,13 9,18 20,6"/></svg></span>WITH GYMSHIM</span>
+        <h3>One pipeline, every enquiry tracked</h3>
+        <p>WhatsApp, social, and SMS enquiries land in the same front-desk pipeline — nothing falls through.</p>
+      </div>
+
+      <div class="gos-compare-slide">
+        <span class="gos-compare-tag without"><span class="gos-glyph gos-glyph-without" aria-hidden="true"><span></span><span></span><span></span></span>WITHOUT GYMSHIM</span>
+        <h3>Attendance tracked on a paper register</h3>
+        <p>No record of who's actually training regularly until a membership has already lapsed.</p>
+        <span class="gos-compare-tag with"><span class="gos-glyph gos-glyph-with" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="4,13 9,18 20,6"/></svg></span>WITH GYMSHIM</span>
+        <h3>QR check-in, tracked automatically</h3>
+        <p>Every visit logged the moment a member scans in — attendance trends visible in real time.</p>
+      </div>
+
+      <div class="gos-compare-slide">
+        <span class="gos-compare-tag without"><span class="gos-glyph gos-glyph-without" aria-hidden="true"><span></span><span></span><span></span></span>WITHOUT GYMSHIM</span>
+        <h3>Marketing spend aimed at guesswork</h3>
+        <p>Ads run without knowing which channel actually converts a click into a membership.</p>
+        <span class="gos-compare-tag with"><span class="gos-glyph gos-glyph-with" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="4,13 9,18 20,6"/></svg></span>WITH GYMSHIM</span>
+        <h3>Digital marketing that reaches the right audience</h3>
+        <p>Campaigns targeted and measured against the same pipeline your front desk works from.</p>
+      </div>
+
+    </div>
+
+    <div class="gos-compare-nav">
+      <button class="gos-compare-arrow" id="gosCompPrev" aria-label="Previous">&#8249;</button>
+      <div class="gos-compare-dots" id="gosCompDots"></div>
+      <button class="gos-compare-arrow" id="gosCompNext" aria-label="Next">&#8250;</button>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DEMO — drop a real screen-recording or product video in as
+     assets/video/gos-demo.mp4 (+ a matching poster jpg) and it plays
+     here with the same cinematic treatment as the homepage hero.
+     Until a video file exists, the poster / fallback gradient shows. -->
+<section class="gos-demo">
+  <div class="section-header reveal-up">
+    <span class="hero-tag">Watch how it works</span>
+    <h2>The GOS Ecosystem, explained</h2>
+  </div>
+  <div class="gos-demo-frame reveal-up" id="gosDemoFrame" data-youtube-id="2iYu-ZPJrzA">
+    <div class="gos-demo-glow" aria-hidden="true"></div>
+    <div class="gos-demo-scanline" aria-hidden="true"></div>
+    <img class="gos-demo-poster" id="gosDemoPoster"
+         src="https://img.youtube.com/vi/2iYu-ZPJrzA/maxresdefault.jpg"
+         alt="Gymshim GOS walkthrough video thumbnail">
+    <div class="gos-demo-overlay"></div>
+    <span class="gos-demo-live-badge"><span class="gos-demo-live-dot"></span>OFFICIAL GOS GUIDE</span>
+    <button class="gos-demo-play" id="gosDemoPlay" aria-label="Play demo video">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <div class="gos-demo-caption">
+      <span class="gos-module-id">GYMSHIM&nbsp;·&nbsp;OFFICIAL</span>
+      <h3>The dashboard, not a slide about it</h3>
+    </div>
+  </div>
+  <p class="gos-demo-note">Watch the full GOS Ecosystem walkthrough below.</p>
+</section>
+
+<!-- PROOF -->
+<section class="gos-proof">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="gos-proof-inner">
+    <div class="section-header reveal-up">
+      <span class="hero-tag">What our customers say</span>
+      <h2>What changes once leads stop getting lost</h2>
+    </div>
+
+    <div class="gos-proof-grid gos-proof-grid-3">
+      <div class="glass-card gos-proof-card reveal-up">
+        <div class="gos-proof-avatar">KK</div>
+        <p class="gos-proof-quote">Our leads used to be scattered and hard to manage. Since moving onto GOS, our sales revenue has climbed roughly 30–35%, and the support team is quick to jump on anything that needs fixing.</p>
+        <p class="gos-proof-attr">Kunal Kamdar — Fitclub, Mumbai</p>
+      </div>
+      <div class="glass-card gos-proof-card reveal-up">
+        <div class="gos-proof-avatar">NS</div>
+        <p class="gos-proof-quote">From the day we picked Gymshim as our gym management software, the whole experience has genuinely gone smoothly.</p>
+        <p class="gos-proof-attr">Naved Shaikh — Fitbeingz, Pune</p>
+      </div>
+      <div class="glass-card gos-proof-card reveal-up">
+        <div class="gos-proof-avatar">PB</div>
+        <p class="gos-proof-quote">GOS is a simple, well-built, multi-purpose CRM. It's given us a much better way to engage with members and stay on top of enquiries.</p>
+        <p class="gos-proof-attr">Pradeep Bhatia — Elixir, Mumbai</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="workout-cta">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="reveal-up">
+    <h2>See the whole ecosystem running live</h2>
+    <p>One walkthrough covers leads, members, access control, and reporting — the same system, not a slide deck about it.</p>
+    <span class="gos-cta-btn-wrap">
+      <a href="booking.html" class="btn-primary">Book a Demo</a>
+    </span>
+    <p class="gos-cta-direct">Or call us directly — <a href="tel:+919022282340">+91 9022282340</a> / <a href="tel:+917276160009">+91 7276160009</a></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <a href="index.html" class="logo">GYMSHIM</a>
+      <p>Smart solutions to grow your gym business — more walk-ins, easier conversions, better retention.</p>
+
+<div class="footer-socials">
+  <a href="https://www.linkedin.com/company/gymshim/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+  <a href="https://www.facebook.com/GymshimSolutions" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+  <a href="https://www.instagram.com/gymshim?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+</div>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Company</h4>
+      <a href="about.html">About Us</a>
+      <a href="workout.html">Workout+</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Services</h4>
+      <a href="gos-ecosystem.html">GOS Ecosystem</a>
+      <a href="#">Gym Operating System</a>
+      <a href="#">Digital Marketing</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="tel:+919022282340">+91 9022282340</a>
+      <a href="tel:+917276160009">+91 7276160009</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Fitlyberty Pvt Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="booking-modal-overlay" id="bookingModalOverlay" aria-hidden="true">
+  <div class="booking-modal-box" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+    <button class="booking-modal-close" id="bookingModalClose" aria-label="Close">&times;</button>
+    <div class="booking-modal-head">
+      <h2 id="bookingModalTitle">Book a Demo</h2>
+      <p id="bookingModalSubtitle">Pick a date and time that works for you.</p>
+    </div>
+    <div class="booking-step-indicator">
+      <span class="step-dot active" id="stepDot1">1</span>
+      <span class="step-label active" id="stepLabel1">Date &amp; Time</span>
+      <span class="step-line" id="stepLine"></span>
+      <span class="step-dot" id="stepDot2">2</span>
+      <span class="step-label" id="stepLabel2">Your Details</span>
+    </div>
+    <div class="booking-step-panel" data-step-panel="1">
+      <div class="booking-modal-grid">
+        <div class="calendar-panel">
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" id="prevMonthBtn" type="button" aria-label="Previous month">&#8249;</button>
+            <span class="calendar-month-label" id="calendarMonthLabel"></span>
+            <button class="calendar-nav-btn" id="nextMonthBtn" type="button" aria-label="Next month">&#8250;</button>
+          </div>
+          <div class="calendar-weekdays">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+        <div class="details-panel">
+          <h3>Selected</h3>
+          <p class="selected-date-label placeholder" id="selectedDateLabel">Choose a date to see open times</p>
+          <div class="time-slot-grid" id="timeSlotGrid"></div>
+        </div>
+      </div>
+      <div class="booking-step-actions">
+        <button class="btn-primary next-btn single-action" id="toStep2Btn" type="button" disabled>Continue</button>
+      </div>
+    </div>
+    <div class="booking-step-panel" data-step-panel="2" hidden>
+      <div class="booking-modal-grid">
+        <div class="form-panel">
+          <form class="login-form" id="bookingForm" novalidate>
+            <label>Name * <input type="text" name="name" id="bookingName" required autocomplete="name"></label>
+            <label>Email * <input type="email" name="email" id="bookingEmail" required autocomplete="email"></label>
+            <label>Phone Number *
+              <div class="phone-input">
+                <span class="phone-code">+91</span>
+                <input type="tel" name="phone" id="bookingPhone" required autocomplete="tel" placeholder="98765 43210">
+              </div>
+            </label>
+            <label>Gym Name <input type="text" name="gymName" id="bookingGymName" autocomplete="organization"></label>
+          </form>
+        </div>
+        <div class="booking-details-panel">
+          <h3>Booking Details</h3>
+          <p class="booking-summary-title">Online Demo</p>
+          <p class="selected-date-label" id="bookingSummaryDateTime"></p>
+          <span class="detail-pill">Available Online</span>
+          <div class="booking-summary-meta">
+            <p>Online Meetup (Google Meet)</p>
+            <p>Gymshim</p>
+            <p>1 hr</p>
+          </div>
+          <button class="details-toggle" id="detailsToggleBtn" type="button">
+            <span id="detailsToggleText">More details</span> <span class="chevron">&#9662;</span>
+          </button>
+          <div class="details-expand" id="detailsExpand">
+            <p>Duration: 30 minutes</p>
+            <p>Format: In-person at your gym, or video call</p>
+            <p>Free — no card required</p>
+          </div>
+          <p class="booking-agreement">By completing your booking, you agree to receive related phone notifications.</p>
+          <button class="btn-primary next-btn" id="submitBookingBtn" type="button">Book Now</button>
+        </div>
+      </div>
+      <div class="booking-step-actions">
+        <button class="btn-secondary single-action" id="backToStep1Btn" type="button">Back</button>
+      </div>
+    </div>
+    <div class="booking-success" id="bookingSuccess">
+      <div class="booking-success-icon">&#10003;</div>
+      <h3>You're booked!</h3>
+      <p id="bookingSuccessDetail">We'll see you then. A confirmation has been sent to your email.</p>
+    </div>
+  </div>
+</div>
+
+<script src="gos-ecosystem.js"></script>
+<script src="booking.js"></script>
+</body>
+</html>
