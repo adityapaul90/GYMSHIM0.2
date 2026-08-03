@@ -93,82 +93,38 @@ if (servicesToggle && servicesOverlay) {
   });
 })();
 
-/* ---------------- Hero "Mindshare Radar" ---------------- */
+/* ---------------- Hero visual: subtle float on the ad collage ---------------- */
 (() => {
-  const radar = document.getElementById('dmRadar');
-  const phone = document.getElementById('dmPhone');
-  const countEl = document.getElementById('dmLeadsCount');
-  if (!radar || !phone) return;
+  const visual = document.querySelector('.dm-hero-visual');
+  const notify = document.querySelector('.dm-notify-toast');
+  if (!visual) return;
 
-  const pins = [1, 2, 3, 4, 5].map((n) => document.getElementById(`dmPin${n}`)).filter(Boolean);
-  let leadCount = 0;
-  let pinIndex = 0;
-  let started = false;
-
-  function bumpCount() {
-    leadCount += 1;
-    if (countEl) countEl.textContent = leadCount;
-  }
-
-  function popPin(pin) {
-    const tag = pin.querySelector('.dm-pin-tag');
-    const timeline = (window.gsap ? gsap.timeline() : null);
-
-    if (timeline) {
-      timeline
-        .to(pin, { opacity: 1, scale: 1.6, duration: 0.35, ease: 'back.out(3)' })
-        .to(pin, { scale: 1, duration: 0.25 }, '-=0.05')
-        .to(tag, { opacity: 1, y: -4, duration: 0.3 }, '-=0.2')
-        .call(bumpCount, null, '-=0.2')
-        .to(tag, { opacity: 0, duration: 0.3 }, '+=1')
-        .to(pin, { opacity: 0, duration: 0.3 }, '-=0.3');
-    } else {
-      // Fallback without GSAP
-      pin.style.transition = 'opacity .3s ease';
-      pin.style.opacity = '1';
-      tag.style.transition = 'opacity .3s ease';
-      tag.style.opacity = '1';
-      bumpCount();
-      setTimeout(() => { tag.style.opacity = '0'; pin.style.opacity = '0'; }, 1400);
-    }
-  }
-
-  function loop() {
-    if (!pins.length) return;
-    popPin(pins[pinIndex]);
-    pinIndex = (pinIndex + 1) % pins.length;
-    setTimeout(loop, 1500);
-  }
-
-  function start() {
-    if (started) return;
-    started = true;
-    setTimeout(loop, 500);
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => { if (entry.isIntersecting) start(); });
-  }, { threshold: 0.3 });
-  io.observe(radar);
-
-  // Subtle 3D tilt on the phone, following the pointer within the radar
-  radar.addEventListener('mousemove', (e) => {
-    const rect = radar.getBoundingClientRect();
+  visual.addEventListener('mousemove', (e) => {
+    const rect = visual.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     if (window.gsap) {
-      gsap.to(phone, { rotationY: x * 16, rotationX: -y * 16, duration: 0.5, ease: 'power3.out', transformPerspective: 600 });
+      gsap.to(visual, { rotationY: x * 6, rotationX: -y * 6, duration: 0.6, ease: 'power3.out', transformPerspective: 900 });
     } else {
-      phone.style.transform = `translate(-50%,-50%) rotateY(${x * 16}deg) rotateX(${-y * 16}deg)`;
+      visual.style.transform = `rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
     }
   });
-  radar.addEventListener('mouseleave', () => {
+  visual.addEventListener('mouseleave', () => {
     if (window.gsap) {
-      gsap.to(phone, { rotationY: 0, rotationX: 0, duration: 0.6, ease: 'power3.out' });
+      gsap.to(visual, { rotationY: 0, rotationX: 0, duration: 0.6, ease: 'power3.out' });
     } else {
-      phone.style.transform = 'translate(-50%,-50%)';
+      visual.style.transform = 'none';
     }
   });
+
+  // Gentle re-trigger pulse on the notification toast so it feels "live"
+  if (notify) {
+    setInterval(() => {
+      notify.style.transition = 'transform .4s ease';
+      notify.style.transform = 'translateY(-4px)';
+      setTimeout(() => { notify.style.transform = 'translateY(0)'; }, 400);
+    }, 4000);
+  }
 })();
 
 /* ---------------- Stat counter (444M+) ---------------- */

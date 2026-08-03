@@ -5,31 +5,741 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Marketing | Gymshim</title>
 <meta name="description" content="Gymshim helps gyms reach the right local audience, at the right time, with the right message — through paid social, content and brand positioning.">
-<meta name="theme-color" content="#0F1115">
+<meta name="theme-color" content="#050505">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="booking.css">
-<link rel="stylesheet" href="digital-marketing.css">
+<style>
+/* ==============================================================
+   TOKENS
+   ============================================================== */
+:root{
+  --void:#050505;
+  --panel:#0b0c0f;
+  --panel-2:#131419;
+  --panel-3:#1b1c22;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.14);
+  --white:#f6f6f8;
+  --muted:#98999f;
+  --muted-2:#6c6d74;
+  --red:#d8234a;
+  --red-light:#ff5273;
+  --red-dim:#8a1230;
+  --red-glow:rgba(216,35,74,.45);
+  --display:'Bricolage Grotesque', system-ui, sans-serif;
+  --body:'Inter', system-ui, sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--white);
+  font-family:var(--body);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--display);margin:0;letter-spacing:-.02em;}
+p{margin:0;}
+button{font-family:inherit;}
+
+::selection{background:var(--red);color:#fff;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+}
+
+/* Utility */
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red-light);
+}
+.eyebrow::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:var(--red);
+  box-shadow:0 0 12px var(--red-glow);
+}
+.accent{color:var(--red);}
+.section-header{max-width:640px;margin:0 auto 64px;text-align:center;}
+.section-header h2{font-size:clamp(32px,4vw,52px);line-height:1.05;margin-top:14px;}
+
+.glow-btn{
+  position:relative;display:inline-flex;align-items:center;gap:10px;
+  padding:16px 30px;border-radius:100px;font-weight:600;font-size:15px;
+  background:linear-gradient(135deg,var(--red-light),var(--red) 60%,var(--red-dim));
+  color:#fff;border:none;cursor:pointer;
+  box-shadow:0 8px 30px -6px var(--red-glow), inset 0 1px 0 rgba(255,255,255,.25);
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+  white-space:nowrap;
+}
+.glow-btn:hover{transform:translateY(-2px) scale(1.015); box-shadow:0 14px 40px -6px var(--red-glow), inset 0 1px 0 rgba(255,255,255,.3);}
+.glow-btn svg{transition:transform .3s var(--ease);}
+.glow-btn:hover svg{transform:translateX(3px);}
+
+.ghost-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 26px;border-radius:100px;font-weight:600;font-size:15px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line-strong);
+  color:var(--white);cursor:pointer;
+  backdrop-filter:blur(12px);
+  transition:background .35s var(--ease), transform .35s var(--ease), border-color .35s var(--ease);
+}
+.ghost-btn:hover{background:rgba(255,255,255,.08); transform:translateY(-2px); border-color:rgba(255,255,255,.28);}
+.play-dot{
+  width:26px;height:26px;border-radius:50%;background:var(--red);
+  display:inline-flex;align-items:center;justify-content:center;font-size:10px;
+  box-shadow:0 0 14px var(--red-glow);
+}
+
+.glass-card{
+  background:linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+  border:1px solid var(--line);
+  border-radius:22px;
+  backdrop-filter:blur(20px);
+  position:relative;
+  overflow:hidden;
+}
+.glass-card::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:linear-gradient(160deg, rgba(255,255,255,.18), rgba(255,255,255,0) 40%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+
+/* reveal */
+.reveal-up{opacity:0; transform:translateY(28px); transition:opacity .9s var(--ease), transform .9s var(--ease); transition-delay:var(--reveal-delay,0s);}
+.reveal-up.in-view{opacity:1; transform:translateY(0);}
+
+/* floating ambient */
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+@keyframes floatySlow{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-10px) rotate(1deg);}}
+@keyframes pulseGlow{0%,100%{opacity:.55;}50%{opacity:1;}}
+
+/* ==============================================================
+   NAV
+   ============================================================== */
+.navbar{
+  position:absolute;top:0;left:0;right:0;z-index:200;
+  width:100%;
+  background:linear-gradient(180deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.35) 55%, transparent 100%);
+}
+.nav-container{
+  position:relative;max-width:1280px;margin:0 auto;padding:22px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:.01em;color:#fff;}
+.logo span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:34px;}
+.nav-links a, .nav-dropdown-toggle{
+  padding:6px 0;font-size:15px;font-weight:500;color:var(--muted);
+  background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;
+  transition:color .3s var(--ease);
+}
+.nav-links a:hover, .nav-dropdown-toggle:hover{color:#fff;}
+.nav-dropdown-caret{font-size:10px;transition:transform .3s var(--ease);}
+.nav-dropdown-toggle[aria-expanded="true"] .nav-dropdown-caret{transform:rotate(180deg);}
+.nav-actions{display:flex;align-items:center;gap:20px;}
+.nav-actions .glow-btn{padding:12px 24px;font-size:14px;}
+.hamburger{display:none;width:34px;height:34px;background:none;border:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;}
+.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;}
+
+@media (max-width:900px){
+  .nav-container{padding:18px 24px;}
+  .nav-links{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:2px;
+    background:var(--panel); border-bottom:1px solid var(--line); padding:14px 24px;
+    transform:translateY(-10px); opacity:0; pointer-events:none;
+    transition:all .35s var(--ease);
+  }
+  .nav-links.open{transform:translateY(0); opacity:1; pointer-events:auto;}
+  .nav-links a, .nav-dropdown-toggle{width:100%;justify-content:space-between;padding:12px 0;}
+  .hamburger{display:flex;}
+}
+
+/* ============ Services mega overlay ============ */
+.services-overlay{
+  position:fixed;inset:0;z-index:300;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:60px 32px 32px;overflow-y:auto;
+  opacity:0;visibility:hidden;
+  transition:opacity .35s ease, visibility 0s linear .35s;
+}
+.services-overlay.open{opacity:1;visibility:visible;transition:opacity .35s ease;}
+.services-overlay-backdrop{position:fixed;inset:0;background:rgba(5,6,8,.75);backdrop-filter:blur(8px);}
+.services-mega-panel{
+  position:relative;z-index:1;width:100%;max-width:1280px;
+  background:rgba(15,17,23,.82);
+  border:1px solid var(--line-strong);border-radius:28px;
+  backdrop-filter:blur(32px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.03) inset, 0 40px 100px -30px rgba(0,0,0,.8), 0 0 80px -20px rgba(216,35,35,.15);
+  padding:clamp(24px,3.5vw,44px);
+  transform:translateY(28px) scale(.96);opacity:0;
+  transition:transform .5s var(--ease), opacity .5s ease;
+}
+.services-overlay.open .services-mega-panel{transform:translateY(0) scale(1);opacity:1;}
+.services-overlay-close{
+  position:absolute;top:20px;right:20px;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--line-strong);background:rgba(255,255,255,.03);color:var(--muted);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;
+  transition:border-color .25s ease, color .25s ease;z-index:2;
+}
+.services-overlay-close:hover{border-color:var(--red);color:#fff;}
+.services-mega-top{
+  display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:24px;
+  padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:24px;
+}
+@media(max-width:699px){.services-mega-top{flex-direction:column;align-items:center;text-align:center;}}
+.services-mega-head{max-width:640px;}
+.services-mega-eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
+.services-mega-eyebrow::before{content:none;}
+.services-mega-title{font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.2;margin:0 0 8px;}
+.services-mega-accent, .services-mega-title .accent{
+  background:linear-gradient(135deg,var(--red),#fff);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.services-mega-sub{font-size:14px;margin:0;color:var(--muted);}
+.services-mega-trust{
+  display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);
+  background:rgba(255,255,255,.04);border:1px solid var(--line-strong);border-radius:999px;
+  padding:8px 16px;white-space:nowrap;flex-shrink:0;
+}
+.services-mega-trust svg{color:var(--red);flex-shrink:0;}
+.services-mega-trust strong{color:#fff;}
+.services-mega-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+@media(min-width:700px){.services-mega-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1100px){.services-mega-grid{grid-template-columns:repeat(4,1fr);}}
+.services-mega-card{
+  --card-glow:var(--red);position:relative;display:flex;flex-direction:column;gap:10px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:20px;padding:22px 20px;
+  transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+}
+.services-mega-card[data-glow="pink"]{--card-glow:#d8234a;}
+.services-mega-card[data-glow="cyan"]{--card-glow:#22d3ee;}
+.services-mega-card[data-glow="purple"]{--card-glow:#9b5cff;}
+.services-mega-card[data-glow="orange"]{--card-glow:#ff8a3d;}
+.services-mega-card:hover{border-color:var(--card-glow);transform:translateY(-8px);box-shadow:0 24px 50px -20px var(--card-glow);}
+.services-mega-num{
+  position:absolute;top:16px;left:18px;font-size:11px;font-weight:700;letter-spacing:.06em;
+  color:var(--card-glow);
+  background:color-mix(in srgb, var(--card-glow) 16%, transparent);
+  border:1px solid color-mix(in srgb, var(--card-glow) 40%, transparent);
+  border-radius:8px;padding:3px 9px;
+}
+.services-mega-icon-wrap{position:relative;width:100%;height:78px;display:flex;align-items:center;justify-content:center;}
+.services-mega-icon-floor{
+  position:absolute;bottom:8px;width:100px;height:34px;border-radius:50%;
+  background:radial-gradient(ellipse at center, var(--card-glow) 0%, transparent 72%);
+  filter:blur(4px);opacity:.55;
+}
+.services-mega-icon{position:relative;z-index:1;filter:drop-shadow(0 10px 18px color-mix(in srgb, var(--card-glow) 55%, transparent));transition:transform .3s ease;}
+.services-mega-card:hover .services-mega-icon{transform:translateY(-4px) scale(1.08);}
+.services-mega-card-headrow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+.services-mega-card-headrow h3{font-size:15px;font-weight:700;margin:0;}
+.services-mega-badge{
+  font-size:10.5px;font-weight:600;color:var(--card-glow);
+  background:color-mix(in srgb, var(--card-glow) 14%, transparent);
+  border:1px solid color-mix(in srgb, var(--card-glow) 35%, transparent);
+  border-radius:999px;padding:3px 10px;white-space:nowrap;
+}
+.services-mega-desc{font-size:12.5px;line-height:1.5;color:var(--muted);margin:0;}
+.services-mega-features{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;}
+.services-mega-features li{position:relative;padding-left:24px;font-size:12.5px;color:var(--muted);}
+.services-mega-features li::before{
+  content:'\2713';position:absolute;left:0;top:-1px;width:16px;height:16px;border-radius:50%;
+  background:var(--card-glow);color:#0F1115;font-size:10px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.services-mega-explore{
+  margin-top:auto;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  font-size:12.5px;font-weight:600;color:#fff;
+  border:1px solid color-mix(in srgb, var(--card-glow) 45%, transparent);
+  border-radius:999px;padding:8px 16px;transition:background .25s ease;
+}
+.services-mega-explore svg{transition:transform .25s ease;}
+.services-mega-card:hover .services-mega-explore{background:var(--card-glow);color:#0F1115;}
+.services-mega-card:hover .services-mega-explore svg{transform:translateX(3px);}
+.services-mega-divider{height:1px;background:var(--line);margin:24px 0;}
+.services-mega-footer{display:grid;grid-template-columns:1fr;gap:16px;}
+@media(min-width:700px){.services-mega-footer{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1100px){.services-mega-footer{grid-template-columns:repeat(4,1fr);}}
+.services-mega-foot-item{display:flex;align-items:center;gap:12px;}
+.services-mega-foot-icon{
+  width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;color:var(--muted);flex-shrink:0;
+}
+.services-mega-foot-text{display:flex;flex-direction:column;font-size:12px;color:var(--muted);}
+.services-mega-foot-text strong{font-size:13.5px;color:#fff;font-weight:600;}
+
+/* ==============================================================
+   HERO
+   ============================================================== */
+.dm-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:150px 0 60px;overflow:hidden;}
+.dm-hero-bg{position:absolute;inset:0;z-index:0;}
+.dm-hero-floor{
+  position:absolute;left:0;right:0;bottom:0;height:60%;
+  background-image:
+    linear-gradient(rgba(216,35,74,.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216,35,74,.10) 1px, transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:linear-gradient(to top, black, transparent 90%);
+          mask-image:linear-gradient(to top, black, transparent 90%);
+  transform:perspective(600px) rotateX(58deg);
+  transform-origin:bottom;
+  opacity:.65;
+}
+.dm-hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%, rgba(216,35,74,.16), transparent 60%), radial-gradient(ellipse at 50% 0%, rgba(20,20,24,0), var(--void) 85%);}
+.dm-beam{
+  position:absolute;top:-10%;right:8%;width:520px;height:900px;
+  background:linear-gradient(180deg, rgba(216,35,74,.35), transparent 70%);
+  filter:blur(60px); transform:rotate(18deg); opacity:.55;
+  animation:pulseGlow 6s ease-in-out infinite;
+}
+.dm-beam-2{
+  position:absolute;bottom:-10%;left:2%;width:420px;height:700px;
+  background:linear-gradient(0deg, rgba(216,35,74,.22), transparent 70%);
+  filter:blur(70px); transform:rotate(-14deg); opacity:.4;
+}
+.dm-hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;width:100%;}
+
+.dm-hero-copy .dm-hero-eyebrow{margin-bottom:22px;padding:8px 16px;border:1px solid rgba(216,35,74,.3);border-radius:100px;background:rgba(216,35,74,.06);}
+.dm-hero-title{font-size:clamp(38px,4.6vw,64px);line-height:1.02;font-weight:800;}
+.dm-hero-title .accent{
+  background:linear-gradient(120deg, var(--red-light), var(--red));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:inline-block;
+}
+.dm-hero-p{margin-top:22px;font-size:18px;line-height:1.6;color:var(--muted);max-width:480px;}
+
+.dm-hero-points{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:34px;max-width:520px;}
+.dm-hero-point--box{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:16px;
+  background:rgba(255,255,255,.035);border:1px solid var(--line);
+  transition:border-color .3s var(--ease), background .3s var(--ease);
+}
+.dm-hero-point--box:hover{border-color:rgba(216,35,74,.35);background:rgba(216,35,74,.05);}
+.dm-hero-point-icon{width:38px;height:38px;flex-shrink:0;border-radius:11px;background:rgba(216,35,74,.12);color:var(--red-light);display:flex;align-items:center;justify-content:center;}
+.dm-hero-point--box strong{font-size:13.5px;display:block;}
+.dm-hero-point--box p{font-size:12px;color:var(--muted-2);margin-top:1px;}
+
+.dm-hero-ctas{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;}
+.dm-watch-btn{display:inline-flex;align-items:center;gap:12px;background:none;border:none;color:#fff;font-weight:600;font-size:15px;cursor:pointer;}
+.dm-watch-play{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-size:11px;background:rgba(255,255,255,.04);transition:background .3s;}
+.dm-watch-btn:hover .dm-watch-play{background:rgba(255,255,255,.1);}
+
+/* ---- Hero visual composition ---- */
+.dm-hero-visual{position:relative;height:600px;perspective:1400px;}
+.dm-hero-visual-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s var(--ease);}
+
+.dm-ad-billboard{
+  position:absolute;top:6%;right:0;width:340px;height:210px;border-radius:18px;
+  background:linear-gradient(150deg,#1a0a10,#0a0a0d 60%);
+  border:1px solid var(--line-strong);overflow:hidden;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.6), 0 0 60px -10px var(--red-glow);
+  transform:translateZ(40px);
+  animation:floatySlow 7s ease-in-out infinite;
+}
+.dm-ad-billboard::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(216,35,74,.5), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(255,255,255,.05) 0 2px, transparent 2px 26px);
+}
+.dm-ad-billboard-text{position:relative;z-index:1;padding:24px;}
+.dm-ad-billboard-text p{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.12;}
+.dm-ad-billboard-sub{margin-top:12px;font-size:10.5px;letter-spacing:.1em;color:var(--muted);line-height:1.6;}
+
+.dm-ad-kiosk{
+  position:absolute;left:2%;top:14%;width:190px;
+  transform:translateZ(90px);
+  animation:floaty 6s ease-in-out infinite;
+}
+.dm-ad-kiosk-screen{
+  border-radius:16px;background:linear-gradient(160deg,#151217,#0a0a0d);
+  border:1px solid var(--line-strong); padding:20px 16px 16px;
+  box-shadow:0 30px 70px -18px rgba(0,0,0,.65), 0 0 50px -8px var(--red-glow);
+  aspect-ratio:9/14;display:flex;flex-direction:column;
+}
+.dm-ad-kiosk-brand{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.04em;color:var(--red-light);}
+.dm-ad-kiosk-copy{margin-top:16px;font-family:var(--display);font-weight:700;font-size:15px;line-height:1.28;}
+.dm-ad-kiosk-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);}
+.dm-ad-kiosk-foot p{font-size:8.5px;letter-spacing:.08em;color:var(--muted-2);line-height:1.6;margin-top:8px;}
+.dm-ad-kiosk-base{width:60%;height:14px;margin:0 auto;background:linear-gradient(180deg,#1b1c22,#0a0a0d);border-radius:0 0 10px 10px;}
+
+.dm-app-phone{
+  position:absolute;right:8%;bottom:0;width:210px;
+  transform:translateZ(130px);
+  animation:floatySlow 8s ease-in-out infinite reverse;
+}
+.dm-app-frame{
+  border-radius:32px;background:#0a0a0d;border:6px solid #151519;
+  box-shadow:0 40px 80px -20px rgba(0,0,0,.7), 0 0 45px -10px var(--red-glow);
+  overflow:hidden;
+}
+.dm-app-notch{width:60px;height:14px;background:#151519;border-radius:0 0 12px 12px;margin:0 auto;position:relative;top:0;z-index:2;}
+.dm-app-screen{padding:16px 14px 14px;background:linear-gradient(180deg,#111116,#0a0a0d);min-height:290px;}
+.dm-app-greet{font-weight:700;font-size:13px;}
+.dm-app-sub{font-size:10.5px;color:var(--muted-2);margin-top:2px;}
+.dm-app-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-top:14px;}
+.dm-app-card{margin-top:8px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;justify-content:space-between;align-items:center;}
+.dm-app-card strong{font-size:12px;}
+.dm-app-card span{font-size:9.5px;color:var(--red-light);}
+.dm-app-ad{margin-top:8px;background:linear-gradient(135deg,var(--red-dim),#3a0a17);border-radius:12px;padding:12px;position:relative;overflow:hidden;}
+.dm-app-ad-text p{font-family:var(--display);font-weight:700;font-size:11.5px;line-height:1.25;position:relative;z-index:1;}
+.dm-app-ad-foot{display:flex;gap:6px;margin-top:8px;position:relative;z-index:1;}
+.dm-ad-tag{font-size:8px;background:rgba(0,0,0,.35);padding:3px 7px;border-radius:100px;}
+.dm-ad-btn{font-size:8px;background:#fff;color:#111;font-weight:700;padding:3px 8px;border-radius:100px;}
+.dm-app-tabbar{display:flex;justify-content:center;gap:34px;padding:12px 0 16px;background:#0a0a0d;}
+.dm-app-tabbar span{width:5px;height:5px;border-radius:50%;background:var(--muted-2);}
+.dm-app-tabbar span:first-child{background:var(--red-light);}
+
+.dm-notify-toast{
+  position:absolute;top:2%;left:8%;width:250px;z-index:5;
+  display:flex;gap:10px;padding:14px;border-radius:14px;
+  background:rgba(20,20,24,.85);border:1px solid var(--line-strong);backdrop-filter:blur(14px);
+  box-shadow:0 20px 50px -14px rgba(0,0,0,.6);
+  transform:translateZ(160px);
+}
+.dm-notify-icon{width:28px;height:28px;border-radius:9px;background:var(--red);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;}
+.dm-notify-head{display:flex;justify-content:space-between;font-size:11px;}
+.dm-notify-head span{color:var(--muted-2);}
+.dm-notify-body p{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;}
+
+.dm-members-badge{
+  position:absolute;bottom:8%;left:0;z-index:5;
+  display:flex;align-items:center;gap:9px;padding:12px 18px;border-radius:100px;
+  background:rgba(20,20,24,.85);border:1px solid var(--line-strong);backdrop-filter:blur(14px);
+  box-shadow:0 20px 50px -14px rgba(0,0,0,.6);
+  transform:translateZ(170px);
+  color:var(--red-light);
+}
+.dm-members-badge strong{color:#fff;font-size:14px;}
+.dm-members-badge span{font-size:11.5px;color:var(--muted);}
+
+@media(max-width:1080px){
+  .dm-hero-inner{grid-template-columns:1fr;}
+  .dm-hero-visual{height:520px;margin-top:20px;}
+}
+
+.dm-hero-trust{display:flex;align-items:center;gap:18px;justify-content:center;margin:70px auto 30px;color:var(--muted-2);font-size:13px;position:relative;z-index:2;}
+.dm-hero-trust-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--line-strong));}
+.dm-hero-trust-line:last-child{background:linear-gradient(90deg,var(--line-strong),transparent);}
+
+.dm-stats-bar{
+  position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:34px 24px;
+  display:grid;grid-template-columns:repeat(6,1fr);gap:10px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:24px;backdrop-filter:blur(16px);
+}
+.dm-stat-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:0 6px;}
+.dm-stat-icon{width:38px;height:38px;border-radius:11px;background:rgba(216,35,74,.1);color:var(--red-light);display:flex;align-items:center;justify-content:center;}
+.dm-stat-item strong{font-family:var(--display);font-size:22px;display:block;}
+.dm-stat-item p{font-size:11.5px;color:var(--muted-2);margin-top:2px;}
+@media(max-width:900px){.dm-stats-bar{grid-template-columns:repeat(3,1fr);row-gap:26px;}}
+@media(max-width:520px){.dm-stats-bar{grid-template-columns:repeat(2,1fr);}}
+
+/* ==============================================================
+   WHY
+   ============================================================== */
+.dm-why{padding:150px 0 100px;position:relative;}
+.dm-why-grid{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;}
+.dm-why-head h2{font-size:clamp(30px,3.6vw,46px);margin-top:14px;line-height:1.08;}
+.dm-why-copy p{font-size:17px;line-height:1.7;color:var(--muted);}
+.dm-why-copy p + p{margin-top:22px;}
+@media(max-width:860px){.dm-why-grid{grid-template-columns:1fr;gap:26px;}}
+
+/* ==============================================================
+   FEATURES
+   ============================================================== */
+.dm-features{padding:60px 0 130px;}
+.dm-features-grid{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.dm-feature-card{padding:32px 26px;transition:transform .5s var(--ease), border-color .5s var(--ease);}
+.dm-feature-card:hover{transform:translateY(-8px);border-color:rgba(216,35,74,.4);}
+.plan-icon{width:52px;height:52px;border-radius:14px;background:rgba(216,35,74,.1);color:var(--red-light);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.dm-feature-card h3{font-size:19px;margin-bottom:12px;}
+.dm-feature-card p{font-size:14px;line-height:1.6;color:var(--muted);}
+@media(max-width:1080px){.dm-features-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.dm-features-grid{grid-template-columns:1fr;}}
+
+/* ==============================================================
+   STAY AHEAD
+   ============================================================== */
+.dm-ahead{padding:60px 0 130px;background:linear-gradient(180deg, transparent, rgba(255,255,255,.015) 20%, transparent 80%);}
+.dm-ahead-head{max-width:640px;margin:0 auto 60px;text-align:center;padding:0 40px;}
+.dm-ahead-head h2{font-size:clamp(30px,3.6vw,46px);line-height:1.08;}
+.dm-ahead-head p{margin-top:16px;font-size:17px;color:var(--muted);}
+.dm-ahead-grid{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.dm-ahead-item{padding:30px 24px;}
+.dm-ahead-num{font-family:var(--display);font-size:14px;color:var(--red-light);font-weight:700;}
+.dm-ahead-item h4{font-size:18px;margin:16px 0 10px;}
+.dm-ahead-item p{font-size:13.5px;line-height:1.6;color:var(--muted);}
+@media(max-width:1080px){.dm-ahead-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.dm-ahead-grid{grid-template-columns:1fr;}}
+
+/* ==============================================================
+   BIG STAT
+   ============================================================== */
+.dm-stat{position:relative;padding:150px 40px;text-align:center;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.35;}
+.blob-1{width:500px;height:500px;background:var(--red);top:-20%;left:10%;}
+.blob-2{width:400px;height:400px;background:var(--red-dim);bottom:-20%;right:10%;}
+.dm-stat-lead{position:relative;z-index:1;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+.dm-stat-big{position:relative;z-index:1;margin-top:18px;font-family:var(--display);font-weight:800;font-size:clamp(80px,16vw,220px);line-height:1;
+  background:linear-gradient(160deg,#fff, var(--red-light) 130%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.dm-stat-unit{font-size:.5em;}
+.dm-stat-cap{position:relative;z-index:1;margin-top:12px;color:var(--muted);font-size:16px;}
+
+/* ==============================================================
+   GALLERY
+   ============================================================== */
+.dm-gallery{padding:60px 0 130px;}
+.dm-gallery-grid{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.dm-gallery-item{
+  border:none;padding:0;cursor:pointer;border-radius:16px;overflow:hidden;aspect-ratio:1;
+  background:var(--panel-2);position:relative;border:1px solid var(--line);
+  transition:transform .5s var(--ease);
+}
+.dm-gallery-item:hover{transform:scale(1.04);}
+.dm-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease), filter .6s var(--ease);filter:saturate(1.05) contrast(1.02);}
+.dm-gallery-item:hover img{transform:scale(1.08);}
+@media(max-width:1080px){.dm-gallery-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.dm-gallery-grid{grid-template-columns:repeat(2,1fr);}}
+
+.dm-lightbox{position:fixed;inset:0;z-index:400;background:rgba(2,2,3,.92);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:40px;}
+.dm-lightbox.open{display:flex;}
+.dm-lightbox img{max-width:90vw;max-height:85vh;border-radius:16px;}
+.dm-lightbox-close{position:absolute;top:26px;right:34px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--line-strong);color:#fff;font-size:22px;cursor:pointer;}
+
+/* ==============================================================
+   CTA
+   ============================================================== */
+.dm-cta{position:relative;text-align:center;padding:160px 40px;overflow:hidden;}
+.dm-cta h2{font-size:clamp(38px,5.4vw,68px);line-height:1.03;position:relative;z-index:1;}
+.dm-cta p{position:relative;z-index:1;max-width:480px;margin:22px auto 40px;color:var(--muted);font-size:17px;line-height:1.6;}
+.dm-cta .glow-btn{position:relative;z-index:1;padding:19px 40px;font-size:16px;}
+
+/* ==============================================================
+   FOOTER
+   ============================================================== */
+.footer{border-top:1px solid var(--line);padding:80px 0 30px;}
+.footer-container{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .logo{font-size:22px;}
+.footer-brand p{margin-top:16px;color:var(--muted);font-size:14px;line-height:1.6;max-width:280px;}
+.footer-socials{display:flex;gap:16px;margin-top:22px;}
+.footer-socials a{font-size:13px;color:var(--muted-2);transition:color .3s;}
+.footer-socials a:hover{color:var(--red-light);}
+.footer-links h4{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-2);margin-bottom:18px;}
+.footer-links{display:flex;flex-direction:column;gap:12px;}
+.footer-links a{font-size:14.5px;color:var(--muted);transition:color .3s;}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{max-width:1280px;margin:60px auto 0;padding:24px 40px 0;border-top:1px solid var(--line);color:var(--muted-2);font-size:13px;}
+@media(max-width:800px){.footer-container{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.footer-container{grid-template-columns:1fr;}}
+
+/* ==============================================================
+   OUR COMPETITIVE ADVANTAGES
+   ============================================================== */
+.ca-section{
+  position:relative;
+  min-height:100vh;
+  background:var(--void);
+  padding:64px 0 0;
+  overflow:hidden;
+}
+.ca-bg{position:absolute;inset:0;z-index:0;}
+.ca-radial{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;}
+.ca-radial-1{width:620px;height:620px;left:-180px;top:60px;background:radial-gradient(circle, var(--red-glow), transparent 70%);opacity:.32;}
+.ca-radial-2{width:480px;height:480px;right:-160px;bottom:0;background:radial-gradient(circle, rgba(216,35,74,.24), transparent 70%);opacity:.35;}
+
+.ca-wrap{
+  position:relative;z-index:2;
+  max-width:1500px;margin:0 auto;padding:0 40px;
+  display:grid;grid-template-columns:.66fr 1.34fr;gap:44px;
+  align-items:start;
+}
+
+.ca-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--red-light);
+}
+.ca-eyebrow::before, .ca-eyebrow::after{content:'';width:22px;height:1px;background:var(--red-light);opacity:.7;}
+
+.ca-heading{
+  font-family:var(--display);
+  font-weight:800;
+  letter-spacing:-.025em;
+  line-height:.96;
+  font-size:clamp(38px, 3.6vw, 56px);
+  margin:16px 0 0;
+}
+.ca-line{display:block;overflow:hidden;}
+.ca-line span{display:inline-block;transform:translateY(110%);transition:transform .9s var(--ease);transition-delay:var(--rd,0s);}
+.ca-heading.in-view .ca-line span{transform:translateY(0);}
+.ca-line.ca-accent span{color:var(--red);}
+
+.ca-sub{
+  margin:20px 0 0;max-width:340px;
+  font-size:15px;line-height:1.6;color:var(--muted);
+}
+.ca-accent-text{color:var(--red);font-weight:700;}
+
+.ca-visual{
+  position:relative;margin-top:40px;
+  height:min(520px, 62vw);
+}
+.ca-geo{position:absolute;left:-8%;top:6%;width:130%;height:96%;z-index:1;opacity:.9;}
+.ca-visual-glow{
+  position:absolute;left:2%;right:2%;bottom:0;height:55%;
+  background:radial-gradient(ellipse at center, var(--red-glow), transparent 72%);
+  filter:blur(26px);z-index:1;animation:caPulseGlow 5s ease-in-out infinite;
+}
+@keyframes caPulseGlow{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
+
+.ca-photo-frame{
+  position:absolute;inset:0 8% 0 0;z-index:2;
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  will-change:transform;
+}
+.ca-figure{width:min(92%, 360px);filter:drop-shadow(0 30px 46px rgba(0,0,0,.6));display:block;}
+
+.ca-badge{
+  position:absolute;right:2%;bottom:6%;z-index:4;
+  display:flex;align-items:center;gap:14px;
+  padding:15px 20px;border-radius:16px;
+  background:linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border:1px solid var(--line-strong);
+  backdrop-filter:blur(18px);
+  box-shadow:0 18px 40px -12px rgba(0,0,0,.6);
+}
+.ca-badge-icon{
+  width:40px;height:40px;flex:0 0 auto;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(216,35,74,.14);color:var(--red-light);
+  box-shadow:inset 0 0 0 1px rgba(216,35,74,.3);
+}
+.ca-badge-icon svg{width:19px;height:19px;}
+.ca-badge strong{display:block;font-family:var(--display);font-size:21px;font-weight:800;line-height:1;}
+.ca-badge span{display:block;margin-top:4px;font-size:12px;color:var(--muted);line-height:1.3;}
+
+.ca-right{position:relative;}
+.ca-connector{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;pointer-events:none;}
+.ca-connector path{fill:none;stroke:url(#caLineGrad);stroke-width:1.6;stroke-linecap:round;}
+.ca-connector .ca-flow{stroke:var(--red-light);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:6 14;filter:drop-shadow(0 0 6px var(--red-glow));animation:caDash 2.6s linear infinite;}
+@keyframes caDash{to{stroke-dashoffset:-40;}}
+.ca-node-dot{fill:var(--red-light);filter:drop-shadow(0 0 8px var(--red-glow));}
+
+.ca-cards{position:relative;z-index:1;display:flex;flex-direction:column;gap:18px;}
+.ca-card{
+  position:relative;display:flex;align-items:flex-start;gap:22px;
+  padding:26px 30px;border-radius:18px;
+  background:linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+  border:1px solid var(--line);
+  backdrop-filter:blur(20px);
+  opacity:0;transform:translateY(24px);filter:blur(6px);
+  transition:opacity .9s var(--ease), transform .5s var(--ease), border-color .5s var(--ease), box-shadow .5s var(--ease), filter .9s var(--ease);
+  transition-delay:var(--rd,0s);
+}
+.ca-card.in-view{opacity:1;transform:translateY(0);filter:blur(0);}
+.ca-card:hover{
+  transform:translateY(-5px) !important;
+  border-color:rgba(216,35,74,.4);
+  box-shadow:0 22px 46px -18px rgba(216,35,74,.35);
+}
+.ca-card-icon{
+  position:relative;flex:0 0 auto;width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(216,35,74,.08);
+  box-shadow:inset 0 0 0 1px rgba(216,35,74,.35);
+}
+.ca-card-icon::before{
+  content:'';position:absolute;inset:-7px;border-radius:50%;
+  border:1px solid rgba(216,35,74,.35);
+  animation:caRing 3.2s ease-in-out infinite;
+}
+@keyframes caRing{0%,100%{opacity:.3;transform:scale(.94);}50%{opacity:.85;transform:scale(1.05);}}
+.ca-card-icon svg{width:22px;height:22px;stroke:var(--red-light);position:relative;z-index:1;}
+
+.ca-card-body{flex:1 1 auto;min-width:0;padding-right:36px;}
+.ca-card-body p{margin:0;font-size:16.5px;line-height:1.55;color:var(--white);}
+.ca-card-bar{display:block;margin-top:15px;width:100%;max-width:220px;height:2px;border-radius:2px;background:var(--line);position:relative;overflow:hidden;}
+.ca-card-bar::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:0%;border-radius:2px;
+  background:linear-gradient(90deg, var(--red), var(--red-light));
+  transition:width 1.4s var(--ease);
+}
+.ca-card.in-view .ca-card-bar::after{width:42%;}
+
+.ca-card-num{
+  position:absolute;right:24px;top:16px;
+  font-family:var(--display);font-weight:800;font-size:26px;
+  color:rgba(255,255,255,.07);letter-spacing:0;
+}
+
+.ca-stats{
+  position:relative;z-index:2;
+  max-width:1500px;margin:44px auto 0;padding:0 40px 64px;
+}
+.ca-stats-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  padding:26px 8px;border-radius:20px;
+  background:linear-gradient(160deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+  border:1px solid var(--line);backdrop-filter:blur(20px);
+  opacity:0;transform:translateY(20px);
+  transition:opacity .9s var(--ease), transform .9s var(--ease);
+}
+.ca-stats-grid.in-view{opacity:1;transform:translateY(0);}
+.ca-stat{
+  display:flex;align-items:center;gap:13px;
+  padding:6px 22px;
+}
+.ca-stat-icon{
+  flex:0 0 auto;width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(216,35,74,.12);box-shadow:inset 0 0 0 1px rgba(216,35,74,.3);
+}
+.ca-stat-icon svg{width:20px;height:20px;stroke:var(--red-light);}
+.ca-stat strong{display:block;font-family:var(--display);font-size:22px;font-weight:800;line-height:1.1;}
+.ca-stat p{margin:3px 0 0;font-size:12px;line-height:1.3;color:var(--muted);}
+
+@media (max-width:1080px){
+  .ca-wrap{grid-template-columns:1fr;gap:56px;}
+  .ca-connector{display:none;}
+  .ca-visual{max-width:420px;margin:0 auto;}
+  .ca-photo-frame{inset:0;justify-content:center;}
+  .ca-stats-grid{grid-template-columns:repeat(3,1fr);row-gap:22px;}
+}
+@media (max-width:640px){
+  .ca-wrap{padding:0 22px;}
+  .ca-card{padding:22px 20px;gap:14px;}
+  .ca-card-num{display:none;}
+  .ca-card-body{padding-right:0;}
+  .ca-stats{padding:0 22px 60px;}
+  .ca-stats-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
 </head>
 <body>
 
 <header class="navbar">
   <div class="nav-container">
-    <a href="index.html" class="logo">
-      <img src="assets/image/gymshim-logo-navbar.png" alt="Gymshim" class="logo-img">
-    </a>
+    <a href="index.html" class="logo">GYM<span>SHIM</span></a>
 
     <nav class="nav-links" id="navLinks">
       <a href="index.html#plans">Business Booster</a>
-      <!-- <a href="workout.html">Workout+</a>
-      <a href="sales-kiosk.html">Sales Kiosk</a> -->
       <div class="nav-dropdown" id="servicesDropdown">
         <button type="button" class="nav-dropdown-toggle" id="servicesToggle" aria-haspopup="true" aria-expanded="false">
-         Products & Services <span class="nav-dropdown-caret">&#9662;</span>
+          Products &amp; Services <span class="nav-dropdown-caret">&#9662;</span>
         </button>
       </div>
       <a href="about.html">About Us</a>
@@ -37,7 +747,7 @@
     </nav>
 
     <div class="nav-actions">
-      <a href="booking.html" class="btn-primary">Book a Demo</a>
+      <a href="booking.html" class="glow-btn">Book a Demo</a>
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -45,18 +755,11 @@
   </div>
 </header>
 
-
-</header>
-
-<div class="services-overlay" id="servicesOverlay" aria-hidden="true" data-lenis-prevent>
+<div class="services-overlay" id="servicesOverlay" aria-hidden="true">
   <div class="services-overlay-backdrop" id="servicesOverlayBackdrop"></div>
 
   <div class="services-mega-panel" role="dialog" aria-modal="true" aria-labelledby="servicesOverlayTitle">
-    <button type="button" class="services-overlay-close" id="servicesOverlayClose" aria-label="Close">
-      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-        <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
+    <button type="button" class="services-overlay-close" id="servicesOverlayClose" aria-label="Close">&times;</button>
 
     <div class="services-mega-top">
       <div class="services-mega-head">
@@ -65,44 +768,25 @@
         <p class="services-mega-sub">One ecosystem. Four powerful products.</p>
       </div>
       <div class="services-mega-trust">
-        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="currentColor"/></svg>
-        Trusted by <strong>5000+</strong> gyms across India
+        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="currentColor"/></svg>
+        Trusted by <strong>&nbsp;5000+&nbsp;</strong> gyms across India
       </div>
     </div>
 
     <div class="services-mega-grid">
-
       <a href="workout.html" class="services-mega-card" data-glow="pink">
         <span class="services-mega-num">01</span>
         <span class="services-mega-icon-wrap">
           <span class="services-mega-icon-floor"></span>
           <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
-            <defs>
-              <linearGradient id="gradWorkout" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ff8fa3"/><stop offset="100%" stop-color="#d8234a"/>
-              </linearGradient>
-            </defs>
-            <circle cx="12" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/>
-            <circle cx="52" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/>
-            <rect x="18" y="28" width="28" height="8" rx="4" fill="url(#gradWorkout)"/>
-            <rect x="8" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/>
-            <rect x="50" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/>
+            <defs><linearGradient id="gradWorkout" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff8fa3"/><stop offset="100%" stop-color="#d8234a"/></linearGradient></defs>
+            <circle cx="12" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/><circle cx="52" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/><rect x="18" y="28" width="28" height="8" rx="4" fill="url(#gradWorkout)"/><rect x="8" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/><rect x="50" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/>
           </svg>
         </span>
-        <div class="services-mega-card-headrow">
-          <h3>Workout+</h3>
-          <span class="services-mega-badge">AI Powered</span>
-        </div>
+        <div class="services-mega-card-headrow"><h3>Workout+</h3><span class="services-mega-badge">AI Powered</span></div>
         <p class="services-mega-desc">AI-guided workout experience for every member.</p>
-        <ul class="services-mega-features">
-          <li>Personalized Workouts</li>
-          <li>Exercise Library</li>
-          <li>Progress Tracking</li>
-          <li>Smart Analytics</li>
-        </ul>
-        <span class="services-mega-explore">Explore Workout+
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <ul class="services-mega-features"><li>Personalized Workouts</li><li>Exercise Library</li><li>Progress Tracking</li><li>Smart Analytics</li></ul>
+        <span class="services-mega-explore">Explore Workout+ <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
       <a href="gos.html" class="services-mega-card" data-glow="cyan">
@@ -110,33 +794,14 @@
         <span class="services-mega-icon-wrap">
           <span class="services-mega-icon-floor"></span>
           <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
-            <defs>
-              <linearGradient id="gradGosTop" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#7ee8f2"/><stop offset="100%" stop-color="#22d3ee"/>
-              </linearGradient>
-              <linearGradient id="gradGosSide" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0e9aad"/><stop offset="100%" stop-color="#0b7e8e"/>
-              </linearGradient>
-            </defs>
-            <polygon points="32,6 54,18 32,30 10,18" fill="url(#gradGosTop)"/>
-            <polygon points="10,18 32,30 32,54 10,42" fill="url(#gradGosSide)"/>
-            <polygon points="54,18 32,30 32,54 54,42" fill="#0a6d7a"/>
+            <defs><linearGradient id="gradGosTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ee8f2"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient><linearGradient id="gradGosSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e9aad"/><stop offset="100%" stop-color="#0b7e8e"/></linearGradient></defs>
+            <polygon points="32,6 54,18 32,30 10,18" fill="url(#gradGosTop)"/><polygon points="10,18 32,30 32,54 10,42" fill="url(#gradGosSide)"/><polygon points="54,18 32,30 32,54 54,42" fill="#0a6d7a"/>
           </svg>
         </span>
-        <div class="services-mega-card-headrow">
-          <h3>GOS (Gym Operating System)</h3>
-          <span class="services-mega-badge">All-in-One</span>
-        </div>
+        <div class="services-mega-card-headrow"><h3>GOS (Gym Operating System)</h3><span class="services-mega-badge">All-in-One</span></div>
         <p class="services-mega-desc">Complete gym management system for seamless operations.</p>
-        <ul class="services-mega-features">
-          <li>Member Management</li>
-          <li>Attendance Tracking</li>
-          <li>Payments &amp; Billing</li>
-          <li>Reports &amp; Analytics</li>
-        </ul>
-        <span class="services-mega-explore">Explore GOS
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <ul class="services-mega-features"><li>Member Management</li><li>Attendance Tracking</li><li>Payments &amp; Billing</li><li>Reports &amp; Analytics</li></ul>
+        <span class="services-mega-explore">Explore GOS <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
       <a href="sales-kiosk.html" class="services-mega-card" data-glow="purple">
@@ -144,31 +809,14 @@
         <span class="services-mega-icon-wrap">
           <span class="services-mega-icon-floor"></span>
           <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
-            <defs>
-              <linearGradient id="gradKiosk" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#c9a8ff"/><stop offset="100%" stop-color="#9b5cff"/>
-              </linearGradient>
-            </defs>
-            <rect x="14" y="8" width="36" height="26" rx="4" fill="none" stroke="url(#gradKiosk)" stroke-width="3.5"/>
-            <rect x="19" y="13" width="26" height="16" rx="2" fill="url(#gradKiosk)" opacity="0.25"/>
-            <rect x="28" y="38" width="8" height="10" fill="url(#gradKiosk)"/>
-            <rect x="20" y="48" width="24" height="5" rx="2.5" fill="url(#gradKiosk)" opacity="0.6"/>
+            <defs><linearGradient id="gradKiosk" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c9a8ff"/><stop offset="100%" stop-color="#9b5cff"/></linearGradient></defs>
+            <rect x="14" y="8" width="36" height="26" rx="4" fill="none" stroke="url(#gradKiosk)" stroke-width="3.5"/><rect x="19" y="13" width="26" height="16" rx="2" fill="url(#gradKiosk)" opacity="0.25"/><rect x="28" y="38" width="8" height="10" fill="url(#gradKiosk)"/><rect x="20" y="48" width="24" height="5" rx="2.5" fill="url(#gradKiosk)" opacity="0.6"/>
           </svg>
         </span>
-        <div class="services-mega-card-headrow">
-          <h3>Sales Kiosk</h3>
-          <span class="services-mega-badge">Self-Service</span>
-        </div>
+        <div class="services-mega-card-headrow"><h3>Sales Kiosk</h3><span class="services-mega-badge">Self-Service</span></div>
         <p class="services-mega-desc">Self-service touchscreen that closes memberships on the spot.</p>
-        <ul class="services-mega-features">
-          <li>Instant Signups</li>
-          <li>Digital Payments</li>
-          <li>Receipt Printing</li>
-          <li>Offers &amp; Upsells</li>
-        </ul>
-        <span class="services-mega-explore">Explore Sales Kiosk
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <ul class="services-mega-features"><li>Instant Signups</li><li>Digital Payments</li><li>Receipt Printing</li><li>Offers &amp; Upsells</li></ul>
+        <span class="services-mega-explore">Explore Sales Kiosk <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
       <a href="digital-marketing.html" class="services-mega-card" data-glow="orange">
@@ -176,146 +824,133 @@
         <span class="services-mega-icon-wrap">
           <span class="services-mega-icon-floor"></span>
           <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
-            <defs>
-              <linearGradient id="gradAd" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ffc38a"/><stop offset="100%" stop-color="#ff8a3d"/>
-              </linearGradient>
-            </defs>
-            <rect x="10" y="26" width="14" height="12" rx="2" fill="url(#gradAd)"/>
-            <path d="M24 24 L42 14 V50 L24 40 Z" fill="url(#gradAd)"/>
-            <rect x="15" y="38" width="5" height="12" rx="1.5" fill="url(#gradAd)" opacity="0.7"/>
-            <path d="M46 22a10 10 0 010 20" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round"/>
-            <path d="M50 16a17 17 0 010 32" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+            <defs><linearGradient id="gradAd" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffc38a"/><stop offset="100%" stop-color="#ff8a3d"/></linearGradient></defs>
+            <rect x="10" y="26" width="14" height="12" rx="2" fill="url(#gradAd)"/><path d="M24 24 L42 14 V50 L24 40 Z" fill="url(#gradAd)"/><rect x="15" y="38" width="5" height="12" rx="1.5" fill="url(#gradAd)" opacity="0.7"/><path d="M46 22a10 10 0 010 20" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round"/><path d="M50 16a17 17 0 010 32" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
           </svg>
         </span>
-        <div class="services-mega-card-headrow">
-          <h3>Advertisement</h3>
-          <span class="services-mega-badge">Grow Faster</span>
-        </div>
+        <div class="services-mega-card-headrow"><h3>Advertisement</h3><span class="services-mega-badge">Grow Faster</span></div>
         <p class="services-mega-desc">Digital marketing solutions to bring more members to your gym.</p>
-        <ul class="services-mega-features">
-          <li>Social Media Ads</li>
-          <li>WhatsApp Campaigns</li>
-          <li>Performance Boost</li>
-          <li>Lead Generation</li>
-        </ul>
-        <span class="services-mega-explore">Explore Advertisement
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <ul class="services-mega-features"><li>Social Media Ads</li><li>WhatsApp Campaigns</li><li>Performance Boost</li><li>Lead Generation</li></ul>
+        <span class="services-mega-explore">Explore Advertisement <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
-
     </div>
 
     <div class="services-mega-divider"></div>
 
     <div class="services-mega-footer">
-      <div class="services-mega-foot-item">
-        <span class="services-mega-foot-icon">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>
-        </span>
-        <span class="services-mega-foot-text"><strong>Secure &amp; Reliable</strong>Enterprise-grade security</span>
-      </div>
-      <div class="services-mega-foot-item">
-        <span class="services-mega-foot-icon">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 18a4 4 0 01-1-7.9A5.5 5.5 0 0117 9a4.5 4.5 0 011 8.9"/></svg>
-        </span>
-        <span class="services-mega-foot-text"><strong>Always Updated</strong>Latest features &amp; updates</span>
-      </div>
-      <div class="services-mega-foot-item">
-        <span class="services-mega-foot-icon">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15v-3a8 8 0 0116 0v3"/><path d="M4 15a2 2 0 002 2h1v-5H6a2 2 0 00-2 2zM20 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2z"/></svg>
-        </span>
-        <span class="services-mega-foot-text"><strong>24/7 Support</strong>We're here for you</span>
-      </div>
-      <div class="services-mega-foot-item">
-        <span class="services-mega-foot-icon">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L6 22l6-3 6 3-2.5-9.5"/></svg>
-        </span>
-        <span class="services-mega-foot-text"><strong>Made in India</strong>For gyms, by gym experts</span>
-      </div>
+      <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg><span class="services-mega-foot-text"><strong>Secure &amp; Reliable</strong>Enterprise-grade security</span></div>
+      <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 18a4 4 0 01-1-7.9A5.5 5.5 0 0117 9a4.5 4.5 0 011 8.9"/></svg><span class="services-mega-foot-text"><strong>Always Updated</strong>Latest features &amp; updates</span></div>
+      <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15v-3a8 8 0 0116 0v3"/><path d="M4 15a2 2 0 002 2h1v-5H6a2 2 0 00-2 2zM20 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2z"/></svg><span class="services-mega-foot-text"><strong>24/7 Support</strong>We're here for you</span></div>
+      <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L6 22l6-3 6 3-2.5-9.5"/></svg><span class="services-mega-foot-text"><strong>Made in India</strong>For gyms, by gym experts</span></div>
     </div>
-
   </div>
 </div>
 
-
-
-
-
 <!-- ============================================================
-     HERO — signature visual: "Mindshare Radar". A phone showing a
-     boosted gym post sits at the centre of the 2km mindshare zone
-     from Gymshim's own positioning copy; leads ping in around it
-     and a live counter ticks up, in the site's red/white gradient.
+     HERO
      ============================================================ -->
 <section class="dm-hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
+  <div class="dm-hero-bg" aria-hidden="true">
+    <div class="dm-hero-vignette"></div>
+    <div class="dm-hero-floor"></div>
+    <div class="dm-beam"></div>
+    <div class="dm-beam dm-beam-2"></div>
+  </div>
 
-  <div class="dm-hero-grid">
+  <div class="dm-hero-inner">
     <div class="dm-hero-copy reveal-up">
-      <span class="hero-tag">Gymshim Digital Marketing</span>
-      <h1>Reach your target audience</h1>
-      <div class="dm-swap" aria-hidden="true">
-        <span>at the right time</span>
-        <span>with the right message</span>
-        <span>before they pick someone else</span>
+      <p class="eyebrow dm-hero-eyebrow">Gymshim Partnership</p>
+      <h1 class="dm-hero-title">The infinite benefits of partnering with<br><span class="accent">GYMSHIM</span><br>Business Booster</h1>
+      <p class="dm-hero-p">Unlock endless growth opportunities and connect with India&rsquo;s most engaged fitness audience.</p>
+
+      <div class="dm-hero-points">
+        <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>High Visibility</strong><p>Inside Gyms</p></div></div>
+        <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.2 13.3c2.9.4 4.8 2.7 4.8 5.7"/></svg></span><div><strong>Targeted Reach</strong><p>Fitness Audience</p></div></div>
+        <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></span><div><strong>Brand Growth</strong><p>Beyond Limits</p></div></div>
+        <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg></span><div><strong>Measurable Impact</strong><p>Real Results</p></div></div>
       </div>
-      <p class="dm-hero-p">Members don't choose a gym on price alone anymore — they choose the brand that shows up in the right feed, at the right moment, with something worth stopping for. That's the gap we close, post by post.</p>
+
       <div class="dm-hero-ctas">
-        <a href="booking.html" class="btn-primary dm-magnetic">Book a Demo</a>
-        <a href="#dm-why" class="btn-secondary dm-magnetic">See how it works
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+        <a href="#dm-why" class="glow-btn">Explore Media Offerings <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <button type="button" class="dm-watch-btn"><span class="dm-watch-play">&#9654;</span> Watch Overview Video</button>
       </div>
     </div>
 
-    <div class="dm-radar reveal-up" id="dmRadar" style="--reveal-delay:.15s">
-      <div class="dm-radar-grid" aria-hidden="true"></div>
+    <div class="dm-hero-visual reveal-up" id="dmHeroVisual" style="--reveal-delay:.15s">
+      <div class="dm-hero-visual-inner" id="dmHeroVisualInner">
 
-      <div class="dm-ring r1"></div>
-      <div class="dm-ring r2"></div>
-      <div class="dm-ring r3"><span class="dm-ring-label">2km mindshare zone</span></div>
-
-      <div class="dm-leads-badge" id="dmLeadsBadge">
-        <span class="dm-leads-dot"></span>
-        <span><strong id="dmLeadsCount">0</strong> leads today</span>
-      </div>
-
-      <div class="dm-phone" id="dmPhone">
-        <div class="dm-phone-notch"></div>
-        <div class="dm-phone-screen">
-          <div class="dm-post-head">
-            <span class="dm-post-avatar">GS</span>
-            <div>
-              <p class="dm-post-name">gymshim_gos</p>
-              <p class="dm-post-sponsor">Sponsored</p>
-            </div>
+        <div class="dm-notify-toast">
+          <span class="dm-notify-icon">G</span>
+          <div class="dm-notify-body">
+            <div class="dm-notify-head"><strong>GYMSHIM</strong><span>now</span></div>
+            <p>&#9889; New Year Offer! Get Up to 25% OFF on Premium Supplements.</p>
           </div>
-          <div class="dm-post-media">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h2l2-6 3 12 2-9 2 5h5"/></svg>
-          </div>
-          <div class="dm-post-actions">
-            <span>&#9825;</span><span>&#9998;</span><span>&#8635;</span>
-          </div>
-          <p class="dm-post-caption"><strong>gymshim_gos</strong> First 20 sign-ups this month get a free PT session &rarr;</p>
         </div>
-      </div>
 
-      <div class="dm-pin" id="dmPin1" style="--px: 14%; --py: 24%;"><span class="dm-pin-tag">+1 lead</span></div>
-      <div class="dm-pin" id="dmPin2" style="--px: 78%; --py: 18%;"><span class="dm-pin-tag">+1 lead</span></div>
-      <div class="dm-pin" id="dmPin3" style="--px: 82%; --py: 70%;"><span class="dm-pin-tag">+1 lead</span></div>
-      <div class="dm-pin" id="dmPin4" style="--px: 10%; --py: 74%;"><span class="dm-pin-tag">+1 lead</span></div>
-      <div class="dm-pin" id="dmPin5" style="--px: 50%; --py: 6%;"><span class="dm-pin-tag">+1 lead</span></div>
+        <div class="dm-ad-billboard">
+          <div class="dm-ad-billboard-text">
+            <p>PUSH BEYOND<br><span class="accent" style="background:none;-webkit-text-fill-color:#ff5273;">LIMITS.</span></p>
+            <p class="dm-ad-billboard-sub">YOUR BRAND &middot; OUR COMMUNITY &middot; UNLIMITED IMPACT</p>
+          </div>
+        </div>
+
+        <div class="dm-ad-kiosk">
+          <div class="dm-ad-kiosk-screen">
+            <span class="dm-ad-kiosk-brand">GYMSHIM</span>
+            <p class="dm-ad-kiosk-copy">YOUR BRAND.<br>THE RIGHT PLACE.<br>THE RIGHT TIME.<br><span class="accent">MAXIMUM IMPACT.</span></p>
+            <div class="dm-ad-kiosk-foot"><p>ADVERTISE INSIDE GYMS.<br>GROW OUTSIDE LIMITS.</p></div>
+          </div>
+          <div class="dm-ad-kiosk-base"></div>
+        </div>
+
+        <div class="dm-app-phone">
+          <div class="dm-app-frame">
+            <div class="dm-app-notch"></div>
+            <div class="dm-app-screen">
+              <p class="dm-app-greet">Hello, Rohan &#128075;</p>
+              <p class="dm-app-sub">Keep pushing your limits!</p>
+              <p class="dm-app-label">Today&rsquo;s Workout</p>
+              <div class="dm-app-card"><strong>Chest &amp; Triceps</strong><span>Gymshim</span></div>
+              <p class="dm-app-label">Sponsored</p>
+              <div class="dm-app-ad">
+                <div class="dm-app-ad-text">
+                  <p>FUEL YOUR STRENGTH<br><span class="accent">OWN YOUR DAY.</span></p>
+                  <div class="dm-app-ad-foot"><span class="dm-ad-tag">UPTO 30% OFF</span><span class="dm-ad-btn">SHOP NOW</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="dm-app-tabbar"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="dm-members-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.2 13.3c2.9.4 4.8 2.7 4.8 5.7"/></svg>
+          <strong>100K+</strong><span>Active Members</span>
+        </div>
+
+      </div>
     </div>
+  </div>
+
+  <div class="dm-hero-trust reveal-up">
+    <span class="dm-hero-trust-line"></span><span>Trusted by leading brands &amp; gyms</span><span class="dm-hero-trust-line"></span>
+  </div>
+
+  <div class="dm-stats-bar reveal-up wrap" style="padding:34px 24px;">
+    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></span><div><strong>150+</strong><p>Partner Gyms</p></div></div>
+    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.2 13.3c2.9.4 4.8 2.7 4.8 5.7"/></svg></span><div><strong>100K+</strong><p>Active Members</p></div></div>
+    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>10M+</strong><p>Monthly Impressions</p></div></div>
+    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 5v14l11-7z"/></svg></span><div><strong>1M+</strong><p>Ad Plays / Month</p></div></div>
+    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></span><div><strong>85%+</strong><p>Engagement Rate</p></div></div>
+    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.2 7-11.5A7 7 0 105 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span><div><strong>75+</strong><p>Cities Across India</p></div></div>
   </div>
 </section>
 
-<!-- WHY DIGITAL MARKETING -->
+<!-- WHY -->
 <section class="dm-why" id="dm-why">
   <div class="dm-why-grid">
     <div class="dm-why-head reveal-up">
-      <span class="hero-tag">Why it matters</span>
+      <span class="eyebrow">Why it matters</span>
       <h2>Why digital<br>marketing?</h2>
     </div>
     <div class="dm-why-copy">
@@ -325,39 +960,30 @@
   </div>
 </section>
 
-<!-- FEATURE GRID -->
+<!-- FEATURES -->
 <section class="dm-features">
   <div class="section-header reveal-up">
-    <span class="hero-tag">What you get</span>
+    <span class="eyebrow">What you get</span>
     <h2>Four ways we get you seen</h2>
   </div>
-
   <div class="dm-features-grid">
     <div class="glass-card dm-feature-card reveal-up">
-      <div class="plan-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11v2a1 1 0 001 1h3l5 4V6l-5 4H4a1 1 0 00-1 1z"/><path d="M16 8a5 5 0 010 8M19 5a9 9 0 010 14"/></svg>
-      </div>
+      <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11v2a1 1 0 001 1h3l5 4V6l-5 4H4a1 1 0 00-1 1z"/><path d="M16 8a5 5 0 010 8M19 5a9 9 0 010 14"/></svg></div>
       <h3>Paid boosting</h3>
       <p>We put your gym's posts in front of people who don't follow you yet — filtered to match what your brand actually stands for, so reach isn't wasted on the wrong crowd.</p>
     </div>
-    <div class="glass-card dm-feature-card reveal-up">
-      <div class="plan-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
-      </div>
+    <div class="glass-card dm-feature-card reveal-up" style="--reveal-delay:.08s">
+      <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
       <h3>Captivating design</h3>
       <p>Our designers, copywriters and content creators build posts made to stop a scroll — leaving a clear, likeable impression of your gym in a stranger's mind.</p>
     </div>
-    <div class="glass-card dm-feature-card reveal-up">
-      <div class="plan-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
-      </div>
+    <div class="glass-card dm-feature-card reveal-up" style="--reveal-delay:.16s">
+      <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
       <h3>Brand positioning</h3>
       <p>Ads placed with the right audience in mind do more work per rupee. Sharp positioning keeps your gym relevant and ahead of the one down the road.</p>
     </div>
-    <div class="glass-card dm-feature-card reveal-up">
-      <div class="plan-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2a5 5 0 00-5 5c0 3 2 4 2 7a3 3 0 006 0c0-3 2-4 2-7a5 5 0 00-5-5z"/><path d="M9 21h6"/></svg>
-      </div>
+    <div class="glass-card dm-feature-card reveal-up" style="--reveal-delay:.24s">
+      <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2a5 5 0 00-5 5c0 3 2 4 2 7a3 3 0 006 0c0-3 2-4 2-7a5 5 0 00-5-5z"/><path d="M9 21h6"/></svg></div>
       <h3>Mindshare</h3>
       <p>We build awareness of your brand within a 2km radius of your gym — mindshare, so yours is the name that comes to mind first when someone decides to join.</p>
     </div>
@@ -376,17 +1002,17 @@
       <h4>Cost effective</h4>
       <p>Small gym businesses run on tight budgets. Digital marketing delivers results for a fraction of what conventional advertising costs.</p>
     </div>
-    <div class="glass-card dm-ahead-item reveal-up">
+    <div class="glass-card dm-ahead-item reveal-up" style="--reveal-delay:.08s">
       <span class="dm-ahead-num">02</span>
       <h4>Brand positioning</h4>
       <p>Relevant content, in front of relevant people, keeps your gym visible right up until the moment someone decides where to sign up.</p>
     </div>
-    <div class="glass-card dm-ahead-item reveal-up">
+    <div class="glass-card dm-ahead-item reveal-up" style="--reveal-delay:.16s">
       <span class="dm-ahead-num">03</span>
       <h4>Choice of Gen Z</h4>
       <p>Gen Z — born after 1995 — sources information, education and entertainment online, mostly through social media. That's where they'll find you, or won't.</p>
     </div>
-    <div class="glass-card dm-ahead-item reveal-up">
+    <div class="glass-card dm-ahead-item reveal-up" style="--reveal-delay:.24s">
       <span class="dm-ahead-num">04</span>
       <h4>Reach them directly</h4>
       <p>Your target members are typically 18–35. Around 90% of them are active on social media, spending 45+ minutes a day there on their phones.</p>
@@ -399,20 +1025,18 @@
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
   <p class="dm-stat-lead reveal-up">Get ready for the social media era</p>
-  <div class="dm-stat-big reveal-up">
-    <span id="dmStatNum">0</span><span class="dm-stat-unit">M+</span>
-  </div>
+  <div class="dm-stat-big reveal-up"><span id="dmStatNum">0</span><span class="dm-stat-unit">M+</span></div>
   <p class="dm-stat-cap reveal-up">Facebook users in India, projected</p>
 </section>
 
 <!-- GALLERY -->
 <section class="dm-gallery">
   <div class="section-header reveal-up">
-    <span class="hero-tag">Our work</span>
+    <span class="eyebrow">Our work</span>
     <h2>A glimpse of our work</h2>
   </div>
   <div class="dm-gallery-grid" id="dmGalleryGrid">
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_8f6cc94d57fd4b8c969058c47841f61d~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_8f6cc94d57fd4b8c969058c47841f61d~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_8f6cc94d57fd4b8c969058c47841f61d~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
     <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
     <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
     <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
@@ -423,7 +1047,6 @@
     <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
     <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
     <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
   </div>
 </section>
 
@@ -433,6 +1056,138 @@
   <img src="" alt="" id="dmLightboxImg">
 </div>
 
+<!-- ============================================================
+     OUR COMPETITIVE ADVANTAGES
+     ============================================================ -->
+<section class="ca-section" id="competitive-advantages">
+  <div class="ca-bg">
+    <div class="ca-radial ca-radial-1"></div>
+    <div class="ca-radial ca-radial-2"></div>
+  </div>
+
+  <div class="ca-wrap">
+
+    <!-- LEFT -->
+    <div class="ca-left">
+      <span class="ca-eyebrow">Why partner with Gymshim</span>
+
+      <h2 class="ca-heading" id="caHeading">
+        <span class="ca-line"><span>Our Competitive</span></span>
+        <span class="ca-line ca-accent"><span>Advantages</span></span>
+      </h2>
+
+      <p class="ca-sub">Technology. Experience. Trust. Everything you need to grow, all in <span class="ca-accent-text">one partner</span>.</p>
+
+      <div class="ca-visual" id="caVisual">
+        <svg class="ca-geo" viewBox="0 0 500 560" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="250,20 420,150 380,400 150,470 40,240" fill="rgba(216,35,74,.05)" stroke="rgba(216,35,74,.5)" stroke-width="1.6"/>
+          <polygon points="250,90 360,175 330,370 190,415 110,230" fill="none" stroke="rgba(216,35,74,.3)" stroke-width="1.2"/>
+          <line x1="250" y1="20" x2="250" y2="90" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
+          <line x1="420" y1="150" x2="360" y2="175" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
+          <line x1="380" y1="400" x2="330" y2="370" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
+          <line x1="150" y1="470" x2="190" y2="415" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
+          <line x1="40" y1="240" x2="110" y2="230" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
+        </svg>
+
+        <div class="ca-visual-glow"></div>
+
+        <div class="ca-photo-frame" id="caFigureHolder">
+          <img class="ca-figure" src="./assets/image/gymshim-athlete.png" alt="Gymshim athlete" loading="lazy">
+        </div>
+
+        <div class="ca-badge">
+          <span class="ca-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="10" cy="7" r="3.2"/><path d="M20.5 20v-1a3.8 3.8 0 0 0-2.8-3.66"/><path d="M15.2 4.34a3.2 3.2 0 0 1 0 6.2"/></svg>
+          </span>
+          <div>
+            <strong><span class="ca-counter" data-target="2000" data-suffix="+">0</span></strong>
+            <span>Gyms Trust<br>Gymshim</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="ca-right">
+      <svg class="ca-connector" id="caConnector"></svg>
+
+      <div class="ca-cards" id="caCards">
+
+        <article class="ca-card" style="--rd:0s" data-node>
+          <div class="ca-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.6"/><path d="M8 20h8M12 16v4"/><rect x="9" y="7" width="6" height="6" rx="1"/></svg>
+          </div>
+          <div class="ca-card-body">
+            <p>Our Gym Management Software <span class="ca-accent-text">(GYMSHIM)</span> in over <span class="ca-accent-text"><span class="ca-counter" data-target="2000" data-suffix="+">0</span></span> gyms</p>
+            <span class="ca-card-bar"></span>
+          </div>
+          <span class="ca-card-num">01</span>
+        </article>
+
+        <article class="ca-card" style="--rd:.08s" data-node>
+          <div class="ca-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><circle cx="12" cy="17.2" r="1"/><path d="M9.8 6.2h4.4"/></svg>
+          </div>
+          <div class="ca-card-body">
+            <p>Workout Plus Kiosk in <span class="ca-accent-text"><span class="ca-counter" data-target="140" data-suffix="+">0</span></span> gyms, adding ~<span class="ca-counter" data-target="15">0</span> gyms every month.</p>
+            <span class="ca-card-bar"></span>
+          </div>
+          <span class="ca-card-num">02</span>
+        </article>
+
+        <article class="ca-card" style="--rd:.16s" data-node>
+          <div class="ca-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="5"/><path d="M12 6.2l.9 1.85 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2-1.45-1.4 2-.3z"/><path d="M8.2 12.8L6 21l6-3 6 3-2.2-8.2"/></svg>
+          </div>
+          <div class="ca-card-body">
+            <p>Over <span class="ca-accent-text"><span class="ca-counter" data-target="8">0</span> years</span> of serving gyms by providing technology &amp; business solutions.</p>
+            <span class="ca-card-bar"></span>
+          </div>
+          <span class="ca-card-num">03</span>
+        </article>
+
+        <article class="ca-card" style="--rd:.24s" data-node>
+          <div class="ca-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg>
+          </div>
+          <div class="ca-card-body">
+            <p>WorkoutPlus is the <span class="ca-accent-text">ONLY</span> and first of its kind digital solution to provide member assistance and satisfaction.</p>
+            <span class="ca-card-bar"></span>
+          </div>
+          <span class="ca-card-num">04</span>
+        </article>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="ca-stats">
+    <div class="ca-stats-grid" id="caStatsGrid">
+      <div class="ca-stat">
+        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l7-4 7 4v14"/><path d="M4 21h16M9 10h1M14 10h1M9 14h1M14 14h1M10 21v-4h4v4"/></svg></span>
+        <div><strong><span class="ca-counter" data-target="2000" data-suffix="+">0</span></strong><p>Gyms Using Our Software</p></div>
+      </div>
+      <div class="ca-stat">
+        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><circle cx="12" cy="17.2" r="1"/></svg></span>
+        <div><strong><span class="ca-counter" data-target="140" data-suffix="+">0</span></strong><p>Gyms with Workout Plus Kiosk</p></div>
+      </div>
+      <div class="ca-stat">
+        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="16" rx="2"/><path d="M3.5 9h17M8 2.5v4M16 2.5v4"/></svg></span>
+        <div><strong>~<span class="ca-counter" data-target="15">0</span></strong><p>Gyms Added Every Month</p></div>
+      </div>
+      <div class="ca-stat">
+        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6z"/></svg></span>
+        <div><strong><span class="ca-counter" data-target="8" data-suffix="+">0</span></strong><p>Years of Experience in Gym Industry</p></div>
+      </div>
+      <div class="ca-stat">
+        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="10" cy="7" r="3.2"/><path d="M20.5 20v-1a3.8 3.8 0 0 0-2.8-3.66"/><path d="M15.2 4.34a3.2 3.2 0 0 1 0 6.2"/></svg></span>
+        <div><strong><span class="ca-counter" data-target="100" data-suffix="K+">0</span></strong><p>Happy Members Served</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="dm-cta">
   <div class="blob blob-1"></div>
@@ -440,148 +1195,282 @@
   <div class="reveal-up">
     <h2>Ready to fill<br>your gym floor?</h2>
     <p>Book a short demo and we'll show you what your gym's mindshare zone could look like in 30 days.</p>
-    <a href="booking.html" class="btn-primary dm-magnetic">Book a Demo</a>
+    <a href="booking.html" class="glow-btn">Book a Demo</a>
   </div>
 </section>
 
 <footer class="footer">
   <div class="footer-container">
-
     <div class="footer-brand">
       <a href="index.html" class="logo">GYMSHIM</a>
       <p>Smart solutions to grow your gym business — more walk-ins, easier conversions, better retention.</p>
-
       <div class="footer-socials">
-        <a href="https://www.linkedin.com/company/gymshim/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
-        <a href="https://www.facebook.com/GymshimSolutions" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
-        <a href="https://www.instagram.com/gymshim?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+        <a href="https://www.linkedin.com/company/gymshim/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.facebook.com/GymshimSolutions" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.instagram.com/gymshim" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </div>
-
     <div class="footer-links">
       <h4>Company</h4>
       <a href="about.html">About Us</a>
       <a href="workout.html">Workout+</a>
       <a href="contact.html">Contact</a>
     </div>
-
     <div class="footer-links">
       <h4>Services</h4>
       <a href="gos-ecosystem.html">GOS Ecosystem</a>
       <a href="gos(gym-operating-system).html">Gym Operating System</a>
       <a href="digital-marketing.html">Digital Marketing</a>
     </div>
-
     <div class="footer-links">
       <h4>Contact</h4>
       <a href="tel:+919022282340">+91 9022282340</a>
       <a href="tel:+917276160009">+91 7276160009</a>
-    <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
     </div>
-
   </div>
-
-  <div class="footer-bottom">
+  <div class="footer-bottom wrap">
     <p>© 2026 Fitlyberty Pvt Ltd. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- BOOKING MODAL — shared across every page -->
-<div class="booking-modal-overlay" id="bookingModalOverlay" aria-hidden="true">
-  <div class="booking-modal-box" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
-    <button class="booking-modal-close" id="bookingModalClose" aria-label="Close">&times;</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* Nav + services overlay */
+(() => {
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
 
-    <div class="booking-modal-head">
-      <h2 id="bookingModalTitle">Book a Demo</h2>
-      <p id="bookingModalSubtitle">Pick a date and time that works for you.</p>
-    </div>
+  const servicesToggle = document.getElementById('servicesToggle');
+  const servicesOverlay = document.getElementById('servicesOverlay');
+  const servicesOverlayBackdrop = document.getElementById('servicesOverlayBackdrop');
+  const servicesOverlayClose = document.getElementById('servicesOverlayClose');
 
-    <div class="booking-step-indicator">
-      <span class="step-dot active" id="stepDot1">1</span>
-      <span class="step-label active" id="stepLabel1">Date &amp; Time</span>
-      <span class="step-line" id="stepLine"></span>
-      <span class="step-dot" id="stepDot2">2</span>
-      <span class="step-label" id="stepLabel2">Your Details</span>
-    </div>
+  function openServicesOverlay() {
+    servicesOverlay.classList.add('open');
+    servicesOverlay.setAttribute('aria-hidden', 'false');
+    servicesToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeServicesOverlay() {
+    servicesOverlay.classList.remove('open');
+    servicesOverlay.setAttribute('aria-hidden', 'true');
+    servicesToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  if (servicesToggle && servicesOverlay) {
+    servicesToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      servicesOverlay.classList.contains('open') ? closeServicesOverlay() : openServicesOverlay();
+    });
+    servicesOverlayBackdrop.addEventListener('click', closeServicesOverlay);
+    servicesOverlayClose.addEventListener('click', closeServicesOverlay);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && servicesOverlay.classList.contains('open')) closeServicesOverlay(); });
+  }
+})();
 
-    <div class="booking-step-panel" data-step-panel="1">
-      <div class="booking-modal-grid">
-        <div class="calendar-panel">
-          <div class="calendar-nav">
-            <button class="calendar-nav-btn" id="prevMonthBtn" type="button" aria-label="Previous month">&#8249;</button>
-            <span class="calendar-month-label" id="calendarMonthLabel"></span>
-            <button class="calendar-nav-btn" id="nextMonthBtn" type="button" aria-label="Next month">&#8250;</button>
-          </div>
-          <div class="calendar-weekdays">
-            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
-          </div>
-          <div class="calendar-grid" id="calendarGrid"></div>
-        </div>
-        <div class="details-panel">
-          <h3>Selected</h3>
-          <p class="selected-date-label placeholder" id="selectedDateLabel">Choose a date to see open times</p>
-          <div class="time-slot-grid" id="timeSlotGrid"></div>
-        </div>
-      </div>
-      <div class="booking-step-actions">
-        <button class="btn-primary next-btn single-action" id="toStep2Btn" type="button" disabled>Continue</button>
-      </div>
-    </div>
+/* Scroll reveal */
+(() => {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal-up').forEach((el) => io.observe(el));
+})();
 
-    <div class="booking-step-panel" data-step-panel="2" hidden>
-      <div class="booking-modal-grid">
-        <div class="form-panel">
-          <form class="login-form" id="bookingForm" novalidate>
-            <label>Name * <input type="text" name="name" id="bookingName" required autocomplete="name"></label>
-            <label>Email * <input type="email" name="email" id="bookingEmail" required autocomplete="email"></label>
-            <label>Phone Number *
-              <div class="phone-input">
-                <span class="phone-code">+91</span>
-                <input type="tel" name="phone" id="bookingPhone" required autocomplete="tel" placeholder="98765 43210">
-              </div>
-            </label>
-            <label>Gym Name <input type="text" name="gymName" id="bookingGymName" autocomplete="organization"></label>
-          </form>
-        </div>
-        <div class="booking-details-panel">
-          <h3>Booking Details</h3>
-          <p class="booking-summary-title">Online Demo</p>
-          <p class="selected-date-label" id="bookingSummaryDateTime"></p>
-          <span class="detail-pill">Available Online</span>
-          <div class="booking-summary-meta">
-            <p>Online Meetup (Google Meet)</p>
-            <p>Gymshim</p>
-            <p>1 hr</p>
-          </div>
-          <button class="details-toggle" id="detailsToggleBtn" type="button">
-            <span id="detailsToggleText">More details</span> <span class="chevron">&#9662;</span>
-          </button>
-          <div class="details-expand" id="detailsExpand">
-            <p>Duration: 30 minutes</p>
-            <p>Format: In-person at your gym, or video call</p>
-            <p>Free — no card required</p>
-          </div>
-          <p class="booking-agreement">By completing your booking, you agree to receive related phone notifications.</p>
-          <button class="btn-primary next-btn" id="submitBookingBtn" type="button">Book Now</button>
-        </div>
-      </div>
-      <div class="booking-step-actions">
-        <button class="btn-secondary single-action" id="backToStep1Btn" type="button">Back</button>
-      </div>
-    </div>
+/* Hero 3D parallax tilt */
+(() => {
+  const visual = document.getElementById('dmHeroVisual');
+  const inner = document.getElementById('dmHeroVisualInner');
+  if (!visual || !inner) return;
+  visual.addEventListener('mousemove', (e) => {
+    const rect = visual.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    inner.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+  });
+  visual.addEventListener('mouseleave', () => { inner.style.transform = 'rotateY(0) rotateX(0)'; });
+})();
 
-    <div class="booking-success" id="bookingSuccess">
-      <div class="booking-success-icon">&#10003;</div>
-      <h3>You're booked!</h3>
-      <p id="bookingSuccessDetail">We'll see you then. A confirmation has been sent to your email.</p>
-    </div>
-  </div>
-</div>
+/* Stat counter */
+(() => {
+  const statEl = document.getElementById('dmStatNum');
+  if (!statEl) return;
+  let done = false;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !done) {
+        done = true;
+        const target = 444;
+        let current = 0;
+        const step = () => {
+          current += Math.max(1, Math.round((target - current) / 8));
+          if (current >= target) current = target;
+          statEl.textContent = current;
+          if (current < target) requestAnimationFrame(step);
+        };
+        step();
+      }
+    });
+  }, { threshold: 0.5 });
+  io.observe(statEl);
+})();
 
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script src="digital-marketing.js" defer></script>
-<script src="booking.js"></script>
+/* Gallery lightbox */
+(() => {
+  const lightbox = document.getElementById('dmLightbox');
+  const lightboxImg = document.getElementById('dmLightboxImg');
+  const closeBtn = document.getElementById('dmLightboxClose');
+  if (!lightbox || !lightboxImg) return;
+  function open(src, alt) {
+    lightboxImg.src = src; lightboxImg.alt = alt || '';
+    lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden', 'false');
+  }
+  function close() { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); }
+  document.querySelectorAll('.dm-gallery-item').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const full = btn.dataset.full || btn.querySelector('img').src;
+      open(full, btn.querySelector('img').alt);
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+
+/* Competitive Advantages: scroll reveal */
+(() => {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+    });
+  }, { threshold: .18 });
+  document.querySelectorAll('#caHeading, .ca-card, #caStatsGrid').forEach(el => io.observe(el));
+})();
+
+/* Competitive Advantages: counter animation */
+(() => {
+  const counters = document.querySelectorAll('.ca-counter');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.dataset.done) return;
+      el.dataset.done = '1';
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const dur = 1400;
+      const start = performance.now();
+      function step(now){
+        const p = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = Math.round(target * eased);
+        el.textContent = val + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: .6 });
+  counters.forEach(el => io.observe(el));
+})();
+
+/* Competitive Advantages: parallax tilt on the visual */
+(() => {
+  const visual = document.getElementById('caVisual');
+  const holder = document.getElementById('caFigureHolder');
+  if (!visual || !holder) return;
+  visual.addEventListener('mousemove', (e) => {
+    const rect = visual.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    if (window.gsap) {
+      gsap.to(holder, { x: x * 14, y: y * 8, rotateZ: x * 1.6, duration: .7, ease: 'power3.out' });
+    } else {
+      holder.style.transform = `translate(${x * 14}px, ${y * 8}px)`;
+    }
+  });
+  visual.addEventListener('mouseleave', () => {
+    if (window.gsap) gsap.to(holder, { x: 0, y: 0, rotateZ: 0, duration: .7, ease: 'power3.out' });
+    else holder.style.transform = 'translate(0,0)';
+  });
+})();
+
+/* Competitive Advantages: animated ecosystem connector (jogged, like a wiring diagram) */
+(() => {
+  const svg = document.getElementById('caConnector');
+  const cardsBox = document.getElementById('caCards');
+  if (!svg || !cardsBox) return;
+
+  function build() {
+    svg.innerHTML = '';
+    const boxRect = cardsBox.parentElement.getBoundingClientRect();
+    svg.setAttribute('viewBox', `0 0 ${boxRect.width} ${boxRect.height}`);
+
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    defs.innerHTML = `<linearGradient id="caLineGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8234a" stop-opacity=".15"/>
+      <stop offset="50%" stop-color="#ff5273" stop-opacity=".85"/>
+      <stop offset="100%" stop-color="#d8234a" stop-opacity=".15"/>
+    </linearGradient>`;
+    svg.appendChild(defs);
+
+    const icons = cardsBox.querySelectorAll('.ca-card-icon');
+    const jog = [0, -26, 10, -18];
+    const baseX = 6;
+    let prev = null;
+
+    icons.forEach((icon, i) => {
+      const r = icon.getBoundingClientRect();
+      const cy = r.top + r.height / 2 - boxRect.top;
+      const cx = baseX + (jog[i] || 0);
+
+      if (prev) {
+        const midY = (prev.y + cy) / 2;
+        const d = `M ${prev.x} ${prev.y} C ${prev.x} ${midY}, ${cx} ${midY}, ${cx} ${cy}`;
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', d);
+        svg.appendChild(path);
+        const flow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        flow.setAttribute('d', d);
+        flow.setAttribute('class', 'ca-flow');
+        svg.appendChild(flow);
+      }
+
+      const iconLeft = r.left - boxRect.left;
+      const branch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      branch.setAttribute('d', `M ${cx} ${cy} L ${iconLeft - 14} ${cy}`);
+      svg.appendChild(branch);
+
+      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot.setAttribute('cx', cx);
+      dot.setAttribute('cy', cy);
+      dot.setAttribute('r', 3.4);
+      dot.setAttribute('class', 'ca-node-dot');
+      svg.appendChild(dot);
+
+      prev = { x: cx, y: cy };
+    });
+  }
+
+  build();
+  window.addEventListener('resize', () => requestAnimationFrame(build));
+})();
+
+/* Competitive Advantages: GSAP heading blur-to-clear + stagger */
+(() => {
+  if (!window.gsap) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('#caHeading .ca-line span', {
+    y: 90, opacity: 0, filter: 'blur(10px)',
+    duration: 1.1, ease: 'power4.out', stagger: .12,
+    scrollTrigger: { trigger: '#caHeading', start: 'top 85%' }
+  });
+})();
+</script>
 </body>
 </html>
