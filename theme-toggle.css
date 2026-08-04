@@ -1,0 +1,191 @@
+/* ==============================================================
+   GYMSHIM — THEME TOGGLE (light / dark)
+   Standalone file. Works by overriding the same custom properties
+   digital-marketing.html already uses (--void, --panel, --white,
+   --muted, --red, --line, etc.) whenever <html data-theme="light">
+   is set. No page CSS needs to change for this to take effect.
+   ============================================================== */
+
+html[data-theme="light"]{
+  --void:#f5f6f8;
+  --panel:#ffffff;
+  --panel-2:#eef0f3;
+  --panel-3:#e2e4e9;
+  --line:rgba(10,10,20,.10);
+  --line-strong:rgba(10,10,20,.16);
+  --white:#101114;         /* this token is used as the main text color site-wide */
+  --muted:#55565d;
+  --muted-2:#7a7b82;
+  --red:#d82338;
+  --red-light:#ff528f;
+  --red-dim:#ffe1e8;
+  --red-glow:rgba(216,35,56,.22);
+}
+
+/* --------------------------------------------------------------
+   HERO DEVICE-MOCKUP CLUSTER (billboard, kiosk, phone, notify
+   toast, members badge)
+   These are meant to always look like a dark screenshot of an ad/
+   app UI — not page chrome — so they shouldn't repaint with the
+   site theme. Right now they're built from a mix of hardcoded hex
+   (#0a0a0d, #151519, rgba(20,20,24,.85)…) AND themed tokens
+   (--muted, --white, --line-strong…). The hex parts stay dark on
+   their own, but the token parts were flipping to their *light*
+   values in light mode, which left low-contrast text (e.g. dark
+   --muted copy) sitting on the mockup's still-dark chips.
+   Locking the tokens to their dark values for this subtree only
+   fixes that without touching every rule inside it. Declaring a
+   variable directly on an element always wins over the inherited
+   value, so this override is reliable regardless of selector
+   specificity elsewhere on the page.
+   ------------------------------------------------------------ */
+.dm-hero-visual{
+  --void:#050505;
+  --panel:#0b0c0f;
+  --panel-2:#131419;
+  --panel-3:#1b1c22;
+  --line:rgba(21, 8, 83, 0.08);
+  --line-strong:rgba(255, 255, 255, 0.14);
+  --white:#f6f6f8;
+  --muted:#98999f;
+  --muted-2:#6c6d74;
+  --red-dim:#020202;
+  --red-glow:oklab(52.701% -0.03513 -0.22896 / 0.45);
+}
+html[data-theme="light"] .dm-app-frame,
+html[data-theme="light"] .dm-app-tabbar{
+  background:#0a0a0d !important;
+}
+
+/* --------------------------------------------------------------
+   SERVICES MEGA-MENU PANEL
+   The panel background is a hardcoded rgba(15,17,23,.82) instead
+   of a token, so it never adapted to the theme at all. Give it a
+   light-mode surface so it matches the rest of the site, then flip
+   the handful of hardcoded #fff text/icons inside it (and a few
+   more around the page) that assumed a permanently dark backdrop
+   and would otherwise render as invisible white-on-white text.
+   ------------------------------------------------------------ */
+html[data-theme="light"] .services-mega-panel{
+  background:rgba(255,255,255,.92);
+  box-shadow:0 0 0 1px rgba(10,10,20,.04) inset, 0 40px 100px -30px rgba(10,10,20,.16), 0 0 80px -20px rgba(216,35,35,.10);
+}
+
+html[data-theme="light"] .logo,
+html[data-theme="light"] .nav-links a:hover,
+html[data-theme="light"] .nav-dropdown-toggle:hover,
+html[data-theme="light"] .services-overlay-close:hover,
+html[data-theme="light"] .services-mega-trust strong,
+html[data-theme="light"] .services-mega-explore,
+html[data-theme="light"] .services-mega-foot-text strong,
+html[data-theme="light"] .dm-watch-btn,
+html[data-theme="light"] .dm-price-tag,
+html[data-theme="light"] .footer-links a:hover{
+  color:var(--white);
+}
+html[data-theme="light"] .hamburger span{
+  background:var(--white);
+}
+html[data-theme="light"] .services-mega-card:hover .services-mega-explore{
+  color:#0F1115; /* unchanged: still sits on the colored hover fill, not the panel */
+}
+
+/* Gradient text-fills that ran #fff -> color and would fade into
+   near-nothing on a light background; swap the white stop for the
+   themed text color so the gradient still reads as text. */
+html[data-theme="light"] .services-mega-accent,
+html[data-theme="light"] .services-mega-title .accent{
+  background:linear-gradient(135deg,var(--red),var(--white));
+}
+html[data-theme="light"] .dm-stat-big{
+  background:linear-gradient(160deg,var(--white), var(--red-light) 130%);
+}
+
+html[data-theme="light"] .dm-ad-btn{
+  background:var(--red) !important;
+  color:#fff !important;
+}
+
+/* Smooth cross-fade instead of an abrupt flip */
+html{ transition: background-color .35s ease; }
+body{ transition: background-color .35s ease, color .35s ease; }
+
+/* ------------------------------------------------------------ */
+/* Toggle button */
+.theme-toggle{
+  position:relative;
+  width:56px;
+  height:30px;
+  flex:0 0 auto;
+  border-radius:999px;
+  border:1px solid var(--line-strong);
+  background:var(--panel-2);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  transition:background .3s var(--ease,ease), border-color .3s var(--ease,ease);
+}
+.theme-toggle:hover{ border-color:var(--red); }
+
+.theme-toggle-icon{
+  position:absolute;
+  top:50%;
+  width:13px;
+  height:13px;
+  transform:translateY(-50%);
+  color:var(--muted-2);
+  transition:color .3s ease;
+  pointer-events:none;
+}
+.theme-toggle-icon--sun{ left:8px; }
+.theme-toggle-icon--moon{ right:8px; }
+
+html[data-theme="light"] .theme-toggle-icon--sun{ color:var(--red); }
+html:not([data-theme="light"]) .theme-toggle-icon--moon{ color:var(--red-light); }
+
+.theme-toggle-thumb{
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--white);
+  box-shadow:0 2px 6px rgba(0,0,0,.35);
+  transition:transform .35s var(--ease,ease), background .3s ease;
+}
+html[data-theme="light"] .theme-toggle-thumb{
+  transform:translateX(26px);
+  background:var(--red);
+}
+
+@media (prefers-reduced-motion: reduce){
+  html, body, .theme-toggle-thumb, .theme-toggle-icon{ transition:none !important; }
+}
+
+
+
+/* Fix global page background in light mode */
+html[data-theme="light"] {
+  --bg-dark: #f5f6f8;
+  --bg-panel: #ffffff;
+  --text-primary: #101114;
+  --text-muted: #55565d;
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background: #f5f6f8;
+  color: #101114;
+}
+
+/* Prevent the dark navigation gradient from covering the top */
+html[data-theme="light"] .navbar {
+  background: linear-gradient(
+    180deg,
+    rgba(245, 246, 248, 0.96) 0%,
+    rgba(245, 246, 248, 0.72) 55%,
+    transparent 100%
+  );
+}

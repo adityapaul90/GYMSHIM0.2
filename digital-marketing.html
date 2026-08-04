@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  
 <head>
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Marketing | Gymshim</title>
@@ -9,6 +11,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -20,15 +23,15 @@
   --panel:#0b0c0f;
   --panel-2:#131419;
   --panel-3:#1b1c22;
-  --line:rgba(255,255,255,.08);
-  --line-strong:rgba(255,255,255,.14);
+  --line:rgba(21, 8, 83, 0.08);
+  --line-strong:rgba(255, 255, 255, 0.14);
   --white:#f6f6f8;
   --muted:#98999f;
   --muted-2:#6c6d74;
-  --red:#d8234a;
-  --red-light:#ff5273;
-  --red-dim:#8a1230;
-  --red-glow:rgba(216,35,74,.45);
+  --red:#d82338;
+  --red-light:#ff528f;
+  --red-dim:#020202;
+  --red-glow:oklab(52.701% -0.03513 -0.22896 / 0.45);
   --display:'Bricolage Grotesque', system-ui, sans-serif;
   --body:'Inter', system-ui, sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);
@@ -297,10 +300,10 @@ button{font-family:inherit;}
   transform-origin:bottom;
   opacity:.65;
 }
-.dm-hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%, rgba(216,35,74,.16), transparent 60%), radial-gradient(ellipse at 50% 0%, rgba(20,20,24,0), var(--void) 85%);}
+.dm-hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%, rgba(35, 35, 216, 0.16), transparent 60%), radial-gradient(ellipse at 50% 0%, rgba(20,20,24,0), var(--void) 85%);}
 .dm-beam{
   position:absolute;top:-10%;right:8%;width:520px;height:900px;
-  background:linear-gradient(180deg, rgba(216,35,74,.35), transparent 70%);
+  background:linear-gradient(180deg, rgba(74, 35, 216, 0.35), transparent 70%);
   filter:blur(60px); transform:rotate(18deg); opacity:.55;
   animation:pulseGlow 6s ease-in-out infinite;
 }
@@ -635,10 +638,9 @@ button{font-family:inherit;}
 .ca-right{position:relative;}
 .ca-connector{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;pointer-events:none;}
 .ca-connector path{fill:none;stroke:url(#caLineGrad);stroke-width:1.6;stroke-linecap:round;}
-.ca-connector .ca-flow{stroke:var(--red-light);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:6 14;filter:drop-shadow(0 0 6px var(--red-glow));animation:caDash 2.6s linear infinite;}
+.ca-connector .ca-flow{stroke:#5b8bff;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:6 14;filter:drop-shadow(0 0 6px rgba(37,99,255,.45));animation:caDash 2.6s linear infinite;}
 @keyframes caDash{to{stroke-dashoffset:-40;}}
-.ca-node-dot{fill:var(--red-light);filter:drop-shadow(0 0 8px var(--red-glow));}
-
+.ca-node-dot{fill:#5b8bff;filter:drop-shadow(0 0 8px rgba(37,99,255,.45));}
 .ca-cards{position:relative;z-index:1;display:flex;flex-direction:column;gap:18px;}
 .ca-card{
   position:relative;display:flex;align-items:flex-start;gap:22px;
@@ -727,739 +729,1072 @@ button{font-family:inherit;}
   .ca-stats{padding:0 22px 60px;}
   .ca-stats-grid{grid-template-columns:repeat(2,1fr);}
 }
+
+/* ==============================================================
+   MEDIA OFFERINGS / SOFTWARE ADS / SAMPLING / BRANDS / AWARDS
+   ============================================================== */
+.dm-offer-section{position:relative;padding:100px 0;}
+.dm-offer-section + .dm-offer-section{padding-top:0;}
+.dm-offer-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  max-width:1280px;margin:0 auto;padding:0 40px;
+}
+.dm-offer-card{padding:30px;}
+.dm-offer-card h3{font-size:19px;margin-bottom:12px;}
+.dm-offer-card p{color:var(--muted);font-size:14.5px;line-height:1.65;}
+.dm-offer-card ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px;line-height:1.75;}
+.dm-offer-card ul li::marker{color:var(--red-light);}
+.dm-price-card{
+  background:linear-gradient(150deg, rgba(216,35,74,.14), rgba(216,35,74,.02));
+  border:1px solid rgba(216,35,74,.32);display:flex;flex-direction:column;justify-content:center;
+}
+.dm-price-card .eyebrow{margin-bottom:10px;}
+.dm-price-tag{font-family:var(--display);font-size:36px;font-weight:800;color:#fff;line-height:1;margin-top:2px;}
+.dm-price-tag span{font-size:14.5px;color:var(--muted);font-weight:500;}
+.dm-price-note{font-size:12.5px;color:var(--muted-2);margin-top:14px;line-height:1.5;}
+
+.dm-photo-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  max-width:1280px;margin:36px auto 0;padding:0 40px;
+}
+.dm-photo-slot{
+  aspect-ratio:1/1;border-radius:16px;border:1.5px dashed var(--line-strong);
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;
+  background:rgba(255,255,255,.02);color:var(--muted-2);font-size:12px;line-height:1.5;
+  transition:border-color .3s ease, background .3s ease;
+}
+.dm-photo-slot:hover{border-color:rgba(216,35,74,.4);background:rgba(216,35,74,.04);}
+.dm-photo-slot strong{display:block;color:var(--muted);font-size:12.5px;margin-bottom:4px;}
+.dm-photo-slot img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:none;}
+
+.dm-brands-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:16px;
+  max-width:1140px;margin:0 auto;padding:0 40px;
+}
+.dm-brand-slot{
+  aspect-ratio:16/9;border-radius:14px;border:1px solid var(--line);
+  background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:13px;font-weight:600;text-align:center;padding:10px;
+  transition:border-color .3s ease;
+}
+.dm-brand-slot:hover{border-color:rgba(216,35,74,.35);}
+.dm-brand-slot img{width:100%;height:100%;object-fit:contain;display:none;}
+
+.dm-awards-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  max-width:1280px;margin:0 auto;padding:0 40px;
+}
+@media (max-width:900px){
+  .dm-offer-grid{grid-template-columns:1fr;}
+  .dm-photo-grid{grid-template-columns:repeat(2,1fr);}
+  .dm-brands-grid{grid-template-columns:repeat(3,1fr);}
+  .dm-awards-grid{grid-template-columns:repeat(2,1fr);}
+}
 </style>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="booking.css">
+<link rel="stylesheet" href="theme-toggle.css">
+<script src="theme-toggle.js"></script>
 </head>
 <body>
 
-<header class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="logo">GYM<span>SHIM</span></a>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">GYM<span>SHIM</span></a>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html#plans">Business Booster</a>
-      <div class="nav-dropdown" id="servicesDropdown">
-        <button type="button" class="nav-dropdown-toggle" id="servicesToggle" aria-haspopup="true" aria-expanded="false">
-          Products &amp; Services <span class="nav-dropdown-caret">&#9662;</span>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#plans">Business Booster</a>
+        <div class="nav-dropdown" id="servicesDropdown">
+          <button type="button" class="nav-dropdown-toggle" id="servicesToggle" aria-haspopup="true" aria-expanded="false">
+            Products &amp; Services <span class="nav-dropdown-caret">&#9662;</span>
+          </button>
+        </div>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode" aria-pressed="false">
+          <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <span class="theme-toggle-thumb"></span>
+        </button>
+        <a href="booking.html" class="glow-btn">Book a Demo</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
         </button>
       </div>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    </div>
+  </header>
 
-    <div class="nav-actions">
-      <a href="booking.html" class="glow-btn">Book a Demo</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+  <div class="services-overlay" id="servicesOverlay" aria-hidden="true">
+    <div class="services-overlay-backdrop" id="servicesOverlayBackdrop"></div>
+
+    <div class="services-mega-panel" role="dialog" aria-modal="true" aria-labelledby="servicesOverlayTitle">
+      <button type="button" class="services-overlay-close" id="servicesOverlayClose" aria-label="Close">&times;</button>
+
+      <div class="services-mega-top">
+        <div class="services-mega-head">
+          <span class="services-mega-eyebrow" id="servicesOverlayTitle">Our Products</span>
+          <h2 class="services-mega-title">Powerful solutions for every part of <span class="services-mega-accent">your gym.</span></h2>
+          <p class="services-mega-sub">One ecosystem. Four powerful products.</p>
+        </div>
+        <div class="services-mega-trust">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="currentColor"/></svg>
+          Trusted by <strong>&nbsp;5000+&nbsp;</strong> gyms across India
+        </div>
+      </div>
+
+      <div class="services-mega-grid">
+        <a href="workout.html" class="services-mega-card" data-glow="pink">
+          <span class="services-mega-num">01</span>
+          <span class="services-mega-icon-wrap">
+            <span class="services-mega-icon-floor"></span>
+            <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+              <defs><linearGradient id="gradWorkout" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff8fa3"/><stop offset="100%" stop-color="#d8234a"/></linearGradient></defs>
+              <circle cx="12" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/><circle cx="52" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/><rect x="18" y="28" width="28" height="8" rx="4" fill="url(#gradWorkout)"/><rect x="8" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/><rect x="50" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/>
+            </svg>
+          </span>
+          <div class="services-mega-card-headrow"><h3>Workout+</h3><span class="services-mega-badge">AI Powered</span></div>
+          <p class="services-mega-desc">AI-guided workout experience for every member.</p>
+          <ul class="services-mega-features"><li>Personalized Workouts</li><li>Exercise Library</li><li>Progress Tracking</li><li>Smart Analytics</li></ul>
+          <span class="services-mega-explore">Explore Workout+ <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <a href="gos.html" class="services-mega-card" data-glow="cyan">
+          <span class="services-mega-num">02</span>
+          <span class="services-mega-icon-wrap">
+            <span class="services-mega-icon-floor"></span>
+            <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+              <defs><linearGradient id="gradGosTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ee8f2"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient><linearGradient id="gradGosSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e9aad"/><stop offset="100%" stop-color="#0b7e8e"/></linearGradient></defs>
+              <polygon points="32,6 54,18 32,30 10,18" fill="url(#gradGosTop)"/><polygon points="10,18 32,30 32,54 10,42" fill="url(#gradGosSide)"/><polygon points="54,18 32,30 32,54 54,42" fill="#0a6d7a"/>
+            </svg>
+          </span>
+          <div class="services-mega-card-headrow"><h3>GOS (Gym Operating System)</h3><span class="services-mega-badge">All-in-One</span></div>
+          <p class="services-mega-desc">Complete gym management system for seamless operations.</p>
+          <ul class="services-mega-features"><li>Member Management</li><li>Attendance Tracking</li><li>Payments &amp; Billing</li><li>Reports &amp; Analytics</li></ul>
+          <span class="services-mega-explore">Explore GOS <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <a href="sales-kiosk.html" class="services-mega-card" data-glow="purple">
+          <span class="services-mega-num">03</span>
+          <span class="services-mega-icon-wrap">
+            <span class="services-mega-icon-floor"></span>
+            <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+              <defs><linearGradient id="gradKiosk" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c9a8ff"/><stop offset="100%" stop-color="#9b5cff"/></linearGradient></defs>
+              <rect x="14" y="8" width="36" height="26" rx="4" fill="none" stroke="url(#gradKiosk)" stroke-width="3.5"/><rect x="19" y="13" width="26" height="16" rx="2" fill="url(#gradKiosk)" opacity="0.25"/><rect x="28" y="38" width="8" height="10" fill="url(#gradKiosk)"/><rect x="20" y="48" width="24" height="5" rx="2.5" fill="url(#gradKiosk)" opacity="0.6"/>
+            </svg>
+          </span>
+          <div class="services-mega-card-headrow"><h3>Sales Kiosk</h3><span class="services-mega-badge">Self-Service</span></div>
+          <p class="services-mega-desc">Self-service touchscreen that closes memberships on the spot.</p>
+          <ul class="services-mega-features"><li>Instant Signups</li><li>Digital Payments</li><li>Receipt Printing</li><li>Offers &amp; Upsells</li></ul>
+          <span class="services-mega-explore">Explore Sales Kiosk <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <a href="digital-marketing.html" class="services-mega-card" data-glow="orange">
+          <span class="services-mega-num">04</span>
+          <span class="services-mega-icon-wrap">
+            <span class="services-mega-icon-floor"></span>
+            <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
+              <defs><linearGradient id="gradAd" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffc38a"/><stop offset="100%" stop-color="#ff8a3d"/></linearGradient></defs>
+              <rect x="10" y="26" width="14" height="12" rx="2" fill="url(#gradAd)"/><path d="M24 24 L42 14 V50 L24 40 Z" fill="url(#gradAd)"/><rect x="15" y="38" width="5" height="12" rx="1.5" fill="url(#gradAd)" opacity="0.7"/><path d="M46 22a10 10 0 010 20" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round"/><path d="M50 16a17 17 0 010 32" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+            </svg>
+          </span>
+          <div class="services-mega-card-headrow"><h3>Advertisement</h3><span class="services-mega-badge">Grow Faster</span></div>
+          <p class="services-mega-desc">Digital marketing solutions to bring more members to your gym.</p>
+          <ul class="services-mega-features"><li>Social Media Ads</li><li>WhatsApp Campaigns</li><li>Performance Boost</li><li>Lead Generation</li></ul>
+          <span class="services-mega-explore">Explore Advertisement <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+
+      <div class="services-mega-divider"></div>
+
+      <div class="services-mega-footer">
+        <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg><span class="services-mega-foot-text"><strong>Secure &amp; Reliable</strong>Enterprise-grade security</span></div>
+        <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 18a4 4 0 01-1-7.9A5.5 5.5 0 0117 9a4.5 4.5 0 011 8.9"/></svg><span class="services-mega-foot-text"><strong>Always Updated</strong>Latest features &amp; updates</span></div>
+        <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15v-3a8 8 0 0116 0v3"/><path d="M4 15a2 2 0 002 2h1v-5H6a2 2 0 00-2 2zM20 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2z"/></svg><span class="services-mega-foot-text"><strong>24/7 Support</strong>We're here for you</span></div>
+        <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L6 22l6-3 6 3-2.5-9.5"/></svg><span class="services-mega-foot-text"><strong>Made in India</strong>For gyms, by gym experts</span></div>
+      </div>
     </div>
   </div>
-</header>
 
-<div class="services-overlay" id="servicesOverlay" aria-hidden="true">
-  <div class="services-overlay-backdrop" id="servicesOverlayBackdrop"></div>
-
-  <div class="services-mega-panel" role="dialog" aria-modal="true" aria-labelledby="servicesOverlayTitle">
-    <button type="button" class="services-overlay-close" id="servicesOverlayClose" aria-label="Close">&times;</button>
-
-    <div class="services-mega-top">
-      <div class="services-mega-head">
-        <span class="services-mega-eyebrow" id="servicesOverlayTitle">Our Products</span>
-        <h2 class="services-mega-title">Powerful solutions for every part of <span class="services-mega-accent">your gym.</span></h2>
-        <p class="services-mega-sub">One ecosystem. Four powerful products.</p>
-      </div>
-      <div class="services-mega-trust">
-        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="currentColor"/></svg>
-        Trusted by <strong>&nbsp;5000+&nbsp;</strong> gyms across India
-      </div>
+  <!-- ============================================================
+      HERO
+      ============================================================ -->
+  <section class="dm-hero">
+    <div class="dm-hero-bg" aria-hidden="true">
+      <div class="dm-hero-vignette"></div>
+      <div class="dm-hero-floor"></div>
+      <div class="dm-beam"></div>
+      <div class="dm-beam dm-beam-2"></div>
     </div>
 
-    <div class="services-mega-grid">
-      <a href="workout.html" class="services-mega-card" data-glow="pink">
-        <span class="services-mega-num">01</span>
-        <span class="services-mega-icon-wrap">
-          <span class="services-mega-icon-floor"></span>
-          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
-            <defs><linearGradient id="gradWorkout" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff8fa3"/><stop offset="100%" stop-color="#d8234a"/></linearGradient></defs>
-            <circle cx="12" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/><circle cx="52" cy="32" r="9" fill="none" stroke="url(#gradWorkout)" stroke-width="4"/><rect x="18" y="28" width="28" height="8" rx="4" fill="url(#gradWorkout)"/><rect x="8" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/><rect x="50" y="26" width="6" height="12" rx="2" fill="url(#gradWorkout)"/>
-          </svg>
-        </span>
-        <div class="services-mega-card-headrow"><h3>Workout+</h3><span class="services-mega-badge">AI Powered</span></div>
-        <p class="services-mega-desc">AI-guided workout experience for every member.</p>
-        <ul class="services-mega-features"><li>Personalized Workouts</li><li>Exercise Library</li><li>Progress Tracking</li><li>Smart Analytics</li></ul>
-        <span class="services-mega-explore">Explore Workout+ <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
+    <div class="dm-hero-inner">
+      <div class="dm-hero-copy reveal-up">
+        <p class="eyebrow dm-hero-eyebrow">Gymshim Partnership</p>
+        <h1 class="dm-hero-title">The infinite benefits of partnering with<br><span class="accent">GYMSHIM</span><br>Business Booster</h1>
+        <p class="dm-hero-p">Unlock endless growth opportunities and connect with India&rsquo;s most engaged fitness audience.</p>
 
-      <a href="gos.html" class="services-mega-card" data-glow="cyan">
-        <span class="services-mega-num">02</span>
-        <span class="services-mega-icon-wrap">
-          <span class="services-mega-icon-floor"></span>
-          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
-            <defs><linearGradient id="gradGosTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ee8f2"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient><linearGradient id="gradGosSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e9aad"/><stop offset="100%" stop-color="#0b7e8e"/></linearGradient></defs>
-            <polygon points="32,6 54,18 32,30 10,18" fill="url(#gradGosTop)"/><polygon points="10,18 32,30 32,54 10,42" fill="url(#gradGosSide)"/><polygon points="54,18 32,30 32,54 54,42" fill="#0a6d7a"/>
-          </svg>
-        </span>
-        <div class="services-mega-card-headrow"><h3>GOS (Gym Operating System)</h3><span class="services-mega-badge">All-in-One</span></div>
-        <p class="services-mega-desc">Complete gym management system for seamless operations.</p>
-        <ul class="services-mega-features"><li>Member Management</li><li>Attendance Tracking</li><li>Payments &amp; Billing</li><li>Reports &amp; Analytics</li></ul>
-        <span class="services-mega-explore">Explore GOS <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-
-      <a href="sales-kiosk.html" class="services-mega-card" data-glow="purple">
-        <span class="services-mega-num">03</span>
-        <span class="services-mega-icon-wrap">
-          <span class="services-mega-icon-floor"></span>
-          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
-            <defs><linearGradient id="gradKiosk" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c9a8ff"/><stop offset="100%" stop-color="#9b5cff"/></linearGradient></defs>
-            <rect x="14" y="8" width="36" height="26" rx="4" fill="none" stroke="url(#gradKiosk)" stroke-width="3.5"/><rect x="19" y="13" width="26" height="16" rx="2" fill="url(#gradKiosk)" opacity="0.25"/><rect x="28" y="38" width="8" height="10" fill="url(#gradKiosk)"/><rect x="20" y="48" width="24" height="5" rx="2.5" fill="url(#gradKiosk)" opacity="0.6"/>
-          </svg>
-        </span>
-        <div class="services-mega-card-headrow"><h3>Sales Kiosk</h3><span class="services-mega-badge">Self-Service</span></div>
-        <p class="services-mega-desc">Self-service touchscreen that closes memberships on the spot.</p>
-        <ul class="services-mega-features"><li>Instant Signups</li><li>Digital Payments</li><li>Receipt Printing</li><li>Offers &amp; Upsells</li></ul>
-        <span class="services-mega-explore">Explore Sales Kiosk <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-
-      <a href="digital-marketing.html" class="services-mega-card" data-glow="orange">
-        <span class="services-mega-num">04</span>
-        <span class="services-mega-icon-wrap">
-          <span class="services-mega-icon-floor"></span>
-          <svg class="services-mega-icon" viewBox="0 0 64 64" width="60" height="60">
-            <defs><linearGradient id="gradAd" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffc38a"/><stop offset="100%" stop-color="#ff8a3d"/></linearGradient></defs>
-            <rect x="10" y="26" width="14" height="12" rx="2" fill="url(#gradAd)"/><path d="M24 24 L42 14 V50 L24 40 Z" fill="url(#gradAd)"/><rect x="15" y="38" width="5" height="12" rx="1.5" fill="url(#gradAd)" opacity="0.7"/><path d="M46 22a10 10 0 010 20" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round"/><path d="M50 16a17 17 0 010 32" fill="none" stroke="url(#gradAd)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-          </svg>
-        </span>
-        <div class="services-mega-card-headrow"><h3>Advertisement</h3><span class="services-mega-badge">Grow Faster</span></div>
-        <p class="services-mega-desc">Digital marketing solutions to bring more members to your gym.</p>
-        <ul class="services-mega-features"><li>Social Media Ads</li><li>WhatsApp Campaigns</li><li>Performance Boost</li><li>Lead Generation</li></ul>
-        <span class="services-mega-explore">Explore Advertisement <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-    </div>
-
-    <div class="services-mega-divider"></div>
-
-    <div class="services-mega-footer">
-      <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg><span class="services-mega-foot-text"><strong>Secure &amp; Reliable</strong>Enterprise-grade security</span></div>
-      <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 18a4 4 0 01-1-7.9A5.5 5.5 0 0117 9a4.5 4.5 0 011 8.9"/></svg><span class="services-mega-foot-text"><strong>Always Updated</strong>Latest features &amp; updates</span></div>
-      <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15v-3a8 8 0 0116 0v3"/><path d="M4 15a2 2 0 002 2h1v-5H6a2 2 0 00-2 2zM20 15a2 2 0 01-2 2h-1v-5h1a2 2 0 012 2z"/></svg><span class="services-mega-foot-text"><strong>24/7 Support</strong>We're here for you</span></div>
-      <div class="services-mega-foot-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L6 22l6-3 6 3-2.5-9.5"/></svg><span class="services-mega-foot-text"><strong>Made in India</strong>For gyms, by gym experts</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================
-     HERO
-     ============================================================ -->
-<section class="dm-hero">
-  <div class="dm-hero-bg" aria-hidden="true">
-    <div class="dm-hero-vignette"></div>
-    <div class="dm-hero-floor"></div>
-    <div class="dm-beam"></div>
-    <div class="dm-beam dm-beam-2"></div>
-  </div>
-
-  <div class="dm-hero-inner">
-    <div class="dm-hero-copy reveal-up">
-      <p class="eyebrow dm-hero-eyebrow">Gymshim Partnership</p>
-      <h1 class="dm-hero-title">The infinite benefits of partnering with<br><span class="accent">GYMSHIM</span><br>Business Booster</h1>
-      <p class="dm-hero-p">Unlock endless growth opportunities and connect with India&rsquo;s most engaged fitness audience.</p>
-
-      <div class="dm-hero-points">
-        <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>High Visibility</strong><p>Inside Gyms</p></div></div>
-        <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.2 13.3c2.9.4 4.8 2.7 4.8 5.7"/></svg></span><div><strong>Targeted Reach</strong><p>Fitness Audience</p></div></div>
-        <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></span><div><strong>Brand Growth</strong><p>Beyond Limits</p></div></div>
-        <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg></span><div><strong>Measurable Impact</strong><p>Real Results</p></div></div>
-      </div>
-
-      <div class="dm-hero-ctas">
-        <a href="#dm-why" class="glow-btn">Explore Media Offerings <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <button type="button" class="dm-watch-btn"><span class="dm-watch-play">&#9654;</span> Watch Overview Video</button>
-      </div>
-    </div>
-
-    <div class="dm-hero-visual reveal-up" id="dmHeroVisual" style="--reveal-delay:.15s">
-      <div class="dm-hero-visual-inner" id="dmHeroVisualInner">
-
-        <div class="dm-notify-toast">
-          <span class="dm-notify-icon">G</span>
-          <div class="dm-notify-body">
-            <div class="dm-notify-head"><strong>GYMSHIM</strong><span>now</span></div>
-            <p>&#9889; New Year Offer! Get Up to 25% OFF on Premium Supplements.</p>
-          </div>
+        <div class="dm-hero-points">
+          <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>High Visibility</strong><p>Inside Gyms</p></div></div>
+          <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.2 13.3c2.9.4 4.8 2.7 4.8 5.7"/></svg></span><div><strong>Targeted Reach</strong><p>Fitness Audience</p></div></div>
+          <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></span><div><strong>Brand Growth</strong><p>Beyond Limits</p></div></div>
+          <div class="dm-hero-point--box"><span class="dm-hero-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg></span><div><strong>Measurable Impact</strong><p>Real Results</p></div></div>
         </div>
 
-        <div class="dm-ad-billboard">
-          <div class="dm-ad-billboard-text">
-            <p>PUSH BEYOND<br><span class="accent" style="background:none;-webkit-text-fill-color:#ff5273;">LIMITS.</span></p>
-            <p class="dm-ad-billboard-sub">YOUR BRAND &middot; OUR COMMUNITY &middot; UNLIMITED IMPACT</p>
-          </div>
+        <div class="dm-hero-ctas">
+          <a href="#dm-why" class="glow-btn">Explore Media Offerings <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button type="button" class="dm-watch-btn"><span class="dm-watch-play">&#9654;</span> Watch Overview Video</button>
         </div>
+      </div>
 
-        <div class="dm-ad-kiosk">
-          <div class="dm-ad-kiosk-screen">
-            <span class="dm-ad-kiosk-brand">GYMSHIM</span>
-            <p class="dm-ad-kiosk-copy">YOUR BRAND.<br>THE RIGHT PLACE.<br>THE RIGHT TIME.<br><span class="accent">MAXIMUM IMPACT.</span></p>
-            <div class="dm-ad-kiosk-foot"><p>ADVERTISE INSIDE GYMS.<br>GROW OUTSIDE LIMITS.</p></div>
+      <div class="dm-hero-visual reveal-up" id="dmHeroVisual" style="--reveal-delay:.15s">
+        <div class="dm-hero-visual-inner" id="dmHeroVisualInner">
+
+          <div class="dm-notify-toast">
+            <span class="dm-notify-icon">G</span>
+            <div class="dm-notify-body">
+              <div class="dm-notify-head"><strong>GYMSHIM</strong><span>now</span></div>
+              <p>&#9889; New Year Offer! Get Up to 25% OFF on Premium Supplements.</p>
+            </div>
           </div>
-          <div class="dm-ad-kiosk-base"></div>
-        </div>
 
-        <div class="dm-app-phone">
-          <div class="dm-app-frame">
-            <div class="dm-app-notch"></div>
-            <div class="dm-app-screen">
-              <p class="dm-app-greet">Hello, Rohan &#128075;</p>
-              <p class="dm-app-sub">Keep pushing your limits!</p>
-              <p class="dm-app-label">Today&rsquo;s Workout</p>
-              <div class="dm-app-card"><strong>Chest &amp; Triceps</strong><span>Gymshim</span></div>
-              <p class="dm-app-label">Sponsored</p>
-              <div class="dm-app-ad">
-                <div class="dm-app-ad-text">
-                  <p>FUEL YOUR STRENGTH<br><span class="accent">OWN YOUR DAY.</span></p>
-                  <div class="dm-app-ad-foot"><span class="dm-ad-tag">UPTO 30% OFF</span><span class="dm-ad-btn">SHOP NOW</span></div>
+          <div class="dm-ad-billboard">
+            <div class="dm-ad-billboard-text">
+              <p>PUSH BEYOND<br><span class="accent" style="background:none;-webkit-text-fill-color:#ff5273;">LIMITS.</span></p>
+              <p class="dm-ad-billboard-sub">YOUR BRAND &middot; OUR COMMUNITY &middot; UNLIMITED IMPACT</p>
+            </div>
+          </div>
+
+          <div class="dm-ad-kiosk">
+            <div class="dm-ad-kiosk-screen">
+              <span class="dm-ad-kiosk-brand">GYMSHIM</span>
+              <p class="dm-ad-kiosk-copy">YOUR BRAND.<br>THE RIGHT PLACE.<br>THE RIGHT TIME.<br><span class="accent">MAXIMUM IMPACT.</span></p>
+              <div class="dm-ad-kiosk-foot"><p>ADVERTISE INSIDE GYMS.<br>GROW OUTSIDE LIMITS.</p></div>
+            </div>
+            <div class="dm-ad-kiosk-base"></div>
+          </div>
+
+          <div class="dm-app-phone">
+            <div class="dm-app-frame">
+              <div class="dm-app-notch"></div>
+              <div class="dm-app-screen">
+                <p class="dm-app-greet">Hello, Rohan &#128075;</p>
+                <p class="dm-app-sub">Keep pushing your limits!</p>
+                <p class="dm-app-label">Today&rsquo;s Workout</p>
+                <div class="dm-app-card"><strong>Chest &amp; Triceps</strong><span>Gymshim</span></div>
+                <p class="dm-app-label">Sponsored</p>
+                <div class="dm-app-ad">
+                  <div class="dm-app-ad-text">
+                    <p>FUEL YOUR STRENGTH<br><span class="accent">OWN YOUR DAY.</span></p>
+                    <div class="dm-app-ad-foot"><span class="dm-ad-tag">UPTO 30% OFF</span><span class="dm-ad-btn">SHOP NOW</span></div>
+                  </div>
                 </div>
               </div>
+              <div class="dm-app-tabbar"><span></span><span></span><span></span></div>
             </div>
-            <div class="dm-app-tabbar"><span></span><span></span><span></span></div>
+          </div>
+
+          <div class="dm-members-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.2 13.3c2.9.4 4.8 2.7 4.8 5.7"/></svg>
+            <strong>100K+</strong><span>Active Members</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="dm-hero-trust reveal-up">
+      <span class="dm-hero-trust-line"></span><span>Trusted by leading brands &amp; gyms</span><span class="dm-hero-trust-line"></span>
+    </div>
+
+    <div class="dm-stats-bar reveal-up wrap" style="padding:34px 24px;">
+      <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></span><div><strong>150+</strong><p>Partner Gyms</p></div></div>
+      <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.2 13.3c2.9.4 4.8 2.7 4.8 5.7"/></svg></span><div><strong>100K+</strong><p>Active Members</p></div></div>
+      <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>10M+</strong><p>Monthly Impressions</p></div></div>
+      <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 5v14l11-7z"/></svg></span><div><strong>1M+</strong><p>Ad Plays / Month</p></div></div>
+      <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></span><div><strong>85%+</strong><p>Engagement Rate</p></div></div>
+      <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.2 7-11.5A7 7 0 105 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span><div><strong>75+</strong><p>Cities Across India</p></div></div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="dm-why" id="dm-why">
+    <div class="dm-why-grid">
+      <div class="dm-why-head reveal-up">
+        <span class="eyebrow">Why it matters</span>
+        <h2>Why digital<br>marketing?</h2>
+      </div>
+      <div class="dm-why-copy">
+        <p class="reveal-up">The internet let brands reach people everywhere — and it gave those same people far more choices than before. A gym membership decision now runs on more than location and price; people watch what a brand says, shows and stands for before they ever walk in. That's exactly the space we work in.</p>
+        <p class="reveal-up" style="--reveal-delay:.1s">Done well, digital reach costs a fraction of a hoarding or a pamphlet drop, and every rupee of it is measurable. You find your real audience, let them get to know your gym before they visit, and turn that familiarity into the kind of loyalty that keeps a membership renewing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="dm-features">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">What you get</span>
+      <h2>Four ways we get you seen</h2>
+    </div>
+    <div class="dm-features-grid">
+      <div class="glass-card dm-feature-card reveal-up">
+        <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11v2a1 1 0 001 1h3l5 4V6l-5 4H4a1 1 0 00-1 1z"/><path d="M16 8a5 5 0 010 8M19 5a9 9 0 010 14"/></svg></div>
+        <h3>Paid boosting</h3>
+        <p>We put your gym's posts in front of people who don't follow you yet — filtered to match what your brand actually stands for, so reach isn't wasted on the wrong crowd.</p>
+      </div>
+      <div class="glass-card dm-feature-card reveal-up" style="--reveal-delay:.08s">
+        <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <h3>Captivating design</h3>
+        <p>Our designers, copywriters and content creators build posts made to stop a scroll — leaving a clear, likeable impression of your gym in a stranger's mind.</p>
+      </div>
+      <div class="glass-card dm-feature-card reveal-up" style="--reveal-delay:.16s">
+        <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
+        <h3>Brand positioning</h3>
+        <p>Ads placed with the right audience in mind do more work per rupee. Sharp positioning keeps your gym relevant and ahead of the one down the road.</p>
+      </div>
+      <div class="glass-card dm-feature-card reveal-up" style="--reveal-delay:.24s">
+        <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2a5 5 0 00-5 5c0 3 2 4 2 7a3 3 0 006 0c0-3 2-4 2-7a5 5 0 00-5-5z"/><path d="M9 21h6"/></svg></div>
+        <h3>Mindshare</h3>
+        <p>We build awareness of your brand within a 2km radius of your gym — mindshare, so yours is the name that comes to mind first when someone decides to join.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAY AHEAD -->
+  <section class="dm-ahead">
+    <div class="dm-ahead-head">
+      <h2 class="reveal-up">Stay connected.<br>Stay ahead.</h2>
+      <p class="reveal-up" style="--reveal-delay:.1s">This isn't about chasing more traffic — it's proven ways to bring in highly targeted traffic that actually delivers members.</p>
+    </div>
+    <div class="dm-ahead-grid">
+      <div class="glass-card dm-ahead-item reveal-up">
+        <span class="dm-ahead-num">01</span>
+        <h4>Cost effective</h4>
+        <p>Small gym businesses run on tight budgets. Digital marketing delivers results for a fraction of what conventional advertising costs.</p>
+      </div>
+      <div class="glass-card dm-ahead-item reveal-up" style="--reveal-delay:.08s">
+        <span class="dm-ahead-num">02</span>
+        <h4>Brand positioning</h4>
+        <p>Relevant content, in front of relevant people, keeps your gym visible right up until the moment someone decides where to sign up.</p>
+      </div>
+      <div class="glass-card dm-ahead-item reveal-up" style="--reveal-delay:.16s">
+        <span class="dm-ahead-num">03</span>
+        <h4>Choice of Gen Z</h4>
+        <p>Gen Z — born after 1995 — sources information, education and entertainment online, mostly through social media. That's where they'll find you, or won't.</p>
+      </div>
+      <div class="glass-card dm-ahead-item reveal-up" style="--reveal-delay:.24s">
+        <span class="dm-ahead-num">04</span>
+        <h4>Reach them directly</h4>
+        <p>Your target members are typically 18–35. Around 90% of them are active on social media, spending 45+ minutes a day there on their phones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT -->
+  <!-- <section class="dm-stat">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <p class="dm-stat-lead reveal-up">Get ready for the social media era</p>
+    <div class="dm-stat-big reveal-up"><span id="dmStatNum">0</span><span class="dm-stat-unit">M+</span></div>
+    <p class="dm-stat-cap reveal-up">Facebook users in India, projected</p>
+  </section> -->
+
+  <!-- GALLERY -->
+  <section class="dm-gallery">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">Our work</span>
+      <h2>A glimpse of our work</h2>
+    </div>
+    <div class="dm-gallery-grid" id="dmGalleryGrid">
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_9eefffb14f7f4aed96d913a13c8adc5e~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_9eefffb14f7f4aed96d913a13c8adc5e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_9eefffb14f7f4aed96d913a13c8adc5e~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_e2c6fa38e96d4235bf78e6ff3e7332be~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_e2c6fa38e96d4235bf78e6ff3e7332be~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_e2c6fa38e96d4235bf78e6ff3e7332be~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_af1f924b826f4e59b545be836aca9841~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_af1f924b826f4e59b545be836aca9841~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_af1f924b826f4e59b545be836aca9841~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_a56fc49dafe0442cb7bec2c42802be12~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_a56fc49dafe0442cb7bec2c42802be12~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_a56fc49dafe0442cb7bec2c42802be12~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+      <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="dm-lightbox" id="dmLightbox" aria-hidden="true">
+    <button class="dm-lightbox-close" id="dmLightboxClose" aria-label="Close">&times;</button>
+    <img src="" alt="" id="dmLightboxImg">
+  </div>
+
+  <!-- ============================================================
+      OUR COMPETITIVE ADVANTAGES
+      ============================================================ -->
+  <section class="ca-section" id="competitive-advantages">
+    <div class="ca-bg">
+      <div class="ca-radial ca-radial-1"></div>
+      <div class="ca-radial ca-radial-2"></div>
+    </div>
+
+    <div class="ca-wrap">
+
+      <!-- LEFT -->
+      <div class="ca-left">
+        <span class="ca-eyebrow">Why partner with Gymshim</span>
+
+        <h2 class="ca-heading" id="caHeading">
+          <span class="ca-line"><span>Our Competitive</span></span>
+          <span class="ca-line ca-accent"><span>Advantages</span></span>
+        </h2>
+
+        <p class="ca-sub">Technology. Experience. Trust. Everything you need to grow, all in <span class="ca-accent-text">one partner</span>.</p>
+
+        <div class="ca-visual" id="caVisual">
+          <svg class="ca-geo" viewBox="0 0 500 560" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="250,20 420,150 380,400 150,470 40,240" fill="rgba(216,35,74,.05)" stroke="rgba(0, 91, 237, 0.45)" stroke-width="1.6"/>
+            <polygon points="250,90 360,175 330,370 190,415 110,230" fill="none" stroke="rgba(0, 91, 237, 0.45)" stroke-width="1.2"/>
+            <line x1="250" y1="20" x2="250" y2="90" stroke="rgba(0, 91, 237, 0.45)" stroke-width="1.2"/>
+            <line x1="420" y1="150" x2="360" y2="175" stroke="rgba(0, 91, 237, 0.45)" stroke-width="1.2"/>
+            <line x1="380" y1="400" x2="330" y2="370" stroke="rgba(0, 91, 237, 0.45)" stroke-width="1.2"/>
+            <line x1="150" y1="470" x2="190" y2="415" stroke="rgba(0, 91, 237, 0.45)" stroke-width="1.2"/>
+            <line x1="40" y1="240" x2="110" y2="230" stroke="rgba(0, 91, 237, 0.45)" stroke-width="1.2"/>
+          </svg>
+
+          <div class="ca-visual-glow"></div>
+
+          <div class="ca-photo-frame" id="caFigureHolder">
+            <img class="ca-figure" src="./assets/image/gymshim-athlete.png" alt="Gymshim athlete" loading="lazy">
+          </div>
+
+          <div class="ca-badge">
+            <span class="ca-badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="10" cy="7" r="3.2"/><path d="M20.5 20v-1a3.8 3.8 0 0 0-2.8-3.66"/><path d="M15.2 4.34a3.2 3.2 0 0 1 0 6.2"/></svg>
+            </span>
+            <div>
+              <strong><span class="ca-counter" data-target="2000" data-suffix="+">0</span></strong>
+              <span>Gyms Trust<br>Gymshim</span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="dm-members-badge">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.2 13.3c2.9.4 4.8 2.7 4.8 5.7"/></svg>
-          <strong>100K+</strong><span>Active Members</span>
+      <!-- RIGHT -->
+      <div class="ca-right">
+        <svg class="ca-connector" id="caConnector"></svg>
+
+        <div class="ca-cards" id="caCards">
+
+          <article class="ca-card" style="--rd:0s" data-node>
+            <div class="ca-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.6"/><path d="M8 20h8M12 16v4"/><rect x="9" y="7" width="6" height="6" rx="1"/></svg>
+            </div>
+            <div class="ca-card-body">
+              <p>Our Gym Management Software <span class="ca-accent-text">(GYMSHIM)</span> in over <span class="ca-accent-text"><span class="ca-counter" data-target="2000" data-suffix="+">0</span></span> gyms</p>
+              <span class="ca-card-bar"></span>
+            </div>
+            <span class="ca-card-num">01</span>
+          </article>
+
+          <article class="ca-card" style="--rd:.08s" data-node>
+            <div class="ca-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><circle cx="12" cy="17.2" r="1"/><path d="M9.8 6.2h4.4"/></svg>
+            </div>
+            <div class="ca-card-body">
+              <p>Workout Plus Kiosk in <span class="ca-accent-text"><span class="ca-counter" data-target="140" data-suffix="+">0</span></span> gyms, adding ~<span class="ca-counter" data-target="15">0</span> gyms every month.</p>
+              <span class="ca-card-bar"></span>
+            </div>
+            <span class="ca-card-num">02</span>
+          </article>
+
+          <article class="ca-card" style="--rd:.16s" data-node>
+            <div class="ca-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="5"/><path d="M12 6.2l.9 1.85 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2-1.45-1.4 2-.3z"/><path d="M8.2 12.8L6 21l6-3 6 3-2.2-8.2"/></svg>
+            </div>
+            <div class="ca-card-body">
+              <p>Over <span class="ca-accent-text"><span class="ca-counter" data-target="8">0</span> years</span> of serving gyms by providing technology &amp; business solutions.</p>
+              <span class="ca-card-bar"></span>
+            </div>
+            <span class="ca-card-num">03</span>
+          </article>
+
+          <article class="ca-card" style="--rd:.24s" data-node>
+            <div class="ca-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg>
+            </div>
+            <div class="ca-card-body">
+              <p>WorkoutPlus is the <span class="ca-accent-text">ONLY</span> and first of its kind digital solution to provide member assistance and satisfaction.</p>
+              <span class="ca-card-bar"></span>
+            </div>
+            <span class="ca-card-num">04</span>
+          </article>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="ca-stats">
+      <div class="ca-stats-grid" id="caStatsGrid">
+        <div class="ca-stat">
+          <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l7-4 7 4v14"/><path d="M4 21h16M9 10h1M14 10h1M9 14h1M14 14h1M10 21v-4h4v4"/></svg></span>
+          <div><strong><span class="ca-counter" data-target="2000" data-suffix="+">0</span></strong><p>Gyms Using Our Software</p></div>
+        </div>
+        <div class="ca-stat">
+          <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><circle cx="12" cy="17.2" r="1"/></svg></span>
+          <div><strong><span class="ca-counter" data-target="140" data-suffix="+">0</span></strong><p>Gyms with Workout Plus Kiosk</p></div>
+        </div>
+        <div class="ca-stat">
+          <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="16" rx="2"/><path d="M3.5 9h17M8 2.5v4M16 2.5v4"/></svg></span>
+          <div><strong>~<span class="ca-counter" data-target="15">0</span></strong><p>Gyms Added Every Month</p></div>
+        </div>
+        <div class="ca-stat">
+          <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6z"/></svg></span>
+          <div><strong><span class="ca-counter" data-target="8" data-suffix="+">0</span></strong><p>Years of Experience in Gym Industry</p></div>
+        </div>
+        <div class="ca-stat">
+          <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="10" cy="7" r="3.2"/><path d="M20.5 20v-1a3.8 3.8 0 0 0-2.8-3.66"/><path d="M15.2 4.34a3.2 3.2 0 0 1 0 6.2"/></svg></span>
+          <div><strong><span class="ca-counter" data-target="100" data-suffix="K+">0</span></strong><p>Happy Members Served</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+      MEDIA OFFERINGS — KIOSK ADVERTISING
+      ============================================================ -->
+  <section class="dm-offer-section" id="media-offerings">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">Kiosk Advertising</span>
+      <h2>Our Media Offerings</h2>
+    </div>
+
+    <div class="dm-offer-grid">
+      <div class="glass-card dm-offer-card reveal-up">
+        <h3>Video Ads</h3>
+        <p>20–30 second video spots running on Workout Plus kiosks inside the gym floor.</p>
+        <ul><li>150–170 plays per day</li><li>Prime, high-footfall placement</li><li>Full-screen, sound-on format</li></ul>
+      </div>
+      <div class="glass-card dm-offer-card reveal-up" style="--reveal-delay:.08s">
+        <h3>Static Ads</h3>
+        <p>High-visibility commercial banners displayed across the Workout Plus kiosk screen.</p>
+        <ul><li>Always-on visibility</li><li>Rotates with video content</li><li>Great for offers &amp; QR-led CTAs</li></ul>
+      </div>
+      <div class="glass-card dm-offer-card dm-price-card reveal-up" style="--reveal-delay:.16s">
+        <span class="eyebrow">Workout Plus Advertising</span>
+        <div class="dm-price-tag">&#8377;5,000<span>&nbsp;/ kiosk / month</span></div>
+        <p style="margin-top:10px;">Discounted pricing on the Digital Interactive Gym Trainer kiosk.</p>
+        <p class="dm-price-note">Excluding tax. Minimum commitment of 2 months.</p>
+      </div>
+    </div>
+
+    <div class="dm-photo-grid" id="kioskPhotoGrid">
+      <div class="dm-photo-slot" data-slot="kiosk-video-ad-1"><img src="" alt="Nutrela Sports video ad on Fit Faction kiosk"><span>Nutrela Sports video ad<br>(Fit Faction kiosk)</span></div>
+      <div class="dm-photo-slot" data-slot="kiosk-video-ad-2"><img src="" alt="Fit Faction kiosk video ad"><span>Fit Faction kiosk<br>video ad</span></div>
+      <div class="dm-photo-slot" data-slot="kiosk-static-1"><img src="" alt="Static kiosk banners in gym"><span>Static banner kiosks<br>in gym lobby</span></div>
+      <div class="dm-photo-slot" data-slot="kiosk-static-2"><img src="" alt="Vitamin Water static ad on Workout Plus kiosk"><span>Vitamin Water static ad<br>(Workout Plus kiosk)</span></div>
+      <div class="dm-photo-slot" data-slot="kiosk-static-3"><img src="" alt="ABS Fitness kiosk on gym floor"><span>Kiosk on gym floor<br>(ABS Fitness)</span></div>
+      <div class="dm-photo-slot" data-slot="kiosk-manmatters-1"><img src="" alt="Man Matters supplement static ad"><span>Man Matters static ad</span></div>
+      <div class="dm-photo-slot" data-slot="kiosk-manmatters-2"><img src="" alt="Man Matters full-screen ad on kiosk"><span>Man Matters full-screen ad</span></div>
+      <div class="dm-photo-slot" data-slot="kiosk-urbounce"><img src="" alt="Urbounce app dashboard screen on kiosk"><span>Urbounce dashboard<br>screen</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+      SOFTWARE ADS
+      ============================================================ -->
+  <section class="dm-offer-section" id="software-ads">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">In-App Advertising</span>
+      <h2>Software Ads</h2>
+    </div>
+
+    <div class="dm-offer-grid">
+      <div class="glass-card dm-offer-card reveal-up">
+        <h3>What's included</h3>
+        <ul>
+          <li>Integrated ad placement on the Members app</li>
+          <li>Static banner inside the app — visible during workout tracking</li>
+          <li>Option to send branded WhatsApp workout reminders</li>
+          <li>Build strong digital presence at the point of action</li>
+        </ul>
+      </div>
+      <div class="glass-card dm-offer-card reveal-up" style="--reveal-delay:.08s">
+        <h3>Why it works</h3>
+        <p>Members see your brand exactly when they're most engaged — mid-workout, inside the app they already trust — instead of competing for attention elsewhere.</p>
+      </div>
+      <div class="glass-card dm-offer-card dm-price-card reveal-up" style="--reveal-delay:.16s">
+        <span class="eyebrow">Commercial</span>
+        <div class="dm-price-tag">&#8377;5,000<span>&nbsp;/ gym / month</span></div>
+        <p class="dm-price-note">Excluding tax. Minimum commitment of 2 months.</p>
+      </div>
+    </div>
+
+    <div class="dm-photo-grid" id="softwareAdsPhotoGrid" style="grid-template-columns:repeat(2,1fr);max-width:640px;">
+      <div class="dm-photo-slot" data-slot="software-whatsapp"><img src="" alt="Branded WhatsApp workout reminder screenshot"><span>WhatsApp reminder<br>screenshot</span></div>
+      <div class="dm-photo-slot" data-slot="software-app-banner"><img src="" alt="Gymshim Care app banner screenshot"><span>In-app banner<br>(Gymshim Care)</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+      IN-GYM PRODUCT SAMPLING
+      ============================================================ -->
+  <section class="dm-offer-section" id="product-sampling">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">On-Ground Activation</span>
+      <h2>In-Gym Product Sampling</h2>
+    </div>
+
+    <div class="dm-offer-grid">
+      <div class="glass-card dm-offer-card reveal-up">
+        <h3>Direct handouts</h3>
+        <p>Health &amp; fitness products sampled directly to members:</p>
+        <ul><li>Digital watch / ring</li><li>Herbal juices</li><li>Branded sampling counters inside gyms</li></ul>
+      </div>
+      <div class="glass-card dm-offer-card reveal-up" style="--reveal-delay:.08s">
+        <h3>Add-on options</h3>
+        <ul><li>Staff interaction / live demo sessions</li><li>Discount coupons with sampling packs</li></ul>
+        <p style="margin-top:12px;">Sampling activity runs for 2–5 days in a month, timed to peak gym hours.</p>
+      </div>
+      <div class="glass-card dm-offer-card dm-price-card reveal-up" style="--reveal-delay:.16s">
+        <span class="eyebrow">Commercial</span>
+        <div class="dm-price-tag">&#8377;5,000<span>&nbsp;/ gym / month</span></div>
+        <p style="margin-top:10px;">2–5 sampling days per month.</p>
+        <p class="dm-price-note">Excluding tax. Minimum commitment of 2 months.</p>
+      </div>
+    </div>
+
+    <div class="dm-photo-grid" id="samplingPhotoGrid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="dm-photo-slot" data-slot="sampling-counter-1"><img src="" alt="Branded sampling counter, staff interacting with members"><span>Sampling counter<br>staff interaction</span></div>
+      <div class="dm-photo-slot" data-slot="sampling-counter-2"><img src="" alt="Upakarma Ayurveda sampling booth"><span>Upakarma Ayurveda<br>sampling booth</span></div>
+      <div class="dm-photo-slot" data-slot="sampling-counter-3"><img src="" alt="Members interacting at sampling booth"><span>Members at<br>sampling booth</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+      BRANDS WORKING WITH US
+      ============================================================ -->
+  <section class="dm-offer-section" id="brands">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">Trusted Partners</span>
+      <h2>Brands Working With Us</h2>
+    </div>
+    <div class="dm-brands-grid">
+      <div class="dm-brand-slot" data-slot="brand-mankind"><img src="" alt="Mankind logo"><span>Mankind</span></div>
+      <div class="dm-brand-slot" data-slot="brand-pintola"><img src="" alt="Pintola logo"><span>Pintola</span></div>
+      <div class="dm-brand-slot" data-slot="brand-suprr"><img src="" alt="Suprr protein wafer logo"><span>Suprr</span></div>
+      <div class="dm-brand-slot" data-slot="brand-sleepyowl"><img src="" alt="Sleepy Owl logo"><span>Sleepy Owl</span></div>
+      <div class="dm-brand-slot" data-slot="brand-amul"><img src="" alt="Amul logo"><span>Amul</span></div>
+      <div class="dm-brand-slot" data-slot="brand-teafit"><img src="" alt="Tea Fit logo"><span>Tea Fit</span></div>
+      <div class="dm-brand-slot" data-slot="brand-aquatein"><img src="" alt="Aquatein logo"><span>Aquatein</span></div>
+      <div class="dm-brand-slot" data-slot="brand-nutrela"><img src="" alt="Patanjali Nutrela Nutrition logo"><span>Nutrela Nutrition</span></div>
+      <div class="dm-brand-slot" data-slot="brand-manmatters"><img src="" alt="Man Matters logo"><span>Man Matters</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+      GYMSHIM AWARD AND RECOGNITION
+      ============================================================ -->
+  <section class="dm-offer-section" id="awards">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">Recognition</span>
+      <h2>Gymshim Award &amp; Recognition</h2>
+    </div>
+    <div class="dm-awards-grid">
+      <div class="dm-photo-slot" data-slot="award-ceremony"><img src="" alt="Gymshim award ceremony photo"><span>Award ceremony<br>photo</span></div>
+      <div class="dm-photo-slot" data-slot="award-badge"><img src="" alt="Fit Bharat Conclave award-winning gym software badge"><span>Fit Bharat Conclave<br>award badge</span></div>
+      <div class="dm-photo-slot" data-slot="award-team-stage"><img src="" alt="Gymshim team presenting on stage"><span>Team presenting<br>on stage</span></div>
+      <div class="dm-photo-slot" data-slot="award-panel"><img src="" alt="Panel discussion featuring Gymshim"><span>Panel discussion</span></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="dm-cta">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="reveal-up">
+      <h2>Ready to fill<br>your gym floor?</h2>
+      <p>Book a short demo and we'll show you what your gym's mindshare zone could look like in 30 days.</p>
+      <a href="booking.html" class="glow-btn">Book a Demo</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">GYMSHIM</a>
+        <p>Smart solutions to grow your gym business — more walk-ins, easier conversions, better retention.</p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/gymshim/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.facebook.com/GymshimSolutions" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.instagram.com/gymshim" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="workout.html">Workout+</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="gos-ecosystem.html">GOS Ecosystem</a>
+        <a href="gos(gym-operating-system).html">Gym Operating System</a>
+        <a href="digital-marketing.html">Digital Marketing</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="tel:+919022282340">+91 9022282340</a>
+        <a href="tel:+917276160009">+91 7276160009</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom wrap">
+      <p>© 2026 Fitlyberty Pvt Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- Booking MODAL -->
+<div class="booking-modal-overlay" id="bookingModalOverlay" aria-hidden="true">
+  <div class="booking-modal-box" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+    <button class="booking-modal-close" id="bookingModalClose" aria-label="Close">&times;</button>
+
+    <div class="booking-modal-head">
+      <h2 id="bookingModalTitle">Book a Demo</h2>
+      <p id="bookingModalSubtitle">Pick a date and time that works for you.</p>
+    </div>
+
+    <div class="booking-step-indicator">
+      <span class="step-dot active" id="stepDot1">1</span>
+      <span class="step-label active" id="stepLabel1">Date &amp; Time</span>
+      <span class="step-line" id="stepLine"></span>
+      <span class="step-dot" id="stepDot2">2</span>
+      <span class="step-label" id="stepLabel2">Your Details</span>
+    </div>
+
+    <div class="booking-step-panel" data-step-panel="1">
+      <div class="booking-modal-grid">
+
+        <div class="calendar-panel">
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" id="prevMonthBtn" type="button" aria-label="Previous month">&#8249;</button>
+            <span class="calendar-month-label" id="calendarMonthLabel"></span>
+            <button class="calendar-nav-btn" id="nextMonthBtn" type="button" aria-label="Next month">&#8250;</button>
+          </div>
+          <div class="calendar-weekdays">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        <div class="details-panel">
+          <h3>Selected</h3>
+          <p class="selected-date-label placeholder" id="selectedDateLabel">Choose a date to see open times</p>
+          <div class="time-slot-grid" id="timeSlotGrid"></div>
+
+          <button class="details-toggle" id="detailsToggleBtn" type="button">
+            <span id="detailsToggleText">More details</span> <span class="chevron">&#9662;</span>
+          </button>
+          <div class="details-expand" id="detailsExpand">
+            <p>Duration: 30 minutes</p>
+            <p>Format: In-person at your gym, or video call</p>
+            <p>Free — no card required</p>
+          </div>
+        </div>
+      
+      </div>
+
+      <div class="booking-step-actions">
+        <button class="btn-primary next-btn single-action" id="toStep2Btn" type="button" disabled>Continue</button>
+      </div>
+    </div>   
+
+    <div class="booking-step-panel" data-step-panel="2" hidden>
+      <div class="booking-modal-grid">
+
+        <div class="form-panel">
+          <form class="login-form" id="bookingForm" novalidate>
+            <label>Name *
+              <input type="text" name="name" id="bookingName" required autocomplete="name">
+            </label>
+            <label>Email *
+              <input type="email" name="email" id="bookingEmail" required autocomplete="email">
+            </label>
+            <label>Phone Number *
+              <div class="phone-input">
+                <span class="phone-code">+91</span>
+                <input type="tel" name="phone" id="bookingPhone" required autocomplete="tel" placeholder="98765 43210">
+              </div>
+            </label>
+            <label>Gym Name
+              <input type="text" name="gymName" id="bookingGymName" autocomplete="organization">
+            </label>
+          </form>
+        </div>
+
+        <div class="booking-details-panel">
+          <h3>Booking Details</h3>
+          <p class="booking-summary-title">Online Demo</p>
+          <p class="selected-date-label" id="bookingSummaryDateTime"></p>
+          <span class="detail-pill">Available Online</span>
+          <div class="booking-summary-meta">
+            <p>Online Meetup (Google Meet)</p>
+            <p>Gymshim</p>
+            <p>1 hr</p>
+          </div>
+          <p class="booking-agreement">By completing your booking, you agree to receive related phone notifications.</p>
+          <button class="btn-primary next-btn" id="submitBookingBtn" type="button">Book Now</button>
         </div>
 
       </div>
-    </div>
-  </div>
 
-  <div class="dm-hero-trust reveal-up">
-    <span class="dm-hero-trust-line"></span><span>Trusted by leading brands &amp; gyms</span><span class="dm-hero-trust-line"></span>
-  </div>
+      <div class="booking-step-actions">
+        <button class="btn-secondary single-action" id="backToStep1Btn" type="button">Back</button>
+      </div>
+    </div>
 
-  <div class="dm-stats-bar reveal-up wrap" style="padding:34px 24px;">
-    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></span><div><strong>150+</strong><p>Partner Gyms</p></div></div>
-    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.2 13.3c2.9.4 4.8 2.7 4.8 5.7"/></svg></span><div><strong>100K+</strong><p>Active Members</p></div></div>
-    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span><div><strong>10M+</strong><p>Monthly Impressions</p></div></div>
-    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 5v14l11-7z"/></svg></span><div><strong>1M+</strong><p>Ad Plays / Month</p></div></div>
-    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></span><div><strong>85%+</strong><p>Engagement Rate</p></div></div>
-    <div class="dm-stat-item"><span class="dm-stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.2 7-11.5A7 7 0 105 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span><div><strong>75+</strong><p>Cities Across India</p></div></div>
-  </div>
-</section>
+    <div class="booking-success" id="bookingSuccess">
+      <div class="booking-success-icon">&#10003;</div>
+      <h3>You're booked!</h3>
+      <p id="bookingSuccessDetail">We'll see you then. A confirmation has been sent to your email.</p>
+    </div>
 
-<!-- WHY -->
-<section class="dm-why" id="dm-why">
-  <div class="dm-why-grid">
-    <div class="dm-why-head reveal-up">
-      <span class="eyebrow">Why it matters</span>
-      <h2>Why digital<br>marketing?</h2>
-    </div>
-    <div class="dm-why-copy">
-      <p class="reveal-up">The internet let brands reach people everywhere — and it gave those same people far more choices than before. A gym membership decision now runs on more than location and price; people watch what a brand says, shows and stands for before they ever walk in. That's exactly the space we work in.</p>
-      <p class="reveal-up" style="--reveal-delay:.1s">Done well, digital reach costs a fraction of a hoarding or a pamphlet drop, and every rupee of it is measurable. You find your real audience, let them get to know your gym before they visit, and turn that familiarity into the kind of loyalty that keeps a membership renewing.</p>
-    </div>
   </div>
-</section>
-
-<!-- FEATURES -->
-<section class="dm-features">
-  <div class="section-header reveal-up">
-    <span class="eyebrow">What you get</span>
-    <h2>Four ways we get you seen</h2>
-  </div>
-  <div class="dm-features-grid">
-    <div class="glass-card dm-feature-card reveal-up">
-      <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11v2a1 1 0 001 1h3l5 4V6l-5 4H4a1 1 0 00-1 1z"/><path d="M16 8a5 5 0 010 8M19 5a9 9 0 010 14"/></svg></div>
-      <h3>Paid boosting</h3>
-      <p>We put your gym's posts in front of people who don't follow you yet — filtered to match what your brand actually stands for, so reach isn't wasted on the wrong crowd.</p>
-    </div>
-    <div class="glass-card dm-feature-card reveal-up" style="--reveal-delay:.08s">
-      <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
-      <h3>Captivating design</h3>
-      <p>Our designers, copywriters and content creators build posts made to stop a scroll — leaving a clear, likeable impression of your gym in a stranger's mind.</p>
-    </div>
-    <div class="glass-card dm-feature-card reveal-up" style="--reveal-delay:.16s">
-      <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
-      <h3>Brand positioning</h3>
-      <p>Ads placed with the right audience in mind do more work per rupee. Sharp positioning keeps your gym relevant and ahead of the one down the road.</p>
-    </div>
-    <div class="glass-card dm-feature-card reveal-up" style="--reveal-delay:.24s">
-      <div class="plan-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2a5 5 0 00-5 5c0 3 2 4 2 7a3 3 0 006 0c0-3 2-4 2-7a5 5 0 00-5-5z"/><path d="M9 21h6"/></svg></div>
-      <h3>Mindshare</h3>
-      <p>We build awareness of your brand within a 2km radius of your gym — mindshare, so yours is the name that comes to mind first when someone decides to join.</p>
-    </div>
-  </div>
-</section>
-
-<!-- STAY AHEAD -->
-<section class="dm-ahead">
-  <div class="dm-ahead-head">
-    <h2 class="reveal-up">Stay connected.<br>Stay ahead.</h2>
-    <p class="reveal-up" style="--reveal-delay:.1s">This isn't about chasing more traffic — it's proven ways to bring in highly targeted traffic that actually delivers members.</p>
-  </div>
-  <div class="dm-ahead-grid">
-    <div class="glass-card dm-ahead-item reveal-up">
-      <span class="dm-ahead-num">01</span>
-      <h4>Cost effective</h4>
-      <p>Small gym businesses run on tight budgets. Digital marketing delivers results for a fraction of what conventional advertising costs.</p>
-    </div>
-    <div class="glass-card dm-ahead-item reveal-up" style="--reveal-delay:.08s">
-      <span class="dm-ahead-num">02</span>
-      <h4>Brand positioning</h4>
-      <p>Relevant content, in front of relevant people, keeps your gym visible right up until the moment someone decides where to sign up.</p>
-    </div>
-    <div class="glass-card dm-ahead-item reveal-up" style="--reveal-delay:.16s">
-      <span class="dm-ahead-num">03</span>
-      <h4>Choice of Gen Z</h4>
-      <p>Gen Z — born after 1995 — sources information, education and entertainment online, mostly through social media. That's where they'll find you, or won't.</p>
-    </div>
-    <div class="glass-card dm-ahead-item reveal-up" style="--reveal-delay:.24s">
-      <span class="dm-ahead-num">04</span>
-      <h4>Reach them directly</h4>
-      <p>Your target members are typically 18–35. Around 90% of them are active on social media, spending 45+ minutes a day there on their phones.</p>
-    </div>
-  </div>
-</section>
-
-<!-- STAT -->
-<section class="dm-stat">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <p class="dm-stat-lead reveal-up">Get ready for the social media era</p>
-  <div class="dm-stat-big reveal-up"><span id="dmStatNum">0</span><span class="dm-stat-unit">M+</span></div>
-  <p class="dm-stat-cap reveal-up">Facebook users in India, projected</p>
-</section>
-
-<!-- GALLERY -->
-<section class="dm-gallery">
-  <div class="section-header reveal-up">
-    <span class="eyebrow">Our work</span>
-    <h2>A glimpse of our work</h2>
-  </div>
-  <div class="dm-gallery-grid" id="dmGalleryGrid">
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_d262bbbae09748a3b8b027688a220fc9~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_eb42a4fb6ff349e890892da3ca262abe~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_e125000f8a714d888a29414a858af618~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_2a6a77fd908146da856627f7d11d2e01~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_9eefffb14f7f4aed96d913a13c8adc5e~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_9eefffb14f7f4aed96d913a13c8adc5e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_9eefffb14f7f4aed96d913a13c8adc5e~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_e2c6fa38e96d4235bf78e6ff3e7332be~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_e2c6fa38e96d4235bf78e6ff3e7332be~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_e2c6fa38e96d4235bf78e6ff3e7332be~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_af1f924b826f4e59b545be836aca9841~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_af1f924b826f4e59b545be836aca9841~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_af1f924b826f4e59b545be836aca9841~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_a56fc49dafe0442cb7bec2c42802be12~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_a56fc49dafe0442cb7bec2c42802be12~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_a56fc49dafe0442cb7bec2c42802be12~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_d12ad31aced14c908f0f10856d521ee3~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_a7a4fd41457349f0a33c0df9ba5f1a6f~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-    <button class="dm-gallery-item reveal-up" data-full="https://static.wixstatic.com/media/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg"><img src="https://static.wixstatic.com/media/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7cdf7e_8cb98764ea5d43beadc36b28479bb60b~mv2.jpg" alt="Gymshim social post design" loading="lazy"></button>
-  </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="dm-lightbox" id="dmLightbox" aria-hidden="true">
-  <button class="dm-lightbox-close" id="dmLightboxClose" aria-label="Close">&times;</button>
-  <img src="" alt="" id="dmLightboxImg">
 </div>
 
-<!-- ============================================================
-     OUR COMPETITIVE ADVANTAGES
-     ============================================================ -->
-<section class="ca-section" id="competitive-advantages">
-  <div class="ca-bg">
-    <div class="ca-radial ca-radial-1"></div>
-    <div class="ca-radial ca-radial-2"></div>
-  </div>
 
-  <div class="ca-wrap">
 
-    <!-- LEFT -->
-    <div class="ca-left">
-      <span class="ca-eyebrow">Why partner with Gymshim</span>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+  /* Nav + services overlay */
+  (() => {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger && navLinks) hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
 
-      <h2 class="ca-heading" id="caHeading">
-        <span class="ca-line"><span>Our Competitive</span></span>
-        <span class="ca-line ca-accent"><span>Advantages</span></span>
-      </h2>
+    const servicesToggle = document.getElementById('servicesToggle');
+    const servicesOverlay = document.getElementById('servicesOverlay');
+    const servicesOverlayBackdrop = document.getElementById('servicesOverlayBackdrop');
+    const servicesOverlayClose = document.getElementById('servicesOverlayClose');
 
-      <p class="ca-sub">Technology. Experience. Trust. Everything you need to grow, all in <span class="ca-accent-text">one partner</span>.</p>
-
-      <div class="ca-visual" id="caVisual">
-        <svg class="ca-geo" viewBox="0 0 500 560" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="250,20 420,150 380,400 150,470 40,240" fill="rgba(216,35,74,.05)" stroke="rgba(216,35,74,.5)" stroke-width="1.6"/>
-          <polygon points="250,90 360,175 330,370 190,415 110,230" fill="none" stroke="rgba(216,35,74,.3)" stroke-width="1.2"/>
-          <line x1="250" y1="20" x2="250" y2="90" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
-          <line x1="420" y1="150" x2="360" y2="175" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
-          <line x1="380" y1="400" x2="330" y2="370" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
-          <line x1="150" y1="470" x2="190" y2="415" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
-          <line x1="40" y1="240" x2="110" y2="230" stroke="rgba(216,35,74,.4)" stroke-width="1.2"/>
-        </svg>
-
-        <div class="ca-visual-glow"></div>
-
-        <div class="ca-photo-frame" id="caFigureHolder">
-          <img class="ca-figure" src="./assets/image/gymshim-athlete.png" alt="Gymshim athlete" loading="lazy">
-        </div>
-
-        <div class="ca-badge">
-          <span class="ca-badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="10" cy="7" r="3.2"/><path d="M20.5 20v-1a3.8 3.8 0 0 0-2.8-3.66"/><path d="M15.2 4.34a3.2 3.2 0 0 1 0 6.2"/></svg>
-          </span>
-          <div>
-            <strong><span class="ca-counter" data-target="2000" data-suffix="+">0</span></strong>
-            <span>Gyms Trust<br>Gymshim</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT -->
-    <div class="ca-right">
-      <svg class="ca-connector" id="caConnector"></svg>
-
-      <div class="ca-cards" id="caCards">
-
-        <article class="ca-card" style="--rd:0s" data-node>
-          <div class="ca-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.6"/><path d="M8 20h8M12 16v4"/><rect x="9" y="7" width="6" height="6" rx="1"/></svg>
-          </div>
-          <div class="ca-card-body">
-            <p>Our Gym Management Software <span class="ca-accent-text">(GYMSHIM)</span> in over <span class="ca-accent-text"><span class="ca-counter" data-target="2000" data-suffix="+">0</span></span> gyms</p>
-            <span class="ca-card-bar"></span>
-          </div>
-          <span class="ca-card-num">01</span>
-        </article>
-
-        <article class="ca-card" style="--rd:.08s" data-node>
-          <div class="ca-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><circle cx="12" cy="17.2" r="1"/><path d="M9.8 6.2h4.4"/></svg>
-          </div>
-          <div class="ca-card-body">
-            <p>Workout Plus Kiosk in <span class="ca-accent-text"><span class="ca-counter" data-target="140" data-suffix="+">0</span></span> gyms, adding ~<span class="ca-counter" data-target="15">0</span> gyms every month.</p>
-            <span class="ca-card-bar"></span>
-          </div>
-          <span class="ca-card-num">02</span>
-        </article>
-
-        <article class="ca-card" style="--rd:.16s" data-node>
-          <div class="ca-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="5"/><path d="M12 6.2l.9 1.85 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2-1.45-1.4 2-.3z"/><path d="M8.2 12.8L6 21l6-3 6 3-2.2-8.2"/></svg>
-          </div>
-          <div class="ca-card-body">
-            <p>Over <span class="ca-accent-text"><span class="ca-counter" data-target="8">0</span> years</span> of serving gyms by providing technology &amp; business solutions.</p>
-            <span class="ca-card-bar"></span>
-          </div>
-          <span class="ca-card-num">03</span>
-        </article>
-
-        <article class="ca-card" style="--rd:.24s" data-node>
-          <div class="ca-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg>
-          </div>
-          <div class="ca-card-body">
-            <p>WorkoutPlus is the <span class="ca-accent-text">ONLY</span> and first of its kind digital solution to provide member assistance and satisfaction.</p>
-            <span class="ca-card-bar"></span>
-          </div>
-          <span class="ca-card-num">04</span>
-        </article>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- STATS STRIP -->
-  <div class="ca-stats">
-    <div class="ca-stats-grid" id="caStatsGrid">
-      <div class="ca-stat">
-        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l7-4 7 4v14"/><path d="M4 21h16M9 10h1M14 10h1M9 14h1M14 14h1M10 21v-4h4v4"/></svg></span>
-        <div><strong><span class="ca-counter" data-target="2000" data-suffix="+">0</span></strong><p>Gyms Using Our Software</p></div>
-      </div>
-      <div class="ca-stat">
-        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><circle cx="12" cy="17.2" r="1"/></svg></span>
-        <div><strong><span class="ca-counter" data-target="140" data-suffix="+">0</span></strong><p>Gyms with Workout Plus Kiosk</p></div>
-      </div>
-      <div class="ca-stat">
-        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="16" rx="2"/><path d="M3.5 9h17M8 2.5v4M16 2.5v4"/></svg></span>
-        <div><strong>~<span class="ca-counter" data-target="15">0</span></strong><p>Gyms Added Every Month</p></div>
-      </div>
-      <div class="ca-stat">
-        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6z"/></svg></span>
-        <div><strong><span class="ca-counter" data-target="8" data-suffix="+">0</span></strong><p>Years of Experience in Gym Industry</p></div>
-      </div>
-      <div class="ca-stat">
-        <span class="ca-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="10" cy="7" r="3.2"/><path d="M20.5 20v-1a3.8 3.8 0 0 0-2.8-3.66"/><path d="M15.2 4.34a3.2 3.2 0 0 1 0 6.2"/></svg></span>
-        <div><strong><span class="ca-counter" data-target="100" data-suffix="K+">0</span></strong><p>Happy Members Served</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="dm-cta">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="reveal-up">
-    <h2>Ready to fill<br>your gym floor?</h2>
-    <p>Book a short demo and we'll show you what your gym's mindshare zone could look like in 30 days.</p>
-    <a href="booking.html" class="glow-btn">Book a Demo</a>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-brand">
-      <a href="index.html" class="logo">GYMSHIM</a>
-      <p>Smart solutions to grow your gym business — more walk-ins, easier conversions, better retention.</p>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/company/gymshim/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://www.facebook.com/GymshimSolutions" target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href="https://www.instagram.com/gymshim" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
-    </div>
-    <div class="footer-links">
-      <h4>Company</h4>
-      <a href="about.html">About Us</a>
-      <a href="workout.html">Workout+</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div class="footer-links">
-      <h4>Services</h4>
-      <a href="gos-ecosystem.html">GOS Ecosystem</a>
-      <a href="gos(gym-operating-system).html">Gym Operating System</a>
-      <a href="digital-marketing.html">Digital Marketing</a>
-    </div>
-    <div class="footer-links">
-      <h4>Contact</h4>
-      <a href="tel:+919022282340">+91 9022282340</a>
-      <a href="tel:+917276160009">+91 7276160009</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-    </div>
-  </div>
-  <div class="footer-bottom wrap">
-    <p>© 2026 Fitlyberty Pvt Ltd. All rights reserved.</p>
-  </div>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-/* Nav + services overlay */
-(() => {
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  if (hamburger && navLinks) hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-
-  const servicesToggle = document.getElementById('servicesToggle');
-  const servicesOverlay = document.getElementById('servicesOverlay');
-  const servicesOverlayBackdrop = document.getElementById('servicesOverlayBackdrop');
-  const servicesOverlayClose = document.getElementById('servicesOverlayClose');
-
-  function openServicesOverlay() {
-    servicesOverlay.classList.add('open');
-    servicesOverlay.setAttribute('aria-hidden', 'false');
-    servicesToggle.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeServicesOverlay() {
-    servicesOverlay.classList.remove('open');
-    servicesOverlay.setAttribute('aria-hidden', 'true');
-    servicesToggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-  if (servicesToggle && servicesOverlay) {
-    servicesToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      servicesOverlay.classList.contains('open') ? closeServicesOverlay() : openServicesOverlay();
-    });
-    servicesOverlayBackdrop.addEventListener('click', closeServicesOverlay);
-    servicesOverlayClose.addEventListener('click', closeServicesOverlay);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && servicesOverlay.classList.contains('open')) closeServicesOverlay(); });
-  }
-})();
-
-/* Scroll reveal */
-(() => {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal-up').forEach((el) => io.observe(el));
-})();
-
-/* Hero 3D parallax tilt */
-(() => {
-  const visual = document.getElementById('dmHeroVisual');
-  const inner = document.getElementById('dmHeroVisualInner');
-  if (!visual || !inner) return;
-  visual.addEventListener('mousemove', (e) => {
-    const rect = visual.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    inner.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
-  });
-  visual.addEventListener('mouseleave', () => { inner.style.transform = 'rotateY(0) rotateX(0)'; });
-})();
-
-/* Stat counter */
-(() => {
-  const statEl = document.getElementById('dmStatNum');
-  if (!statEl) return;
-  let done = false;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !done) {
-        done = true;
-        const target = 444;
-        let current = 0;
-        const step = () => {
-          current += Math.max(1, Math.round((target - current) / 8));
-          if (current >= target) current = target;
-          statEl.textContent = current;
-          if (current < target) requestAnimationFrame(step);
-        };
-        step();
-      }
-    });
-  }, { threshold: 0.5 });
-  io.observe(statEl);
-})();
-
-/* Gallery lightbox */
-(() => {
-  const lightbox = document.getElementById('dmLightbox');
-  const lightboxImg = document.getElementById('dmLightboxImg');
-  const closeBtn = document.getElementById('dmLightboxClose');
-  if (!lightbox || !lightboxImg) return;
-  function open(src, alt) {
-    lightboxImg.src = src; lightboxImg.alt = alt || '';
-    lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden', 'false');
-  }
-  function close() { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); }
-  document.querySelectorAll('.dm-gallery-item').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const full = btn.dataset.full || btn.querySelector('img').src;
-      open(full, btn.querySelector('img').alt);
-    });
-  });
-  closeBtn.addEventListener('click', close);
-  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-})();
-
-/* Competitive Advantages: scroll reveal */
-(() => {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
-    });
-  }, { threshold: .18 });
-  document.querySelectorAll('#caHeading, .ca-card, #caStatsGrid').forEach(el => io.observe(el));
-})();
-
-/* Competitive Advantages: counter animation */
-(() => {
-  const counters = document.querySelectorAll('.ca-counter');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      if (el.dataset.done) return;
-      el.dataset.done = '1';
-      const target = parseFloat(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
-      const dur = 1400;
-      const start = performance.now();
-      function step(now){
-        const p = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const val = Math.round(target * eased);
-        el.textContent = val + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-      io.unobserve(el);
-    });
-  }, { threshold: .6 });
-  counters.forEach(el => io.observe(el));
-})();
-
-/* Competitive Advantages: parallax tilt on the visual */
-(() => {
-  const visual = document.getElementById('caVisual');
-  const holder = document.getElementById('caFigureHolder');
-  if (!visual || !holder) return;
-  visual.addEventListener('mousemove', (e) => {
-    const rect = visual.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    if (window.gsap) {
-      gsap.to(holder, { x: x * 14, y: y * 8, rotateZ: x * 1.6, duration: .7, ease: 'power3.out' });
-    } else {
-      holder.style.transform = `translate(${x * 14}px, ${y * 8}px)`;
+    function openServicesOverlay() {
+      servicesOverlay.classList.add('open');
+      servicesOverlay.setAttribute('aria-hidden', 'false');
+      servicesToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
     }
-  });
-  visual.addEventListener('mouseleave', () => {
-    if (window.gsap) gsap.to(holder, { x: 0, y: 0, rotateZ: 0, duration: .7, ease: 'power3.out' });
-    else holder.style.transform = 'translate(0,0)';
-  });
-})();
+    function closeServicesOverlay() {
+      servicesOverlay.classList.remove('open');
+      servicesOverlay.setAttribute('aria-hidden', 'true');
+      servicesToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    if (servicesToggle && servicesOverlay) {
+      servicesToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        servicesOverlay.classList.contains('open') ? closeServicesOverlay() : openServicesOverlay();
+      });
+      servicesOverlayBackdrop.addEventListener('click', closeServicesOverlay);
+      servicesOverlayClose.addEventListener('click', closeServicesOverlay);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && servicesOverlay.classList.contains('open')) closeServicesOverlay(); });
+    }
+  })();
 
-/* Competitive Advantages: animated ecosystem connector (jogged, like a wiring diagram) */
-(() => {
-  const svg = document.getElementById('caConnector');
-  const cardsBox = document.getElementById('caCards');
-  if (!svg || !cardsBox) return;
+  /* Scroll reveal */
+  (() => {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal-up').forEach((el) => io.observe(el));
+  })();
 
-  function build() {
-    svg.innerHTML = '';
-    const boxRect = cardsBox.parentElement.getBoundingClientRect();
-    svg.setAttribute('viewBox', `0 0 ${boxRect.width} ${boxRect.height}`);
-
-    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-    defs.innerHTML = `<linearGradient id="caLineGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#d8234a" stop-opacity=".15"/>
-      <stop offset="50%" stop-color="#ff5273" stop-opacity=".85"/>
-      <stop offset="100%" stop-color="#d8234a" stop-opacity=".15"/>
-    </linearGradient>`;
-    svg.appendChild(defs);
-
-    const icons = cardsBox.querySelectorAll('.ca-card-icon');
-    const jog = [0, -26, 10, -18];
-    const baseX = 6;
-    let prev = null;
-
-    icons.forEach((icon, i) => {
-      const r = icon.getBoundingClientRect();
-      const cy = r.top + r.height / 2 - boxRect.top;
-      const cx = baseX + (jog[i] || 0);
-
-      if (prev) {
-        const midY = (prev.y + cy) / 2;
-        const d = `M ${prev.x} ${prev.y} C ${prev.x} ${midY}, ${cx} ${midY}, ${cx} ${cy}`;
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('d', d);
-        svg.appendChild(path);
-        const flow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        flow.setAttribute('d', d);
-        flow.setAttribute('class', 'ca-flow');
-        svg.appendChild(flow);
-      }
-
-      const iconLeft = r.left - boxRect.left;
-      const branch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      branch.setAttribute('d', `M ${cx} ${cy} L ${iconLeft - 14} ${cy}`);
-      svg.appendChild(branch);
-
-      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      dot.setAttribute('cx', cx);
-      dot.setAttribute('cy', cy);
-      dot.setAttribute('r', 3.4);
-      dot.setAttribute('class', 'ca-node-dot');
-      svg.appendChild(dot);
-
-      prev = { x: cx, y: cy };
+  /* Hero 3D parallax tilt */
+  (() => {
+    const visual = document.getElementById('dmHeroVisual');
+    const inner = document.getElementById('dmHeroVisualInner');
+    if (!visual || !inner) return;
+    visual.addEventListener('mousemove', (e) => {
+      const rect = visual.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      inner.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
     });
-  }
+    visual.addEventListener('mouseleave', () => { inner.style.transform = 'rotateY(0) rotateX(0)'; });
+  })();
 
-  build();
-  window.addEventListener('resize', () => requestAnimationFrame(build));
-})();
+  /* Stat counter */
+  (() => {
+    const statEl = document.getElementById('dmStatNum');
+    if (!statEl) return;
+    let done = false;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !done) {
+          done = true;
+          const target = 444;
+          let current = 0;
+          const step = () => {
+            current += Math.max(1, Math.round((target - current) / 8));
+            if (current >= target) current = target;
+            statEl.textContent = current;
+            if (current < target) requestAnimationFrame(step);
+          };
+          step();
+        }
+      });
+    }, { threshold: 0.5 });
+    io.observe(statEl);
+  })();
 
-</script>
-</body>
+  /* Gallery lightbox */
+  (() => {
+    const lightbox = document.getElementById('dmLightbox');
+    const lightboxImg = document.getElementById('dmLightboxImg');
+    const closeBtn = document.getElementById('dmLightboxClose');
+    if (!lightbox || !lightboxImg) return;
+    function open(src, alt) {
+      lightboxImg.src = src; lightboxImg.alt = alt || '';
+      lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden', 'false');
+    }
+    function close() { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); }
+    document.querySelectorAll('.dm-gallery-item').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const full = btn.dataset.full || btn.querySelector('img').src;
+        open(full, btn.querySelector('img').alt);
+      });
+    });
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  })();
+
+  /* Competitive Advantages: scroll reveal */
+  (() => {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+      });
+    }, { threshold: .18 });
+    document.querySelectorAll('#caHeading, .ca-card, #caStatsGrid').forEach(el => io.observe(el));
+  })();
+
+  /* Competitive Advantages: counter animation */
+  (() => {
+    const counters = document.querySelectorAll('.ca-counter');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        if (el.dataset.done) return;
+        el.dataset.done = '1';
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const dur = 1400;
+        const start = performance.now();
+        function step(now){
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const val = Math.round(target * eased);
+          el.textContent = val + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        io.unobserve(el);
+      });
+    }, { threshold: .6 });
+    counters.forEach(el => io.observe(el));
+  })();
+
+  /* Competitive Advantages: parallax tilt on the visual */
+  (() => {
+    const visual = document.getElementById('caVisual');
+    const holder = document.getElementById('caFigureHolder');
+    if (!visual || !holder) return;
+    visual.addEventListener('mousemove', (e) => {
+      const rect = visual.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      if (window.gsap) {
+        gsap.to(holder, { x: x * 14, y: y * 8, rotateZ: x * 1.6, duration: .7, ease: 'power3.out' });
+      } else {
+        holder.style.transform = `translate(${x * 14}px, ${y * 8}px)`;
+      }
+    });
+    visual.addEventListener('mouseleave', () => {
+      if (window.gsap) gsap.to(holder, { x: 0, y: 0, rotateZ: 0, duration: .7, ease: 'power3.out' });
+      else holder.style.transform = 'translate(0,0)';
+    });
+  })();
+
+  /* Competitive Advantages: animated ecosystem connector (jogged, like a wiring diagram) */
+  (() => {
+    const svg = document.getElementById('caConnector');
+    const cardsBox = document.getElementById('caCards');
+    if (!svg || !cardsBox) return;
+
+    function build() {
+      svg.innerHTML = '';
+      const boxRect = cardsBox.parentElement.getBoundingClientRect();
+      svg.setAttribute('viewBox', `0 0 ${boxRect.width} ${boxRect.height}`);
+
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    defs.innerHTML = `<linearGradient id="caLineGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#2563ff" stop-opacity=".15"/>
+    <stop offset="50%" stop-color="#5b8bff" stop-opacity=".85"/>
+    <stop offset="100%" stop-color="#2563ff" stop-opacity=".15"/>
+  </linearGradient>`;
+      svg.appendChild(defs);
+
+      const icons = cardsBox.querySelectorAll('.ca-card-icon');
+      const jog = [0, -26, 10, -18];
+      const baseX = 6;
+      let prev = null;
+
+      icons.forEach((icon, i) => {
+        const r = icon.getBoundingClientRect();
+        const cy = r.top + r.height / 2 - boxRect.top;
+        const cx = baseX + (jog[i] || 0);
+
+        if (prev) {
+          const midY = (prev.y + cy) / 2;
+          const d = `M ${prev.x} ${prev.y} C ${prev.x} ${midY}, ${cx} ${midY}, ${cx} ${cy}`;
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', d);
+          svg.appendChild(path);
+          const flow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          flow.setAttribute('d', d);
+          flow.setAttribute('class', 'ca-flow');
+          svg.appendChild(flow);
+        }
+
+        const iconLeft = r.left - boxRect.left;
+        const branch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        branch.setAttribute('d', `M ${cx} ${cy} L ${iconLeft - 14} ${cy}`);
+        svg.appendChild(branch);
+
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('cx', cx);
+        dot.setAttribute('cy', cy);
+        dot.setAttribute('r', 3.4);
+        dot.setAttribute('class', 'ca-node-dot');
+        svg.appendChild(dot);
+
+        prev = { x: cx, y: cy };
+      });
+    }
+
+    build();
+    window.addEventListener('resize', () => requestAnimationFrame(build));
+  })();
+
+  </script>
+  <script src="./booking.js"></script>
+
+
+  </body>
+
 </html>

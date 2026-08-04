@@ -308,12 +308,29 @@ form.addEventListener("submit", async (e) => {
 
 
 // Products & Services — full-page overlay
+// Products & Services — full-page overlay (loaded on demand from service-mega.html)
+fetch('services-mega.html')
+  .then((res) => {
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return res.text();
+  })
+  .then((html) => {
+    const mount = document.getElementById('servicesOverlayMount');
+    if (mount) mount.innerHTML = html;
+    initServicesOverlay();
+  })
+  .catch((err) => {
+    console.error('Could not load Products & Services panel from service-mega.html:', err);
+    console.warn('If you opened this page directly as a file:// URL, the browser blocks fetch() for security reasons. Run a local server instead (e.g. "npx serve", or VS Code\'s Live Server extension) and reload.');
+  });
+
+function initServicesOverlay() {
   const servicesToggle = document.getElementById('servicesToggle');
   const servicesOverlay = document.getElementById('servicesOverlay');
   const servicesOverlayBackdrop = document.getElementById('servicesOverlayBackdrop');
   const servicesOverlayClose = document.getElementById('servicesOverlayClose');
 
-function openServicesOverlay() {
+  function openServicesOverlay() {
     servicesOverlay.classList.add('open');
     servicesOverlay.setAttribute('aria-hidden', 'false');
     servicesToggle.setAttribute('aria-expanded', 'true');
@@ -347,3 +364,72 @@ function openServicesOverlay() {
       }
     });
   }
+}
+
+
+
+
+  // .,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+//   gsap.from(".kiosk-video", {
+//   scale: 1.25,
+//   opacity: 0,
+//   duration: 2,
+//   ease: "power3.out",
+//   scrollTrigger: {
+//     trigger: ".business-booster-page",
+//     start: "top 80%",
+//   },
+// });
+
+// gsap.to(".ambient-left", {
+//   x: 120,
+//   duration: 8,
+//   repeat: -1,
+//   yoyo: true,
+//   ease: "sine.inOut",
+// });
+
+// gsap.to(".ambient-right", {
+//   x: -120,
+//   duration: 10,
+//   repeat: -1,
+//   yoyo: true,
+//   ease: "sine.inOut",
+// });
+
+
+// gsap.to(".glass-panel",{
+
+//     y:0,
+//     opacity:1,
+
+//     duration:1.4,
+
+//     ease:"power4.out",
+
+//     scrollTrigger:{
+
+//         trigger:".business-content",
+
+//         start:"top 75%"
+
+//     }
+
+// });
+
+
+
+// gsap.from(".feature-card",{
+//     y:120,
+//     opacity:0,
+//     duration:1,
+//     stagger:.2,
+//     ease:"power3.out",
+
+//     scrollTrigger:{
+//         trigger:".feature-grid",
+//         start:"top 80%"
+//     }
+// });
