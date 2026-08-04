@@ -790,6 +790,219 @@ button{font-family:inherit;}
   .dm-brands-grid{grid-template-columns:repeat(3,1fr);}
   .dm-awards-grid{grid-template-columns:repeat(2,1fr);}
 }
+
+
+/* ==================================================
+   MOBILE RESPONSIVE FIX
+   ================================================== */
+@media (max-width: 700px) {
+  .wrap,
+  .dm-hero-inner,
+  .dm-why-grid,
+  .dm-features-grid,
+  .dm-ahead-grid,
+  .dm-gallery-grid,
+  .dm-offer-grid,
+  .dm-photo-grid,
+  .dm-awards-grid,
+  .footer-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .nav-container {
+    padding: 14px 20px;
+  }
+
+  .nav-actions {
+    gap: 10px;
+  }
+
+  .nav-actions .glow-btn {
+    display: none;
+  }
+
+  .dm-hero {
+    min-height: auto;
+    padding: 120px 0 45px;
+  }
+
+  .dm-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .dm-hero-title {
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .dm-hero-p {
+    font-size: 16px;
+  }
+
+  .dm-hero-points {
+    grid-template-columns: 1fr;
+    margin-top: 26px;
+  }
+
+  .dm-hero-ctas {
+    margin-top: 28px;
+  }
+
+  .glow-btn,
+  .ghost-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dm-hero-visual {
+  height: 380px;
+  width: 100%;
+  max-width: 390px;
+  margin: 32px auto 0;
+  overflow: hidden;
+}
+
+.dm-hero-visual-inner {
+  width: 160%;
+  height: 600px;
+  margin-left: -30%;
+  transform: scale(.62) !important;
+  transform-origin: top center;
+}
+
+
+.dm-notify-toast {
+  top: 10%;
+}
+
+.dm-ad-kiosk {
+  top: 30%;
+}
+
+
+.dm-hero-trust {
+  margin: 20px auto 30px;
+}
+
+  .dm-stats-bar {
+    margin: 0 20px;
+    padding: 24px 12px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dm-why,
+  .dm-features,
+  .dm-ahead,
+  .dm-offer-section,
+  .dm-gallery {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .dm-features-grid,
+  .dm-ahead-grid,
+  .dm-offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dm-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .dm-stat,
+  .dm-cta {
+    padding: 90px 20px;
+  }
+
+  .dm-stat-big {
+    font-size: clamp(72px, 25vw, 130px);
+  }
+
+  .ca-section {
+    padding-top: 45px;
+  }
+
+  .ca-wrap {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 0 20px;
+  }
+
+  ..ca-visual {
+  height: 400px;
+  margin-top: 24px;
+}
+
+.ca-photo-frame {
+  inset: 0;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.ca-figure {
+  width: 190px;
+  max-width: 70%;
+}
+
+  .ca-card {
+    padding: 20px 16px;
+    gap: 14px;
+  }
+
+  .ca-card-body p {
+    font-size: 15px;
+  }
+
+  .ca-stats {
+    padding: 0 20px 50px;
+  }
+
+  .ca-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 8px;
+    padding: 20px 8px;
+  }
+
+  .ca-stat {
+    padding: 4px 8px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    margin-top: 35px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .logo {
+    font-size: 18px;
+  }
+
+  .theme-toggle {
+    width: 50px;
+  }
+
+ .dm-hero-visual {
+  height: 210px;
+}
+
+.dm-hero-visual-inner {
+  transform: scale(.54) !important;
+}
+
+  .dm-stats-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
 </style>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="booking.css">
