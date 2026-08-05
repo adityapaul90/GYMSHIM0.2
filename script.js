@@ -66,7 +66,7 @@
   soundToggle.addEventListener('click', () => {
     heroVideo.muted = !heroVideo.muted;
     soundToggle.textContent = heroVideo.muted ? '🔇' : '🔊';
-  });
+  }); 
 
   // ..............................
 
